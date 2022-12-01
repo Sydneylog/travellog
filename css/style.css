@@ -3,6 +3,14 @@ body{
 	font-family: 'Noto Sans KR', sans-serif, '맑은 고딕';
 	word-break:keep-all
 }
+.blind{
+	position:absolute;
+	clip:rect(0 0 0 0);
+	width:1px;
+	height:1px;
+	margin:-1px;
+	overflow:hidden
+}
 .inner{
 	position:relative;
 	margin:auto;
