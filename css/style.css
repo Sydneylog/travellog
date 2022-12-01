@@ -3,3 +3,19 @@ body{
 	font-family: 'Noto Sans KR', sans-serif, '맑은 고딕';
 	word-break:keep-all
 }
+.inner{
+	position:relative;
+	margin:auto;
+}
+/* for desktop */
+
+
+/* for tablet */
+@media screen and(max-width:999){
+
+}
+
+/* for mobile */
+@media screen and(max-width:799px){
+
+}
