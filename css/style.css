@@ -1,7 +1,6 @@
-body{
-	font-size:16px;
-	font-family: 'Noto Sans KR', sans-serif, '맑은 고딕';
-	word-break:keep-all
+/* common */
+html{
+	font-size:14px;
 }
 .blind{
 	position:absolute;
@@ -10,20 +9,139 @@ body{
 	height:1px;
 	margin:-1px;
 	overflow:hidden
-}
+	}
 .inner{
 	position:relative;
-	margin:auto;
 }
-/* for desktop */
+.btn{
+	position:absolute;
+	left:27%;
+	bottom: 4%;
+	background:royalblue;
+	color:white;
+	outline:none;
+	border:none;
+	height:15%;
+	width:50%;
+	border-radius: 3px;
+}
+
+/* main */
+html, body{
+	height:100%;
+}
+body{
+	font-family: 'Do Hyeon', sans-serif, '맑은 고딕';
+	word-break:keep-all;
+	background-color:#222;
+	color: #e8e8e8;
+}
+content{
+	position:relative;
+}
+.navbar{
+	height:50px;
+	background-color:#333;
+	padding:0 10px;
+	box-sizing: border-box;
+	display:flex;
+	align-items: center;
+	
+}
+.navbar h2{
+	font-size:1.6rem;
+}
+.navbar .inner{
+	display:flex;
+	width:100%;
+	justify-content: space-between;
+	align-items: center;
+}
+.mini_top{
+	display:flex;
+	justify-content: space-between;
+	width:60px;
+}
+.mini_top .size{
+	font-size: 1.8rem;
+}
+
+/* main */
+.main_image_wrap div{
+	max-width:799px;
+}
+.main_image_wrap img{
+	max-width:100%;
+	margin:0 auto;
+}
+.main_image_wrap div div{
+	position:relative;
+}
+.main_image_wrap div .main_title{
+	width:60%;
+	height:auto;
+	position:absolute;
+	top:35%;
+	left:10%;
+}
+.main_image_wrap div .catchphrase{
+	width:60%;
+	position:absolute;
+	top:48%;
+	right:5%;
+}
+
+/* story card */
+.story_card_wrap{
+	position:relative;
+	top: -30px;
+}
+.swiper{
+	width:80%;
+	height:50vh;
+}
+
+.story_card_wrap .storybox{
+	background-color:#333;
+	box-sizing: border-box;
+	width: 80%;
+	height:auto
+	
+}
+.story_card_wrap .text_part{
+	padding:4%;
+	width:100%;
+	box-sizing: border-box;
+	position:relative;
+}
+.story_card_wrap .text_part div:not(:last-child){
+	margin-bottom:6%;
+}
+.story_card_wrap .storybox .image_size{
+	width:100%;
+	height:30vh;
+}
+.story_card_wrap .storybox .story_title{
+	font-size:1.25rem;
+}
+.story_card_wrap .storybox .story_date{
+	font-size:0.95rem;
+}
+.story_card_wrap .storybox .sotry_content{
+	font-size:1.0rem;
+	line-height:1.2rem;
+}
 
 
-/* for tablet */
-@media screen and(max-width:999){
+
+
+
+
+
+
+
+/* breakpoint - tablet */
+@media screen and (min-width : 800px){
 
 }
 
-/* for mobile */
-@media screen and(max-width:799px){
-
-}
