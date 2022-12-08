@@ -1,6 +1,8 @@
 /* common */
+
 html{
 	font-size:14px;
+	
 }
 .blind{
 	position:absolute;
@@ -25,20 +27,34 @@ html{
 	width:50%;
 	border-radius: 3px;
 }
-
+.dark{
+	color:#e8e8e8;
+	background:#333
+}
+.light{
+	color:#222;
+	background:#222
+}
+.pointer{
+	cursor:pointer;
+}
 /* main */
-html, body{
+body{
 	height:100%;
 }
 body{
 	font-family: 'Do Hyeon', sans-serif, '맑은 고딕';
 	word-break:keep-all;
+	line-height:1.2rem;
 	background-color:#222;
 	color: #e8e8e8;
+	padding-top:50px;
+	padding-bottom:55px;
 }
 content{
 	position:relative;
 }
+/* nav */
 .navbar{
 	height:50px;
 	background-color:#333;
@@ -46,6 +62,11 @@ content{
 	box-sizing: border-box;
 	display:flex;
 	align-items: center;
+	position:fixed;
+	top:0;
+	z-index:9;
+	width:100%;
+	border-bottom:1px solid hsla(0,0%,100%,.1);
 	
 }
 .navbar h2{
@@ -57,15 +78,21 @@ content{
 	justify-content: space-between;
 	align-items: center;
 }
-.mini_top{
+.top_left{
 	display:flex;
 	justify-content: space-between;
+	align-items: center;
+	width:120px;
+}
+.top_right{
+	display:flex;
+	justify-content: space-between;
+	align-items: center;
 	width:60px;
 }
 .mini_top .size{
 	font-size: 1.8rem;
 }
-
 /* main */
 .main_image_wrap div{
 	max-width:799px;
@@ -93,56 +120,135 @@ content{
 
 /* story card */
 .story_card_wrap{
+	font-family: 'Dongle', sans-serif;
+	padding:0 5%;
 	position:relative;
-	top: -30px;
-}
-.story_card_wrap .inner{
-	max-width:799px;
-	width:100%;
-	border:1px solid red;
-
-}
-.swiper{
-	width:80%;
-	height:70vh;
-	
-	
+	top:-30px;
 }
 .story_card_wrap .storybox{
-	background-color:#333;
+	max-width:799px;
+	width:100%;
+	height:auto;
+	background-color:#2c2c2c;
 	box-sizing: border-box;
-	width: 80%;
-	height:auto
+	border-radius:10px;
+	border: 1px solid hsla(0,0%,100%,.1);
+	margin-bottom:3%;
+}
+.story_card_wrap .story_title_wrap{
+	display:flex;
+	justify-content: space-between;
+	align-items: center;
+	padding:3% 5% 1%;
+}
+.story_card_wrap .story_title_wrap .title_text{
+	font-size:1.8rem;
+}
+.story_card_wrap .story_title_wrap .working{
+	background-color:royalblue;
+	text-align:center;
+	width:15%;
+	padding:1%;
+	border-radius: 30px;
+	font-size:1.4rem;
+}
+.story_card_wrap hr{
+	height:2px;
+	width:94%;
+	background-color: hsla(0,0%,100%,.1);
+	border:none;
+	margin:2% auto 4%;
+}
+.story_card_wrap img{
+	max-width:799px;
+	width:90%;
+	border-radius: 5px;
+	margin:0 5% 2%;
+	
 }
 .story_card_wrap .text_part{
-	padding:4%;
-	width:100%;
+	margin:0 5% 5%;
+	max-width:799px;
+	width:90%;
+	
+}
+.story_card_wrap .text_part .story_date{
+	font-size:1.8rem;
+	margin-bottom:0.8rem;
+	font-weight: 400;
+}
+.story_card_wrap .text_part .story_content{
+	font-size: 1.6rem;
+	line-height:1.5rem;
+	font-weight: 300;
+	min-height:62px;
+	color:rgba(255, 255, 255, 0.4);
+}
+
+
+/* dual_info */
+.dual_menu .inner{
+	display:flex;
+	justify-content: space-around;
+}
+/*checklist*/
+.dual_menu .checklist_box{
+	width:46%;
+	background-color:#2c2c2c;
+	padding:3% 5%;
 	box-sizing: border-box;
-	position:relative;
+	border:1px solid hsla(0,0%,100%,.1);
 }
-.story_card_wrap .text_part div:not(:last-child){
-	margin-bottom:6%;
+.dual_menu .checklist_box h2{
+	font-size:1.5rem;
+	margin-bottom:1.2rem;
+	text-align: center;
 }
-.story_card_wrap .storybox .image_size{
+.dual_menu .checklist_box h2 span{
+	color:royalblue
+}
+.dual_menu .checklist_box li{
+	line-height:1.5rem;
+}
+.dual_menu .checklist_box li:not(:last-child){
+	margin-bottom:0.6rem;
+}
+
+/*travel_info*/
+.dual_menu .travel_info{
+	width:46%;	
+}
+.dual_menu .travel_info .info_box{
 	width:100%;
-	height:30vh;
+	padding:5%;
+	background-color:#2c2c2c;
+	border:1px solid hsla(0,0%,100%,.1);
+	box-sizing: border-box;
 }
-.story_card_wrap .storybox .story_title{
-	font-size:1.25rem;
-}
-.story_card_wrap .storybox .story_date{
-	font-size:0.95rem;
-}
-.story_card_wrap .storybox .sotry_content{
-	font-size:1.0rem;
-	line-height:1.2rem;
+.dual_menu .travel_info .info_box:not(:last-child){
+	margin-bottom:0.8rem;
 }
 
-
-
-
-
-
+/* bottom_menu */
+.bottom_menu_wrap{
+	margin-top:5%;
+}
+.bottom_menu_wrap .bottom_menu_box{
+	position:fixed;
+	display:flex;
+	justify-content: space-around;
+	align-items:center;
+	bottom:0;
+	background-color:#333;
+	width:100%;
+	height:55px;
+	z-index:9;
+	border-top:1px solid hsla(0,0%,100%,.1);
+}
+.bottom_menu_wrap .bottom_menu_box span{
+	font-size:1.9rem;
+	
+}
 
 
 

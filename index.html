@@ -21,6 +21,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
 
+  <!-- font:dongle 300 400 700 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@300;400;700&display=swap" rel="stylesheet">
+
   <!-- css -->
   <link rel="stylesheet" href="./css/reset.css">
   <link rel="stylesheet" href="./css/style.css">
@@ -47,12 +52,25 @@
   <!-- nav -->
     <nav class="navbar">
       <div class="inner">
-        <h2>travelLog</h2>
-        <div class="mini_top">
+        <div class="top_left">
+          <h2>
+            <a href="javascript:void(0)">
+              travelLog
+            </a>
+          </h2>
           <span class="material-icons size">
-            notifications_none
+            <a href="javascript:void(0)">
+              notifications_none
+            </a>
           </span>
-          <span class="material-icons size">
+        </div>
+        <div class="top_right">
+          <a href="javscript:void(0)">
+            <span class="material-icons">
+              nights_stay
+            </span>
+          </a>
+          <span class="material-icons size pointer">
             menu
           </span>
         </div>
@@ -75,74 +93,179 @@
 
     <section class="story_card_wrap">
       <div class="inner">
-        <div class="swiper">
-          <div class="swiper-wrapper">
-            <!-- Slides1 -->
-            <div class="swiper-slide">
-              <div class="storybox">
-              <img src="./images/lisheng-chang-m9BBVrPl87M-unsplash.jpg" alt="" class="image_size">
-              <div class="text_part">
-                <div class="story_title">
-                  방콕 ~ 치앙마이 배낭여행
-                </div>
-                <div class="story_date">
-                  22.08.01 ~ 진행중
-                </div>
-                <div class="sotry_content">
-                  우기와 겹쳐 찝찝하지만 새로운 경험들을 하는 중이라 신난다.<br>
-                  앞으로 더 좋은 경험만 하길
-                </div>
-                <button type="button" class="btn story_btn">more</button>
+        <!-- Slides1 -->
+        <div class="storybox">
+          <div class="story_title_wrap">
+            <p class="title_text">
+              방콕 ~ 치앙마이 배낭여행
+            </p>
+            <p class="working">
+              진행중
+            </p>
+          </div>
+            <hr>
+          <div class="content_box">
+            <img src="./images/lisheng-chang-m9BBVrPl87M-unsplash.jpg" alt="" class="image_size">
+            <div class="text_part">
+              <div class="story_date">
+                22.08.01 ~ 진행중
               </div>
-            </div>
-            </div>
-            <!-- Slides2 -->
-            <div class="swiper-slide">
-              <div class="storybox">
-                <img src="./images/gapy.jpg" alt="" class="image_size">
-                <div class="text_part">
-                  <div class="story_title">
-                    가평 1박 2일 여행
-                  </div>
-                  <div class="story_date">
-                    22.02.15 ~ 22.02.16
-                  </div>
-                  <div class="sotry_content">
-                    추워서 죽을 뻔했던 여행
-                  </div>
-                  <button type="button" class="btn story_btn">more</button>
-                </div>
-              </div>
-            </div>
-            <!-- Slides3 -->
-            <div class="swiper-slide">
-              <div class="storybox">
-                <img src="./images/shanghai.jpg" alt="" class="image_size">
-                <div class="text_part">
-                  <div class="story_title">
-                    상하이 단기 해외 연수
-                  </div>
-                  <div class="story_date">
-                    21.12.26 ~ 22.01.29
-                  </div>
-                  <div class="sotry_content">
-                    겨울방학 해외 연수를 빙자한 상하이 맛집 탐방기
-                  </div>
-                  <button type="button" class="btn story_btn">more</button>
-                </div>
+              <div class="story_content">
+                우기와 겹쳐 찝찝하지만 새로운 경험들을 하는 중이라 신난다. 
+                앞으로 더 좋은 경험만 하길..
               </div>
             </div>
           </div>
         </div>
-        <!-- If we need pagination -->
-        <div class="swiper-pagination"></div>
-      
-        <!-- If we need navigation buttons -->
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
+        <!-- Slides2 -->
+        <div class="storybox">
+          <div class="story_title_wrap">
+            <p class="title_text">
+              방콕 ~ 치앙마이 배낭여행
+            </p>
+            <p class="working">
+              진행중
+            </p>
+          </div>
+            <hr>
+          <div class="content_box">
+            <img src="./images/lisheng-chang-m9BBVrPl87M-unsplash.jpg" alt="" class="image_size">
+            <div class="text_part">
+              <div class="story_date">
+                22.08.01 ~ 진행중
+              </div>
+              <div class="story_content">
+                우기와 겹쳐 찝찝하지만 새로운 경험들을 하는 중이라 신난다. 
+                앞으로 더 좋은 경험만 하길..
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Slides3 -->
+        <div class="storybox">
+          <div class="story_title_wrap">
+            <p class="title_text">
+              방콕 ~ 치앙마이 배낭여행
+            </p>
+            <p class="working">
+              진행중
+            </p>
+          </div>
+            <hr>
+          <div class="content_box">
+            <img src="./images/lisheng-chang-m9BBVrPl87M-unsplash.jpg" alt="" class="image_size">
+            <div class="text_part">
+              <div class="story_date">
+                22.08.01 ~ 진행중
+              </div>
+              <div class="story_content">
+                우기와 겹쳐 찝찝하지만 새로운 경험들을 하는 중이라 신난다. 
+                앞으로 더 좋은 경험만 하길..
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- add slide -->
+        <div class="storybox">
+          <div class="story_title_wrap">
+            <p class="title_text">
+              방콕 ~ 치앙마이 배낭여행
+            </p>
+            <p class="working">
+              진행중
+            </p>
+          </div>
+            <hr>
+          <div class="content_box">
+            <img src="./images/lisheng-chang-m9BBVrPl87M-unsplash.jpg" alt="" class="image_size">
+            <div class="text_part">
+              <div class="story_date">
+                22.08.01 ~ 진행중
+              </div>
+              <div class="story_content">
+                우기와 겹쳐 찝찝하지만 새로운 경험들을 하는 중이라 신난다. 
+                앞으로 더 좋은 경험만 하길..
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
+  <!-- etc_menu -->
+  <section class="dual_menu">
+    <div class="inner">
+      <div class="checklist_box">
+        <h2>My <span>Checklist</span></h2>
+          <ol>
+            <li>
+                비자 발급 및 만료일 확인<br>
+                (태국 비자 ~08.16 까지임)
+            </li>
+            <li>
+                치앙마이에서 탈 스쿠터 알아보기
+                (국제 운전 면허증 배낭 안쪽에 있음)
+            </li>
+            <li>
+                게스트하우스에서 8:30에 밴 픽업 함
+            </li>
+          </ol>
+      </div>
+      <div class="travel_info">
+        <div class="wheather info_box">
+          날씨
+        </div>
+        <div class="exchange info_box">
+          환율율
+        </div>
+        <div class="diplomat_notice info_box">
+          외교부 공지사항
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  
+
+
+
+
+
+
+
+
+    <!-- bottom_menu/ -->
+    <section class="bottom_menu_wrap">
+      <h3 class="blind">빠른 메뉴 상자</h2>
+        <ul class="bottom_menu_box">
+          <li class="bottom_icon1">
+            <span class="material-icons">
+              format_list_bulleted
+            </span>
+          </li>
+          <li class="bottom_icon2">
+            <span class="material-icons">
+              add_a_photo
+              </span>
+          </li>
+          <li class="bottom_icon_mid">
+            <span class="material-icons">
+              radio_button_unchecked
+              </span>
+          </li>
+          <li class="bottom_icon3">
+            <span class="material-icons">
+            monetization_on
+            </span>
+          </li>
+          <li class="bottom_icon4">
+            <span class="material-icons">
+              draw
+            </span>
+          </li>
+        </ul>
+    </section>
   </main>
 
   <footer>
