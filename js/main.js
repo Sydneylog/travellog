@@ -7,35 +7,14 @@
 //   })
 // }
 
-const swiper = new Swiper('.swiper', {
-  // Optional parameters
-  direction: 'horizontal',
-  loop: true,
-  debugger: true,
-  // If we need pagination
-  pagination: {
-    el: '.swiper-pagination',
-  },
-
-  // Navigation arrows
-  navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
-  },
-
-  slidesPerView:1.4,
-  spaceBetween: 25,
-  centeredSlides: true,
-  autoplay: false
-
-});
 
 
 
 
 
-///*bottom_menu */ 
-//width-recognition
+
+/** bottom_menu **/ 
+/* width-recognition */
 $(window).resize(function(){
   const windowWidth = $(window).width();
   if (windowWidth >= 800) {
@@ -44,7 +23,7 @@ $(window).resize(function(){
     $(".bottom_menu_wrap").slideDown(0);
   }
 });
-//height-recognition
+/* height-recognition */
 $(window).scroll(function(){
   const scrollHeight = $(window).scrollTop();
   if (scrollHeight > 80) {

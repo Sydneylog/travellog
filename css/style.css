@@ -1,5 +1,4 @@
 /* common */
-
 html{
 	font-size:14px;
 	
@@ -41,6 +40,9 @@ html{
 .royalblue_text{
 	color:royalblue
 }
+
+
+
 /* main */
 body{
 	height:100%;
@@ -53,6 +55,16 @@ body{
 	color: #e8e8e8;
 	padding-top:50px;
 	padding-bottom:55px;
+}
+.scrollbar{
+  overflow:overlay;
+}
+.scrollbar::-webkit-scrollbar {
+    width: 1vw;
+}
+.scrollbar::-webkit-scrollbar-thumb {
+    background-color: hsla(0, 0%, 42%, 0.35);
+    border-radius: 100px;
 }
 content{
 	position:relative;
@@ -92,10 +104,45 @@ content{
 	justify-content: space-between;
 	align-items: center;
 	width:60px;
+	
 }
-.mini_top .size{
-	font-size: 1.8rem;
+.top_right .size{
+	font-size: 2.3rem;
 }
+/*mobile_menu*/
+.mobile_menu{
+	position:absolute;
+	right:0;
+	width:65%;
+	height:100%;
+	background-color:#222;
+	z-index:10;
+	padding:8%;
+	font-size:1.3rem;
+}
+.mobile_menu .searchBar{
+	width:60%;
+	outline:none;
+	font-family:'Do Hyeon', sans-serif;
+	font-size:1.1rem;
+} 
+.mobile_menu hr{
+	width:98%;
+	margin: 5% auto
+}
+.mobile_menu .inner>ul>li{
+	margin-top:8%
+}
+.mobile_menu ul ul{
+	margin-top:3%;
+}
+.mobile_menu ul li li {
+	font-size:1.1rem;
+	margin-bottom:1.5%;
+	margin-left:3%;
+}
+
+
 /*** main ***/
 /**main_image**/
 .main_image_wrap div{
@@ -138,6 +185,7 @@ content{
 	padding:3% 5%;
 	box-sizing: border-box;
 	border:1px solid hsla(0,0%,100%,.1);
+	border-radius:5px;
 }
 .dual_menu .checklist_box h2{
 	font-size:1.5rem;
@@ -145,6 +193,7 @@ content{
 	text-align: center;
 }
 .dual_menu .checklist_box li{
+	font-size:0.9rem
 	line-height:1.5rem;
 }
 .dual_menu .checklist_box li:not(:last-child){
@@ -163,6 +212,7 @@ content{
 	display:flex;
 	justify-content: space-around;
 	align-items: center;
+	border-radius:5px;
 }
 .dual_menu .travel_info .info_box:not(:last-child){
 	margin-bottom:0.8rem;

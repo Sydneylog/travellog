@@ -47,7 +47,7 @@
 
 </head>
 
-<body>
+<body class="scrollbar">
   <header>
   <!-- nav -->
     <nav class="navbar">
@@ -65,17 +65,67 @@
           </span>
         </div>
         <div class="top_right">
-          <a href="javscript:void(0)">
-            <span class="material-icons">
-              nights_stay
-            </span>
-          </a>
+          <span class="material-icons">
+            nights_stay
+          </span>
           <span class="material-icons size pointer">
-            menu
+            manage_search
           </span>
         </div>
       </div>
     </nav>
+
+    <!-- mobile_menu -->
+    <div class="mobile_menu">
+      <div class="inner">
+        <h3 class="blind">모바일 메뉴</h3>
+        <div>
+          <form action="">
+            <fieldset>
+              <legend class="blind">검색바</legend>
+              <label for="searchBar" class="blind">검색 박스</label>
+              <input type="text" class="searchBar" name="searchBar">
+              <span class="material-icons">
+                search
+              </span>
+            </fieldset>
+          </form>
+        </div>
+        <hr>
+        <ul>
+          <li class="">여행 일지 리스트
+            <span class="material-icons">
+              arrow_drop_down
+            </span>
+            <ul>
+              <li>최근 작성 목록</li>
+              <li>일자 별 보기</li>
+              <li>장소 별 보기</li>
+            </ul>
+          </li>
+          <li class="">일지 작성 하기
+            <span class="material-icons">
+              arrow_drop_down
+            </span>
+            <ul>
+              <li>일지 작성</li>
+              <li>간편 작성</li>
+            </ul>
+          </li>
+          <li class="">여행 경비 통계</li>
+          <li class="">체크리스트 작성</li>
+        </ul>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
   </header>
 
   <main class="content">
