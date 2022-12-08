@@ -38,6 +38,9 @@ html{
 .pointer{
 	cursor:pointer;
 }
+.royalblue_text{
+	color:royalblue
+}
 /* main */
 body{
 	height:100%;
@@ -93,7 +96,8 @@ content{
 .mini_top .size{
 	font-size: 1.8rem;
 }
-/* main */
+/*** main ***/
+/**main_image**/
 .main_image_wrap div{
 	max-width:799px;
 }
@@ -118,12 +122,73 @@ content{
 	right:5%;
 }
 
-/* story card */
+/** dual_info **/
+.dual_menu{
+	position:relative;
+	top:-20px;
+}
+.dual_menu .inner{
+	display:flex;
+	justify-content: space-around;
+}
+/*checklist*/
+.dual_menu .checklist_box{
+	width:46%;
+	background-color:#2c2c2c;
+	padding:3% 5%;
+	box-sizing: border-box;
+	border:1px solid hsla(0,0%,100%,.1);
+}
+.dual_menu .checklist_box h2{
+	font-size:1.5rem;
+	margin-bottom:1.2rem;
+	text-align: center;
+}
+.dual_menu .checklist_box li{
+	line-height:1.5rem;
+}
+.dual_menu .checklist_box li:not(:last-child){
+	margin-bottom:0.6rem;
+}
+/*travel_info*/
+.dual_menu .travel_info{
+	width:46%;	
+}
+.dual_menu .travel_info .info_box{
+	width:100%;
+	padding:5% 0 5% 3%;
+	background-color:#2c2c2c;
+	border:1px solid hsla(0,0%,100%,.1);
+	box-sizing: border-box;
+	display:flex;
+	justify-content: space-around;
+	align-items: center;
+}
+.dual_menu .travel_info .info_box:not(:last-child){
+	margin-bottom:0.8rem;
+}
+.dual_menu .travel_info .info_box .info_icon{
+	font-size:2.2rem;
+	text-align:center;
+}
+.dual_menu .travel_info .info_box .info_text{
+	font-size:0.85rem;
+	width:60%;
+}	
+.dual_menu .travel_info .info_box .info_text dt{
+	margin-bottom:0.3rem
+}
+.dual_menu .travel_info .info_box .info_text dd{
+	font-size:0.8rem;
+	
+}
+
+/** story card **/
 .story_card_wrap{
 	font-family: 'Dongle', sans-serif;
 	padding:0 5%;
 	position:relative;
-	top:-30px;
+	
 }
 .story_card_wrap .storybox{
 	max-width:799px;
@@ -144,13 +209,22 @@ content{
 .story_card_wrap .story_title_wrap .title_text{
 	font-size:1.8rem;
 }
-.story_card_wrap .story_title_wrap .working{
-	background-color:royalblue;
+.story_card_wrap .story_title_wrap .now{
+	background-color:rgb(219, 76, 76);
 	text-align:center;
 	width:15%;
 	padding:1%;
 	border-radius: 30px;
 	font-size:1.4rem;
+}
+.story_card_wrap .story_title_wrap .done{
+	background-color:royalblue;
+	text-align:center;
+	width:15%;
+	padding-top:2%;
+	border-radius: 30px;
+	font-size:1.4rem;
+	box-sizing: border-box;
 }
 .story_card_wrap hr{
 	height:2px;
@@ -179,59 +253,22 @@ content{
 }
 .story_card_wrap .text_part .story_content{
 	font-size: 1.6rem;
-	line-height:1.5rem;
+	line-height:1.7rem;
 	font-weight: 300;
 	min-height:62px;
 	color:rgba(255, 255, 255, 0.4);
 }
 
 
-/* dual_info */
-.dual_menu .inner{
-	display:flex;
-	justify-content: space-around;
-}
-/*checklist*/
-.dual_menu .checklist_box{
-	width:46%;
-	background-color:#2c2c2c;
-	padding:3% 5%;
-	box-sizing: border-box;
-	border:1px solid hsla(0,0%,100%,.1);
-}
-.dual_menu .checklist_box h2{
-	font-size:1.5rem;
-	margin-bottom:1.2rem;
-	text-align: center;
-}
-.dual_menu .checklist_box h2 span{
-	color:royalblue
-}
-.dual_menu .checklist_box li{
-	line-height:1.5rem;
-}
-.dual_menu .checklist_box li:not(:last-child){
-	margin-bottom:0.6rem;
-}
 
-/*travel_info*/
-.dual_menu .travel_info{
-	width:46%;	
-}
-.dual_menu .travel_info .info_box{
-	width:100%;
-	padding:5%;
-	background-color:#2c2c2c;
-	border:1px solid hsla(0,0%,100%,.1);
-	box-sizing: border-box;
-}
-.dual_menu .travel_info .info_box:not(:last-child){
-	margin-bottom:0.8rem;
-}
+
+
+
 
 /* bottom_menu */
 .bottom_menu_wrap{
 	margin-top:5%;
+	display:none;
 }
 .bottom_menu_wrap .bottom_menu_box{
 	position:fixed;
@@ -245,9 +282,15 @@ content{
 	z-index:9;
 	border-top:1px solid hsla(0,0%,100%,.1);
 }
-.bottom_menu_wrap .bottom_menu_box span{
+.bottom_menu_wrap .bottom_menu_box li{
+	text-align:center;
+	line-height:0.75rem;
+}
+.bottom_menu_wrap .bottom_menu_box .material-icons{
 	font-size:1.9rem;
-	
+}
+.bottom_menu_wrap .bottom_menu_box .icon_text{
+	font-size:0.7rem;
 }
 
 
