@@ -6,7 +6,7 @@
   "background_color": "#222222",
   "display": "standalone",
   "orientation":"portrait",
-  "start_url": "./",
+  "start_url": "./index.html",
   "icons":[
     {
       "src":"./images/trableLogLogo_mini.png",

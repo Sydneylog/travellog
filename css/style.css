@@ -164,6 +164,7 @@ content{
 	margin-top:1.0rem;
 	background-color:#333;
 	padding:1.0rem;
+	display:none;
 }
 .mobile_menu .bottom_arrow{
 	font-size:1.2rem;
@@ -205,7 +206,7 @@ content{
 /** dual_info **/
 .dual_menu{
 	position:relative;
-	top:-20px;
+	top:-70px;
 }
 .dual_menu .inner{
 	display:flex;
@@ -401,7 +402,6 @@ content{
 	/* navbar */
 	.navbar .top_right{
 		position:relative;
-		top:-10px;
 		right:-28px;
 	}
 	.navbar .top_right .mobile_list{
