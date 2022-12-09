@@ -20,7 +20,8 @@ $(window).resize(function(){
     $(".mobile_menu").show();
   } 
   if (windowWidth < 768) {
-        $(".mobile_menu legend").removeClass("blind");
+    $(".mobile_menu legend").removeClass("blind");
+    $(".mobile_menu").hide();
   }
 });
 
@@ -37,8 +38,9 @@ $(window).resize(function(){
 });
 /* height-recognition */
 $(window).scroll(function(){
+  const windowWidth = $(window).width();
   const scrollHeight = $(window).scrollTop();
-  if (scrollHeight > 80) {
+  if (scrollHeight > 80 && windowWidth < 768) {
     $(".bottom_menu_wrap").slideDown(0);
   } else {
     $(".bottom_menu_wrap").slideUp(0);

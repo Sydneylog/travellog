@@ -399,25 +399,47 @@ content{
 		display:none;
 	}
 	/* navbar */
+	.navbar .top_right{
+		position:relative;
+		top:-10px;
+		right:-28px;
+	}
 	.navbar .top_right .mobile_list{
 		display:none;
 	}
 	.mobile_menu{
 		position:fixed;
-		top:0px;
-		right:0;
-		background-color:#222;
-		z-index:10;
-		padding:20px;
-		font-size:0.8rem;
+		top:-15px;
+		left:auto;
+		right:-20px;
+		width:450px;
+		background-color:transparent;
+		font-size:0.7rem;
 		display:block;
 	}
 	.mobile_menu fieldset{
 		display:flex;
 	}
+	.mobile_menu .searchBar_wrap{
+		width: 150px;
+		position:absolute;
+		top:0px;
+		left:auto;
+		right:40px;
+	}
+	.mobile_menu .searchBar{
+		outline:none;
+		font-size:0.6rem;
+	}
 	.mobile_menu .tablet_nav{
 		display:flex;
 		justify-content: space-between;
+		align-items: center;
+		text-align:center;
+
+	}
+	.mobile_menu .bottom_arrow{
+		font-size:0.6rem;
 	}
 	.mobile_menu hr{
 		display:none;
@@ -430,6 +452,34 @@ content{
 		margin:0 auto;
 		
 	}
+
+	/** dual_info **/
+	.dual_menu .inner{
+		display:block;
+		padding-left:3%;
+		padding-right:3%;
+	}
+	/*checklist*/
+	.dual_menu .checklist_box{
+		width:100%;
+		margin-bottom:2%;
+	}
+	/*travel_info*/
+	.dual_menu .travel_info{
+		width:100%;	
+		display:flex;
+		justify-content: space-between;
+	}
+	.dual_menu .travel_info .info_box{
+		width:32%;
+		padding:5% 0 5% 3%;
+		background-color:#2c2c2c;
+		border:1px solid hsla(0,0%,100%,.1);
+		box-sizing: border-box;
+		align-items: center;
+		border-radius:5px;
+	}
+
 
 	/* story_card */
 	.story_card_wrap .inner{
