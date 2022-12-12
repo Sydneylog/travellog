@@ -8,7 +8,7 @@ dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
+figure, figcaption, footer, header, hgroup, input,
 menu, nav{
 	margin: 0;
 	padding: 0;
@@ -34,7 +34,7 @@ a {color: #fff;
 }
 a:hover, a:active {
 	text-decoration: none; 
-	color:#fff;}
+	color:none;}
 hr {
 	margin:0
 }
