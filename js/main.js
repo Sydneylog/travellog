@@ -42,11 +42,12 @@ const checkboxes = document.getElementsByName('checkList').length;
 /**mobile_menu**/
 /*mobile_toggle*/
   $(".mobile_list").click(function(){
-    $(".mobile_menu").fadeToggle()
+    $(".mobile_menu").fadeToggle(200)
   });
   /*arcordian_menu*/
   $(".mobile_menu_list").click(function(){
-    $(this).children('ul').slideToggle();
+    $(this).children('ul').slideToggle(200);
+    $(".mobile_menu_list").children('ul').not($(this).children('ul')).slideUp(200);
   });
   /*width-recognition*/
   $(window).resize(function(){
@@ -63,7 +64,6 @@ const checkboxes = document.getElementsByName('checkList').length;
 
 /** check_list **/
 /* strikethrough */
-
   $("input[name='checkList']").click(function(){
     $(this).next().toggleClass('strikethrough');
   })
@@ -71,44 +71,25 @@ const checkboxes = document.getElementsByName('checkList').length;
     if($(this).is(":checked")){
       confirm("해당 체크리스트를 삭제 하시겠습니까?")
     }
-  }
-  )
-
-/** checkbox_localstorage **/
-/* to save */
+  })
+/* checkbox_localstorage */
+// to save 
   function toSave() {
     for (let i = 1; i <= checkboxes; i++){
       const checkbox = document.getElementById('list' + String(i));
-      const checkContent = checkbox.nextElementSibling;
-      console.log(checkContent);
       localStorage.setItem('list' + String(i), checkbox.checked);
     }
   }
-/* to load */
+// to load just using vanilla JS
   for(let i = 1; i <= checkboxes; i++){
     if(localStorage.length > 0){
-      document.getElementById('list' + String(i)).checked = JSON.parse(localStorage.getItem('list' + String(i)));
+      const checkedContent = document.getElementById('list' + String(i)).nextElementSibling;
+      let checked = document.getElementById('list' + String(i)).checked = JSON.parse(localStorage.getItem('list' + String(i)));
+      if (checked) checkedContent.classList.add('strikethrough')
     }
   }
 /* saving event */ 
   window.addEventListener('change', toSave);  
-
-
-
-
-
-/* sotry_card */
-/* lazyload */
-
-
-
-
-
-
-
-
-
-
 
 /** bottom_menu **/ 
 /* width-recognition */
@@ -130,3 +111,32 @@ const checkboxes = document.getElementsByName('checkList').length;
       $(".bottom_menu_wrap").slideUp(0);
     }
   })
+
+
+
+
+/** APIs**/
+/* wheather */
+/* exchange rate */
+const exchageUrl = 'https://quotation-api-cdn.dunamu.com/v1/forex/recent?codes=FRX.KRWTHB';
+fetch(exchageUrl)
+  .then(res => res.json())
+  .then(myJson => {
+    console.log(myJson);
+    const baseRate = document.getElementById("baseRate");
+    console.log(myJson.basePrice)
+
+
+
+
+
+    
+    baseRate.innerText = myJson.basePrice;
+    
+  });
+  
+/* diplomat notice */
+  
+
+  
+
