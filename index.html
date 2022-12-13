@@ -71,12 +71,14 @@
           </span>
         </div>
         <div class="top_right">
-          <span class="material-icons nights_size dark_icon pointer">
-            nights_stay
-          </span>
-          <span class="material-icons light_icon pointer">
-            light_mode
-          </span>
+          <div class="mod_selector">
+            <p class="material-icons dark_icon pointer mode_size">
+              mode_night
+            </p>
+            <p class="material-icons light_icon pointer mode_size">
+              light_mode
+            </p>
+          </div>
           <span class="material-icons size pointer mobile_list">
             manage_search
           </span>
@@ -85,13 +87,13 @@
     </nav>
 
     <!-- mobile_menu -->
-    <div class="mobile_menu">
+    <div class="mobile_menu themed_background">
       <div class="inner">
         <h3 class="blind">모바일 메뉴</h3>
         <div>
           <form action="javascript:void(0)">
             <fieldset>
-              <legend >검색</legend>
+              <legend>검색</legend>
               <label for="searchBar" class="blind">검색 박스</label>
               <div class="searchBar_wrap">
                 <input type="text" class="searchBar" name="searchBar" id="searchBar">
@@ -103,28 +105,34 @@
           </form>
         </div>
         <hr>
-        <ul class="tablet_nav">
-          <li class="mobile_menu_list">여행 일지 리스트
+        <ul class="tablet_nav .themed_text">
+          <li class="mobile_menu_list">
+            여행 일지 리스트
             <span class="material-icons bottom_arrow">
               arrow_drop_down
             </span>
-            <ul>
+            <ul class="themed_boxBackground">
               <li>최근 작성 목록</li>
               <li>일자 별 보기</li>
               <li>장소 별 보기</li>
             </ul>
           </li>
-          <li class="mobile_menu_list">일지 작성 하기
+          <li class="mobile_menu_list">
+            일지 작성 하기
             <span class="material-icons bottom_arrow">
               arrow_drop_down
             </span>
-            <ul>
+            <ul class="themed_boxBackground">
               <li>일지 작성</li>
               <li>간편 작성</li>
             </ul>
           </li>
-          <li class="mobile_menu_list">여행 경비 통계</li>
-          <li class="mobile_menu_list">체크리스트 작성</li>
+          <li class="mobile_menu_list">
+            여행 경비 통계
+          </li>
+          <li class="mobile_menu_list">
+            체크리스트 작성
+          </li>
         </ul>
       </div>
     </div>
