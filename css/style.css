@@ -139,9 +139,7 @@ content{
 	width:100%;
 	border-bottom:1px solid hsla(0,0%,100%,.1);
 }
-.navbar h2{
-	font-size:20px;
-}
+
 .navbar .inner{
 	display:flex;
 	width:100%;
@@ -153,6 +151,9 @@ content{
 	justify-content: space-between;
 	align-items: center;
 	width:105px;
+}
+.navbar .top_left h1{
+	font-size:20px;
 }
 .navbar .top_left .size{
 	font-size: 20px;
@@ -406,7 +407,7 @@ content{
 	font-weight: 400;
 }
 .story_card_wrap .text_part .story_content{
-	font-size: 1.6rem;
+	font-size: 1.3rem;
 	line-height:1.7rem;
 	font-weight: 300;
 	min-height:62px;

@@ -9,8 +9,16 @@ const presentTheme = () => (isUserColorTheme ? isUserColorTheme : isOsColorTheme
 //chekcboxex for localstorage
 const checkboxes = document.getElementsByName('checkList').length;
 
-/** onload mod setting **/
+/*** onload mod setting & API call ***/
   window.onload = function(){
+    /* for API exchange */
+    //weather API
+    const weatherUrl = 'https://api.openweathermap.org/data/2.5/weather?lat=13.736717&lon=100.523186&appid=fca7b6ecde13fa2d4e140006f768fd79&units=metric';
+    //exchange rate API
+    const exchageUrl = 'https://quotation-api-cdn.dunamu.com/v1/forex/recent?codes=FRX.KRWTHB';
+    //diplomat notice API
+
+  /** 유저 스토리지 확인하여 초기 발기 모드 설정 **/
     if(presentTheme == 'dark'){
       localStorage.setItem('color-theme', 'dark');
       document.documentElement.setAttribute('color-theme', 'dark');
@@ -22,8 +30,40 @@ const checkboxes = document.getElementsByName('checkList').length;
       darkIcon.style.display = 'none';
       lightIcon.style.display = 'block';
     }
+
+  /** APIs**/
+    /* weather */
+    fetch(weatherUrl)
+      .then((res) => res.json())
+      .then((myJson) => {
+        //console.log(myJson);
+        const weatherIcon = document.getElementById("weatherIcon");
+        const weatherIconId = myJson.weather[0].icon;
+
+        document.getElementById("wCountry").innerText = myJson.sys.country;
+        document.getElementById("wCity").innerText = myJson.name;
+        document.getElementById("weather").innerText = myJson.weather[0].main;
+        document.getElementById("temperature").innerText = myJson.main.temp;
+        document.getElementById("humidity").innerText = myJson.main.humidity;
+
+        weatherIcon.setAttribute("src", "http://openweathermap.org/img/wn/" + weatherIconId + "@2x.png");
+      });
+    /* exchange rate */
+    fetch(exchageUrl)
+      .then((res) => res.json())
+      .then((myJson) => {
+        //console.log(myJson[0]);
+        const fxData = myJson[0];
+        const fxUnit = fxData.currencyCode;
+        
+        document.getElementById("fxDate").innerText = fxData.date;
+        document.getElementById("baseRate").innerText = `${fxData.basePrice.toString()} ${fxUnit}`;
+        document.getElementById("fxBuying").innerText = `${fxData.cashBuyingPrice.toString()} ${fxUnit}`;
+      });
+    /* diplomat notice */
+
   }
-/* //아이콘에 따른 상대 모드로 전환 */
+/** 아이콘 클릭에 따른 상대 라이트&다크 모드 전환 **/
   darkIcon.addEventListener('click', e => {
     if (darkIcon.style.display == 'block'){
       document.documentElement.setAttribute('color-theme', 'light');
@@ -40,7 +80,7 @@ const checkboxes = document.getElementsByName('checkList').length;
   });
 
 /**mobile_menu**/
-/*mobile_toggle*/
+  /*mobile_menu_toggle*/
   $(".mobile_list").click(function(){
     $(".mobile_menu").fadeToggle(200)
   });
@@ -63,7 +103,7 @@ const checkboxes = document.getElementsByName('checkList').length;
   });
 
 /** check_list **/
-/* strikethrough */
+  /* strikethrough */
   $("input[name='checkList']").click(function(){
     $(this).next().toggleClass('strikethrough');
   })
@@ -72,15 +112,15 @@ const checkboxes = document.getElementsByName('checkList').length;
       confirm("해당 체크리스트를 삭제 하시겠습니까?")
     }
   })
-/* checkbox_localstorage */
-// to save 
+  /* checkbox_localstorage */
+  // to save 
   function toSave() {
     for (let i = 1; i <= checkboxes; i++){
       const checkbox = document.getElementById('list' + String(i));
       localStorage.setItem('list' + String(i), checkbox.checked);
     }
   }
-// to load just using vanilla JS
+  // to load just using vanilla JS
   for(let i = 1; i <= checkboxes; i++){
     if(localStorage.length > 0){
       const checkedContent = document.getElementById('list' + String(i)).nextElementSibling;
@@ -115,27 +155,7 @@ const checkboxes = document.getElementsByName('checkList').length;
 
 
 
-/** APIs**/
-/* wheather */
-/* exchange rate */
-const exchageUrl = 'https://quotation-api-cdn.dunamu.com/v1/forex/recent?codes=FRX.KRWTHB';
-fetch(exchageUrl)
-  .then(res => res.json())
-  .then(myJson => {
-    console.log(myJson);
-    const baseRate = document.getElementById("baseRate");
-    console.log(myJson.basePrice)
 
-
-
-
-
-    
-    baseRate.innerText = myJson.basePrice;
-    
-  });
-  
-/* diplomat notice */
   
 
   
