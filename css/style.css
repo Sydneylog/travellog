@@ -36,6 +36,12 @@ html{
 .strikethrough{
 	text-decoration: line-through;
 }
+.red_btn{
+	color:#db4c4c;
+}
+.green_btn{
+	color:#1bbb6b;
+}
 
 /* dark&light mode */
 :root[color-theme='dark']{
@@ -57,7 +63,6 @@ body{
 	background:var(--background);
 	color:var(--textColor);
 	border:var(--borderColor);
-	
 }
 /* .themed{
 	background:var(--background);
@@ -69,7 +74,9 @@ body{
 	color:var(--textColor);
 	border:1px solid var(--borderColor);
 	box-shadow:var(--boxShadow);
-	
+}
+.themed_border{
+	border:1px solid var(--borderColor);
 }
 .themed_box_title{
 	background:var(--boxColor);
@@ -307,8 +314,6 @@ content{
 .dual_menu .checklist_box input{
 	margin-right: 10px;
 }
-
-
 /*travel_info*/
 .dual_menu .travel_info{
 	width:100%;	
@@ -341,8 +346,43 @@ content{
 .dual_menu .travel_info .info_box .info_text dd{
 	font-size:1.0rem;
 	font-weight:300;
+}
+/* weather */
+.dual_menu .exchange .flag_icon{
+	width:65%;
+}
+
+/* diplomat_notice */
+.dual_menu .diplomat_notice h3{
+	font-size:1.2rem;
+	font-weight:700;
+}
+.dual_menu .diplomat_notice .notice_box{
+	font-size:1.1rem;
+	position:relative;
+	top:10%;
 	
 }
+.dual_menu .diplomat_notice .notice_box .notice_list{
+	padding:3% 10%;
+	box-sizing: border-box;
+}
+.dual_menu .diplomat_notice .notice_box .notice_list:not(last-child){
+	margin-bottom:10%;
+}
+.dual_menu .diplomat_notice .notice_box .notice_list .notice_head{
+	display:flex;
+	justify-content: space-between;
+	width:100%;
+}
+.dual_menu .diplomat_notice .notice_box .notice_list .dSafetyTitle{
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	text-align: left;
+	font-weight: 300;
+}
+
 
 /** story card **/
 .story_card_wrap{
@@ -613,6 +653,10 @@ content{
 	.story_card_wrap .content_box{
 		display:flex;
 		justify-content: space-between;
+	}
+	.story_card_wrap .text_part .story_content{
+		font-size: 1.6rem;
+		
 	}
 	.story_card_wrap img{
 		width: 45%;

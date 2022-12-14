@@ -9,16 +9,19 @@ const presentTheme = () => (isUserColorTheme ? isUserColorTheme : isOsColorTheme
 //chekcboxex for localstorage
 const checkboxes = document.getElementsByName('checkList').length;
 
-/*** onload mod setting & API call ***/
+/*** window.onload lightness mod setting & API call ***/
   window.onload = function(){
-    /* for API exchange */
+  /* saving API url */
     //weather API
     const weatherUrl = 'https://api.openweathermap.org/data/2.5/weather?lat=13.736717&lon=100.523186&appid=fca7b6ecde13fa2d4e140006f768fd79&units=metric';
     //exchange rate API
     const exchageUrl = 'https://quotation-api-cdn.dunamu.com/v1/forex/recent?codes=FRX.KRWTHB';
     //diplomat notice API
+    const diplomatSafteyUrl = 'https://apis.data.go.kr/1262000/CountrySafetyService3/getCountrySafetyList3?serviceKey=RHh9qBtKX0nX7AHYN9wc37tOXdekXhwz8L07fm3vc3rReNkBkkWM6YUaB0Eo3YDEiN7rRKN4mTfwePoyCFFUZA%3D%3D&returnType=JSON&numOfRows=2&cond[country_iso_alp2::EQ]=TH&pageNo=1';
+    //diplomat flag API
+    const flagUrl = 'https://apis.data.go.kr/1262000/CountryFlagService2/getCountryFlagList2?serviceKey=RHh9qBtKX0nX7AHYN9wc37tOXdekXhwz8L07fm3vc3rReNkBkkWM6YUaB0Eo3YDEiN7rRKN4mTfwePoyCFFUZA%3D%3D&returnType=JSON&numOfRows=1&cond[country_iso_alp2::EQ]=TH&pageNo=1'
 
-  /** 유저 스토리지 확인하여 초기 발기 모드 설정 **/
+  /** initializing lightness mode **/
     if(presentTheme == 'dark'){
       localStorage.setItem('color-theme', 'dark');
       document.documentElement.setAttribute('color-theme', 'dark');
@@ -60,8 +63,36 @@ const checkboxes = document.getElementsByName('checkList').length;
         document.getElementById("baseRate").innerText = `${fxData.basePrice.toString()} ${fxUnit}`;
         document.getElementById("fxBuying").innerText = `${fxData.cashBuyingPrice.toString()} ${fxUnit}`;
       });
-    /* diplomat notice */
+    /* diplomat saftey notice */
+    fetch(diplomatSafteyUrl)
+      .then((res) => res.json())
+      .then((myJson) => {
+        //console.log(myJson);
+        document.getElementById("noticeCountry").innerText = myJson.data[0].country_nm
+        ;
+        for(i = 0; i < myJson.data.length; i++){
+          //console.log(myJson.data[String(i)]);
+          document.getElementById("dSafetyTitle" + i).innerText = myJson.data[i].title;
+          document.getElementById("warning" + i).innerText = myJson.data[i].ctgy_nm;
+          document.getElementById("dSafetyDate" + i).innerText = myJson.data[i].wrt_dt;
+          if(myJson.data[i].ctgy_nm == '주의'){
+            document.getElementById("warning" + i).classList.add('red_btn')
+          } else if (myJson.data[i].ctgy_nm == '안내'){
+            document.getElementById("warning" + i).classList.add('green_btn')
+          } else {
+            document.getElementById("warning" + i).classList.add('')
+          }
+        }
+      });
+      /* flag */
+      fetch(flagUrl)
+      .then((res) => res.json())
+      .then((myJson) => {
+        console.log(myJson);
+        const flagIcon = document.getElementById("flagIcon");
 
+        flagIcon.setAttribute("src", "https://opendata.mofa.go.kr:8444/fileDownload/images/country_images/flags/214/20220318_170222070.gif");
+      });
   }
 /** 아이콘 클릭에 따른 상대 라이트&다크 모드 전환 **/
   darkIcon.addEventListener('click', e => {

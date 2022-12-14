@@ -222,7 +222,7 @@
           <div class="exchange info_box themed_box">
             <h3 class="blind">환율</h3>
             <div>
-              <img src="javascript:void(0)" alt="local country flag" id="flagIcon">
+              <img src="javascript:void(0)" alt="local country flag" id="flagIcon" class="flag_icon">
             </div>
             <dl class="info_text">
               <dt>KEB 하나은행 기준 환율</dt>
@@ -235,28 +235,33 @@
                 <span id="baseRate"></span>
               </dd>
               <dd>
-                외화 <span class="royalblue_text">살 때: </span>
+                외화 살 때:
                 <span id="fxBuying"></span>
               </dd>
             </dl>
           </div>
         <!-- diplomat_notice -->
           <div class="diplomat_notice info_box themed_box">
-            <h3>외교부 공지사항</h3>
-            <ul>
-              <li>
-                <ul>
-                  <li></li>
-                  <li></li>
-                </ul>
-              </li>
-              <li>
-                <ul>
-                  <li></li>
-                  <li></li>
-                </ul>
-              </li>
-            </ul>
+            <h3>외교부 
+              <span id="noticeCountry"></span> 
+              공지사항
+            </h3>
+            <div class="notice_box">
+              <div class="notice_list">
+                <div class="notice_head">
+                  <p id="warning0"></p>
+                  <p id="dSafetyDate0"></p>
+                </div>
+                <p class="dSafetyTitle" id=dSafetyTitle0></p>
+              </div>
+              <div class="notice_list">
+                <div class="notice_head">
+                  <p id="warning1"></p>
+                  <p id="dSafetyDate1"></p>
+                </div>
+                <p class="dSafetyTitle" id=dSafetyTitle1></p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
