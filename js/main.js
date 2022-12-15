@@ -1,16 +1,31 @@
-/** select light mode **/
-const darkIcon = document.querySelector('.dark_icon');
-const lightIcon = document.querySelector('.light_icon');
-//로컬 저장소에서 저장된 값 찾기
-const isUserColorTheme = localStorage.getItem('color-theme');
-//로컬 저장소에 없을 경우 시스템 설정을 기준으로 한다
-const isOsColorTheme = window.matchMedia('prefers-color-scheme: dark').matches ? 'dark' : 'light';
-const presentTheme = () => (isUserColorTheme ? isUserColorTheme : isOsColorTheme);
-//chekcboxex for localstorage
 const checkboxes = document.getElementsByName('checkList').length;
+const imageToggleChecked= document.getElementById("imageToggleCheck");
+
 
 /*** window.onload lightness mod setting & API call ***/
   window.onload = function(){
+  /** loading lightness mode **/
+  const darkIcon = document.querySelector('.dark_icon');
+  const lightIcon = document.querySelector('.light_icon');
+  //로컬 저장소에서 저장된 값 찾기
+  const isUserColorTheme = localStorage.getItem('color-theme');
+    console.log('저장소 값:'+ isUserColorTheme);
+  //로컬 저장소에 없을 경우 시스템 설정을 기준으로 한다
+  const isOsColorTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    console.log('isOsColorTheme:'+ isOsColorTheme);
+  function whichOne(){
+    if(isUserColorTheme){
+      return isUserColorTheme
+    } else {
+      return isOsColorTheme
+    }
+  };
+  const presentTheme = whichOne();
+  //const presentTheme = () => (isUserColorTheme ? isUserColorTheme : isOsColorTheme);
+    console.log('작동되어야 하는 값' + presentTheme)
+  //checklist
+  
+
   /* saving API url */
     //weather API
     const weatherUrl = 'https://api.openweathermap.org/data/2.5/weather?lat=13.736717&lon=100.523186&appid=fca7b6ecde13fa2d4e140006f768fd79&units=metric';
@@ -22,6 +37,9 @@ const checkboxes = document.getElementsByName('checkList').length;
     const flagUrl = 'https://apis.data.go.kr/1262000/CountryFlagService2/getCountryFlagList2?serviceKey=RHh9qBtKX0nX7AHYN9wc37tOXdekXhwz8L07fm3vc3rReNkBkkWM6YUaB0Eo3YDEiN7rRKN4mTfwePoyCFFUZA%3D%3D&returnType=JSON&numOfRows=1&cond[country_iso_alp2::EQ]=TH&pageNo=1'
 
   /** initializing lightness mode **/
+    // console.log(isUserColorTheme);
+    // console.log(isOsColorTheme);
+    // console.log(presentTheme);
     if(presentTheme == 'dark'){
       localStorage.setItem('color-theme', 'dark');
       document.documentElement.setAttribute('color-theme', 'dark');
@@ -33,6 +51,33 @@ const checkboxes = document.getElementsByName('checkList').length;
       darkIcon.style.display = 'none';
       lightIcon.style.display = 'block';
     }
+  /** 아이콘 클릭에 따른 상대 라이트&다크 모드 전환 **/
+    darkIcon.addEventListener('click', e => {
+      console.log(e.target.className);
+      console.log(e.target.style.display);
+      if (e.target.style.display = 'block'){
+        localStorage.setItem('color-theme', 'light');
+        document.documentElement.setAttribute('color-theme', 'light');
+        darkIcon.style.display = 'none';
+        lightIcon.style.display = 'block';
+      }
+        console.log(document.documentElement.getAttribute('color-theme'));
+        console.log('최종 저장 된 모드:' + localStorage.getItem('color-theme'))
+    });
+    
+    lightIcon.addEventListener('click', e => {
+      console.log(e.target.className);
+      console.log(e.target.style.display);
+      if (e.target.style.display = 'block'){
+        localStorage.setItem('color-theme', 'dark');
+        document.documentElement.setAttribute('color-theme', 'dark');
+        darkIcon.style.display = 'block';
+        lightIcon.style.display = 'none';
+      } 
+        console.log(document.documentElement.getAttribute('color-theme'));
+        console.log('최종 저장 된 모드:' + localStorage.getItem('color-theme'))
+  });
+    
 
   /** APIs**/
     /* weather */
@@ -94,24 +139,10 @@ const checkboxes = document.getElementsByName('checkList').length;
         flagIcon.setAttribute("src", "https://opendata.mofa.go.kr:8444/fileDownload/images/country_images/flags/214/20220318_170222070.gif");
       });
   }
-/** 아이콘 클릭에 따른 상대 라이트&다크 모드 전환 **/
-  darkIcon.addEventListener('click', e => {
-    if (darkIcon.style.display == 'block'){
-      document.documentElement.setAttribute('color-theme', 'light');
-      darkIcon.style.display = 'none';
-      lightIcon.style.display = 'block';
-    } 
-  });
-  lightIcon.addEventListener('click', e => {
-    if (lightIcon.style.display == 'block'){
-      document.documentElement.setAttribute('color-theme', 'dark');
-      darkIcon.style.display = 'block';
-      lightIcon.style.display = 'none';
-    } 
-  });
 
-/**mobile_menu**/
-  /*mobile_menu_toggle*/
+
+/** mobile_menu **/
+/* mobile_menu_toggle */
   $(".mobile_list").click(function(){
     $(".mobile_menu").fadeToggle(200)
   });
@@ -132,9 +163,25 @@ const checkboxes = document.getElementsByName('checkList').length;
       $(".mobile_menu").hide();
     }
   });
+/* image_loading_toggle */
+
+  imageToggleChecked.addEventListener('click', () => {
+  let imagesAll = document.querySelectorAll('img');
+    console.log(imagesAll);
+    if(imageToggleChecked.checked){
+      window.location.reload();
+    } else {
+      for(i = 0; i < imagesAll.length; i++){
+        imagesAll[i].setAttribute('src', '../images/baseline_search_black_48dp.png');
+      }
+    }
+  })
+  
+  
+
 
 /** check_list **/
-  /* strikethrough */
+/* strikethrough */
   $("input[name='checkList']").click(function(){
     $(this).next().toggleClass('strikethrough');
   })
