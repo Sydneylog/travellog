@@ -6,13 +6,13 @@
 
   <!-- viewport&favicon -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/png" href="./favicon.png">
+  <link rel="icon" href="favicon.png">
 
   <title>travelLog main</title>
 
   <!-- meta:og info -->
   <meta property="og:title" content="withTravel">
-  <meta property="og:url" content="javascript:void(0)">
+  <meta property="og:url" content="#">
   <meta property="og:type" content="website">
   <meta property="og:image" content="">
   <meta property="og:site_name" content="withTravel">
@@ -42,15 +42,20 @@
 
   <!-- PWA -->
   <!-- manifest -->
-  <!-- <link rel="manifest" href="manifest.json"> -->
+  <link rel="manifest" href="./manifest.json">
   <!-- service worker -->
-  <!-- <script src="./serviceWorker.js"></script> -->
+  <script src="./serviceWorker.js"></script>
 
   <!-- jquery -->
   <script src="./js/jquery-3.6.1.min.js"></script>
+  <!-- currency unit geoplugin -->
+  <script language="JavaScript" src="http://www.geoplugin.net/javascript.gp" type="text/javascript">
+  </script>
 
   <!-- js -->
   <script defer src="./js/main.js"></script>
+
+
 
 </head>
 
@@ -61,12 +66,12 @@
       <div class="inner">
         <div class="top_left">
           <h1>
-            <a href="javascript:void(0)" class="themed_box_title">
+            <a href="#" class="themed_box_title">
               travelLog
             </a>
           </h1>
           <span class="material-icons size">
-            <a href="javascript:void(0)" class="themed_box_title">
+            <a href="#" class="themed_box_title">
               notifications_none
             </a>
           </span>
@@ -441,6 +446,7 @@
   <footer>
 
   </footer>
+
 </body>
 
 </html>
