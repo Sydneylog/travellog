@@ -407,6 +407,11 @@ content{
 	font-size:1.1rem;
 	position:relative;
 	top:10%;
+}
+.dual_menu .diplomat_notice .diplomatNothing{
+	font-size:1.2rem;
+	font-weight:300;
+	padding:50% 2%;
 	
 }
 .dual_menu .diplomat_notice .notice_box .notice_list{
@@ -550,6 +555,16 @@ content{
 .desktop_menu{
 	display:none;
 }
+
+/** simple writing **/
+.simplewriting_box{
+	position:absolute;
+	width:100vw;
+	height:100vh;
+	background-color: rgba(0, 0, 0, .6);
+}
+
+
 
 /* breakpoint - 500px */
 @media screen and (min-width : 500px){
@@ -696,9 +711,12 @@ content{
 	}
 	.dual_menu .exchange.info_box div img {
 		width:100px;
-		
+	}
+	.dual_menu .diplomat_notice .diplomatNothing{
+		padding:5% 0;
 	}
 	
+
 	/* story_card */
 	.story_card_wrap .inner{
 		width:100%;

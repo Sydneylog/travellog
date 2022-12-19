@@ -12,7 +12,7 @@ const listToCache = [
   './index.html',
   './manifest.json',
   './favicon.ico',
-  './images/baseline_search_black_48dp.png'
+  './images/travellogLogo.png'
 ]
 
 self.addEventListener('install', async event=>{

@@ -23,8 +23,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
 
   <!-- font:dongle 300 400 700 -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@300;400;700&display=swap" rel="stylesheet">
 
   <!-- css -->
@@ -34,12 +32,6 @@
   <!-- google material -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-  <!-- swiper -->
-  <!-- <link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
-  <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script> -->
-
   <!-- PWA -->
   <!-- manifest -->
   <link rel="manifest" href="./manifest.json">
@@ -48,12 +40,18 @@
 
   <!-- jquery -->
   <script src="./js/jquery-3.6.1.min.js"></script>
-  <!-- currency unit geoplugin -->
+
+  <!-- geoplugin -->
   <script language="JavaScript" src="http://www.geoplugin.net/javascript.gp" type="text/javascript">
   </script>
 
   <!-- js -->
   <script defer src="./js/main.js"></script>
+
+  <!-- vue -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+  <!-- vue router -->
+  <script src="https://unpkg.com/vue-router@3/dist/vue-router.js"></script>
 
 
 
@@ -176,9 +174,9 @@
       <div class="inner">
         <h2 class="blind">커스터마이징 메인커버</h2>
         <div>
-          <img src="./images/main_customizing.jpg" alt="make your cover image">
-          <img src="./images/main_title_text.png" class="main_title" alt="">
-          <img src="./images/catchphrase.png" class="catchphrase" alt="">
+          <img src="./images/main_img_03.png" alt="make your cover image">
+          <!-- <img src="./images/main_title_text.png" class="main_title" alt="">
+          <img src="./images/catchphrase.png" class="catchphrase" alt=""> -->
         </div>
       </div>
     </section>
@@ -262,10 +260,13 @@
         <!-- diplomat_notice -->
           <div class="diplomat_notice info_box themed_box">
             <h3>외교부 
-              <span id="noticeCountry"></span> 
+              <span id="noticeCountry" class="noticeCountry"></span> 
               공지사항
             </h3>
-            <div class="notice_box">
+            <div>
+              <p id="diplomatNothing" class="diplomatNothing"></p>
+            </div>
+            <div class="notice_box" id="notice_box">
               <div class="notice_list">
                 <div class="notice_head">
                   <p id="warning0"></p>
@@ -415,13 +416,15 @@
               일지 작성
             </span>
           </li>
-          <li class="bottom_icon_mid">
-            <span class="material-icons">
-              radio_button_unchecked
-            </span><br>
-            <span class="icon_text">
-              빠른 작성
-            </span>
+          <li class="bottom_icon_mid" id="app">
+            <router-link to="/simplewrting" class="themed_text" >
+              <span class="material-icons">
+                radio_button_unchecked
+              </span><br>
+              <span class="icon_text">
+                간편 작성
+              </span>
+            </router-link>
           </li>
           <li class="bottom_icon3">
             <span class="material-icons">

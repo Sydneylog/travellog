@@ -10,22 +10,41 @@ const imageToggleChecked= document.getElementById("imageToggleCheck");
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
     let nowDate = new Date().toISOString().substring(0,10).replace(/-/g,'');
-    let currencyHere = String(geoplugin_currencyCode()); 
-    console.log(currencyHere);
 
     /* saving OPEN API url */
     //weather API url
     const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=fca7b6ecde13fa2d4e140006f768fd79&units=metric`;
-    //exchange rate API url
-    const exchageUrl = `https://quotation-api-cdn.dunamu.com/v1/forex/recent?codes=FRX.KRW${currencyHere}`;
-    //find out currencyUnit
-    const currencyUnit = `https://www.koreaexim.go.kr/site/program/financial/exchangeJSON?authkey=HwAgZvweofSqx5Uqjzp2IgWOTrVQBo24$&searchdate=${nowDate}&data=AP01`;
+    
+    /** exchange rate API url **/
+    function unitOfCurrency(){ 
+      if(String(geoplugin_currencyCode()) == 'KRW'){
+        return 'USD'
+      } else {
+        return String(geoplugin_currencyCode())
+      }
+    }
+    const currencyHere = unitOfCurrency();
+    //console.log(currencyHere)
+    const exchangeUrl = `https://quotation-api-cdn.dunamu.com/v1/forex/recent?codes=FRX.KRW${currencyHere}`;
 
-   /* API-weather */
+    /* exchange rate */
+    fetch(exchangeUrl)
+      .then((res) => res.json())
+      .then((myJson) => {
+        //console.log(myJson[0]);
+        const fxData = myJson[0];
+        const fxUnit = fxData.currencyCode;
+        
+        document.getElementById("fxDate").innerText = fxData.date;
+        document.getElementById("baseRate").innerText = `${fxData.basePrice.toString()} ${fxUnit}/KRW`;
+        document.getElementById("fxBuying").innerText = `${fxData.cashBuyingPrice.toString()} ${fxUnit}/KRW`;
+      });
+
+    /* API-weather */
     fetch(weatherUrl)
       .then((res) => res.json())
       .then((myJson) => {
-        console.log(myJson);
+        //console.log(myJson);
         const weatherIcon = document.getElementById("weatherIcon");
         const weatherIconId = myJson.weather[0].icon;
         const weatherCountry = myJson.sys.country;
@@ -39,8 +58,7 @@ const imageToggleChecked= document.getElementById("imageToggleCheck");
         weatherIcon.setAttribute("src", "http://openweathermap.org/img/wn/" + weatherIconId + "@2x.png");
 
         //diplomat notice API
-        const diplomatSafteyUrl = `https://apis.data.go.kr/1262000/CountrySafetyService3/getCountrySafetyList3?serviceKey=RHh9qBtKX0nX7AHYN9wc37tOXdekXhwz8L07fm3vc3rReNkBkkWM6YUaB0Eo3YDEiN7rRKN4mTfwePoyCFFUZA%3D%3D&returnType=JSON&numOfRows=2&cond[country_iso_alp2::EQ]=${weatherCountry}&pageNo=1`;
-
+        const diplomatSafteyUrl = `https://apis.data.go.kr/1262000/CountrySafetyService3/getCountrySafetyList3?serviceKey=RHh9qBtKX0nX7AHYN9wc37tOXdekXhwz8L07fm3vc3rReNkBkkWM6YUaB0Eo3YDEiN7rRKN4mTfwePoyCFFUZA%3D%3D&returnType=JSON&numOfRows=2&cond[country_iso_alp2::EQ]=KR&pageNo=1`;
 
         //diplomat flag API 
         const flagUrl = `https://apis.data.go.kr/1262000/CountryFlagService2/getCountryFlagList2?serviceKey=RHh9qBtKX0nX7AHYN9wc37tOXdekXhwz8L07fm3vc3rReNkBkkWM6YUaB0Eo3YDEiN7rRKN4mTfwePoyCFFUZA%3D%3D&returnType=JSON&numOfRows=1&cond[country_iso_alp2::EQ]=${weatherCountry}&pageNo=1`
@@ -50,9 +68,12 @@ const imageToggleChecked= document.getElementById("imageToggleCheck");
         fetch(diplomatSafteyUrl)
         .then((res) => res.json())
         .then((myJson) => {
-        //console.log(myJson);
-        document.getElementById("noticeCountry").innerText = myJson.data[0].country_nm
-        ;
+        console.log(myJson);
+        console.log('공지사항길이', myJson.data.length);
+        
+        if (myJson.data.length != 0){
+          document.getElementById("notice_box").style.display = 'block';
+          document.getElementById("noticeCountry").innerText = myJson.data[0].country_iso_alp2;
           for(i = 0; i < myJson.data.length; i++){
             //console.log(myJson.data[String(i)]);
             document.getElementById("dSafetyTitle" + i).innerText = myJson.data[i].title;
@@ -66,38 +87,27 @@ const imageToggleChecked= document.getElementById("imageToggleCheck");
               document.getElementById("warning" + i).classList.add('')
             }
           }
+        } else {
+          console.log('외교부 공지 없음');
+          document.getElementById("diplomatNothing").innerText = `${weatherCountry}의 외교부 공지사항 데이터가 없습니다.`;
+          document.getElementById("notice_box").style.display = 'none';
+          
+          
+
+        }
         });
         /* flag */
         fetch(flagUrl)
         .then((res) => res.json())
         .then((myJson) => {
-          console.log(myJson);
+          //console.log(myJson);
           const downUrl = myJson.data[0].download_url;
           const flagIcon = document.getElementById("flagIcon");
 
           flagIcon.setAttribute("src", `${downUrl}`);
         });
-
-
-
-
       });
-
-        /* exchange rate */
-        fetch(exchageUrl)
-        .then((res) => res.json())
-        .then((myJson) => {
-        //console.log(myJson[0]);
-        const fxData = myJson[0];
-        const fxUnit = fxData.currencyCode;
-        
-        document.getElementById("fxDate").innerText = fxData.date;
-        document.getElementById("baseRate").innerText = `${fxData.basePrice.toString()} ${fxUnit}`;
-        document.getElementById("fxBuying").innerText = `${fxData.cashBuyingPrice.toString()} ${fxUnit}`;
-    });
-
-    
-
+      
   });
   
 
@@ -106,20 +116,20 @@ const imageToggleChecked= document.getElementById("imageToggleCheck");
   const lightIcon = document.querySelector('.light_icon');
   //로컬 저장소에서 저장된 값 찾기
   const isUserColorTheme = localStorage.getItem('color-theme');
-    console.log('저장소 값:'+ isUserColorTheme);
+    //console.log('저장소 값:'+ isUserColorTheme);
   //로컬 저장소에 없을 경우 시스템 설정을 기준으로 한다
   const isOsColorTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    console.log('isOsColorTheme:'+ isOsColorTheme);
-  function whichOne(){
-    if(isUserColorTheme){
-      return isUserColorTheme
-    } else {
-      return isOsColorTheme
-    }
-  };
-  const presentTheme = whichOne();
+    //console.log('isOsColorTheme:'+ isOsColorTheme);
+    function whichOne(){
+      if(isUserColorTheme){
+        return isUserColorTheme
+      } else {
+        return isOsColorTheme
+      }
+    };
+    const presentTheme = whichOne();
   //const presentTheme = () => (isUserColorTheme ? isUserColorTheme : isOsColorTheme);
-    console.log('작동되어야 하는 값' + presentTheme)
+    //console.log('작동되어야 하는 값' + presentTheme)
   //checklist
 
   /** initializing lightness mode **/
@@ -163,10 +173,6 @@ const imageToggleChecked= document.getElementById("imageToggleCheck");
         console.log(document.documentElement.getAttribute('color-theme'));
         console.log('최종 저장 된 모드:' + localStorage.getItem('color-theme'))
   });
-    
-
-  
-   
   }
 
 
@@ -193,33 +199,30 @@ const imageToggleChecked= document.getElementById("imageToggleCheck");
     }
   });
 /* image_loading_toggle */
+let imagesAll = document.querySelectorAll('img');
+  function imageSet(){
+    if(localStorage.getItem('imageState')){
+    imageToggleChecked.checked = false;
+    imagesAll[i].setAttribute('src', '../images/travellogLogo.png');
+    }
+  }
+  imageSet();
   imageToggleChecked.addEventListener('click', () => {
   let imagesAll = document.querySelectorAll('img');
-  let refreshHelper = new Date().getTime(); 
-    console.log(imagesAll);
-    if(imageToggleChecked.checked){
-      // for(i = 0; i < imagesAll.length; i++){
-      //   console.log(imagesAll[i].getAttribute('src'));
-      //   if(imagesAll[i].getAttribute('src') == '../images/baseline_search_black_48dp.png'){
-      //       imagesAll[i].src += '?time=' + refreshHelper;
-      //   }
-      //   console.log('경로 바뀌었나:', imagesAll[i].getAttribute('src'))  
-      // }
-      // localStorage.setItem('imageState', imageToggleChecked.checked = true);
-      window.location.reload();
-      
-
-    } else {
-
+  //const isImageState =  localStorage.getItem('imageState');
+  
+    //console.log(imagesAll);
+    if(!imageToggleChecked.checked){
       for(i = 0; i < imagesAll.length; i++){
-
-        imagesAll[i].setAttribute('src', '../images/baseline_search_black_48dp.png');
+        imagesAll[i].setAttribute('src', '../images/travellogLogo.png');
       }
-      localStorage.setItem('imageState', imageToggleChecked.checked = false);
-    }
-
-    console.log('이미지토글상태:', imageToggleChecked.checked)
-  })
+      localStorage.setItem('imageState', imageToggleChecked.checked);
+      console.log(localStorage.getItem('imageState'));
+      } else {
+        setTimeout(function() {window.location.reload()}, 300);
+        console.log(localStorage.getItem('imageState'));
+      }
+    })
   
   
 
@@ -274,6 +277,29 @@ const imageToggleChecked= document.getElementById("imageToggleCheck");
     }
   })
 
+  /* writing */
+    const simpleWriting = {
+      template:`
+      <div class='themed_box simplewriting_box'>
+        <div class='inner>
+          <h2 class='themed_story_text'>빠른 글 작성</h2>
+        </div>
+      </div>
+      `
+    }
+    const rtSimpleWriting = [{
+      path: '/simplewriting',
+      component: simpleWriting
+      }
+    ]
+    const router = new VueRouter({
+      routes : rtSimpleWriting
+    })
+    let app = new Vue({
+      el: "#app",
+      router
+    })
+    
 
 
 
