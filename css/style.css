@@ -391,6 +391,7 @@ content{
 /* weather */
 .dual_menu .exchange .flag_icon{
 	width:100%;
+	max-width:100px;
 }
 /* exchange */
 .dual_menu .exchange.info_box div img {

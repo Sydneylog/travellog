@@ -58,7 +58,7 @@ const imageToggleChecked= document.getElementById("imageToggleCheck");
         weatherIcon.setAttribute("src", "http://openweathermap.org/img/wn/" + weatherIconId + "@2x.png");
 
         //diplomat notice API
-        const diplomatSafteyUrl = `https://apis.data.go.kr/1262000/CountrySafetyService3/getCountrySafetyList3?serviceKey=RHh9qBtKX0nX7AHYN9wc37tOXdekXhwz8L07fm3vc3rReNkBkkWM6YUaB0Eo3YDEiN7rRKN4mTfwePoyCFFUZA%3D%3D&returnType=JSON&numOfRows=2&cond[country_iso_alp2::EQ]=KR&pageNo=1`;
+        const diplomatSafteyUrl = `https://apis.data.go.kr/1262000/CountrySafetyService3/getCountrySafetyList3?serviceKey=RHh9qBtKX0nX7AHYN9wc37tOXdekXhwz8L07fm3vc3rReNkBkkWM6YUaB0Eo3YDEiN7rRKN4mTfwePoyCFFUZA%3D%3D&returnType=JSON&numOfRows=2&cond[country_iso_alp2::EQ]=${weatherCountry}&pageNo=1`;
 
         //diplomat flag API 
         const flagUrl = `https://apis.data.go.kr/1262000/CountryFlagService2/getCountryFlagList2?serviceKey=RHh9qBtKX0nX7AHYN9wc37tOXdekXhwz8L07fm3vc3rReNkBkkWM6YUaB0Eo3YDEiN7rRKN4mTfwePoyCFFUZA%3D%3D&returnType=JSON&numOfRows=1&cond[country_iso_alp2::EQ]=${weatherCountry}&pageNo=1`
@@ -91,8 +91,6 @@ const imageToggleChecked= document.getElementById("imageToggleCheck");
           console.log('외교부 공지 없음');
           document.getElementById("diplomatNothing").innerText = `${weatherCountry}의 외교부 공지사항 데이터가 없습니다.`;
           document.getElementById("notice_box").style.display = 'none';
-          
-          
 
         }
         });
@@ -109,7 +107,6 @@ const imageToggleChecked= document.getElementById("imageToggleCheck");
       });
       
   });
-  
 
   /** loading lightness mode **/
   const darkIcon = document.querySelector('.dark_icon');
@@ -175,7 +172,6 @@ const imageToggleChecked= document.getElementById("imageToggleCheck");
   });
   }
 
-
 /** mobile_menu **/
 /* mobile_menu_toggle */
   $(".mobile_list").click(function(){
@@ -186,6 +182,13 @@ const imageToggleChecked= document.getElementById("imageToggleCheck");
     $(this).children('ul').slideToggle(200);
     $(".mobile_menu_list").children('ul').not($(this).children('ul')).slideUp(200);
   });
+  /* displayOff when click back */
+  $(document).mouseup(function(e){
+    if($(".mobile_menu_list").children("ul").has(e.target).length === 0){
+      $(".mobile_menu_list").children("ul").slideUp(0)
+    };
+  });
+
   /*width-recognition*/
   $(window).resize(function(){
     const windowWidth = $(window).width();
@@ -199,19 +202,21 @@ const imageToggleChecked= document.getElementById("imageToggleCheck");
     }
   });
 /* image_loading_toggle */
-let imagesAll = document.querySelectorAll('img');
+  let imagesAll = document.querySelectorAll('img');
   function imageSet(){
     if(localStorage.getItem('imageState')){
-    imageToggleChecked.checked = false;
-    imagesAll[i].setAttribute('src', '../images/travellogLogo.png');
+      imageToggleChecked.checked = false;
+      for(i = 0; i < imagesAll.length; i++){
+        imagesAll[i].setAttribute('src', '../images/travellogLogo.png');
+      }
+    } else {
+      return false
     }
   }
   imageSet();
+
   imageToggleChecked.addEventListener('click', () => {
-  let imagesAll = document.querySelectorAll('img');
-  //const isImageState =  localStorage.getItem('imageState');
-  
-    //console.log(imagesAll);
+    let imagesAll = document.querySelectorAll('img');
     if(!imageToggleChecked.checked){
       for(i = 0; i < imagesAll.length; i++){
         imagesAll[i].setAttribute('src', '../images/travellogLogo.png');
@@ -219,6 +224,7 @@ let imagesAll = document.querySelectorAll('img');
       localStorage.setItem('imageState', imageToggleChecked.checked);
       console.log(localStorage.getItem('imageState'));
       } else {
+        localStorage.removeItem('imageState');
         setTimeout(function() {window.location.reload()}, 300);
         console.log(localStorage.getItem('imageState'));
       }

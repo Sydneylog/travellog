@@ -20,9 +20,9 @@ self.addEventListener('install', async event=>{
   cache.addAll(listToCache);
 });
 
-// self.addEventListener('activate', pEvent => {
-//   console.log('서비스워커 동작 시작됨');
-// });
+self.addEventListener('activate', pEvent => {
+  console.log('서비스워커 동작 시작됨');
+});
 
 // self.addEventListener('fetch', pEvent => {
 //       pEvent.respondWith(

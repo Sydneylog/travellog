@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <!-- links for checking -->
+  <!-- css -->
+  <link rel="stylesheet" href="./css/reset.css">
+  <!-- google material -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- ckeditor -->
+  <script src="https://cdn.ckeditor.com/ckeditor5/35.4.0/classic/ckeditor.js"></script>
+  <script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/translations/ko.js"></script>
+  
+  
+  <script>
+    window.onload = () => {
+      ClassicEditor.create( document.querySelector( '#editor' ), { language: "ko"} 
+      );
+    }
+  </script>
+  
+<style>
+html{
+  font-size:14px;
+}
+
+.writingModal_box{
+  background-color:rgba(255, 231, 231, 0.8);
+  height:100vh;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+.writingModal_box .inner{
+  background-color: rgb(255, 172, 161);
+  width:90%;
+  max-width:600px;
+  box-sizing: border-box;
+  padding:10px;
+}
+
+.writingModal_box .pay_box{
+  margin:10px 0;
+}
+
+.writingModal_box .selectingPayment{
+  width:100%;
+  margin:auto;
+  padding:5px 0;
+  display:flex;
+  justify-content: space-around;
+  border: 1px solid #222;
+  box-sizing: border-box;
+}
+
+.writingModal_box .selectingPayment div{
+  text-align: center;
+  width:50%;
+}
+.writingModal_box .selectingPayment .material-icons {
+  font-size: 1.8rem
+}
+.writingModal_box .writingAmount {
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.writingModal_box .add_btn{
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.writingModal_box .btn_box{
+  display:flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top:10px;
+}
+.writingModal_box .btn_box button{
+  width:100px;
+  height:30px;
+  border-radius:5px;
+}
+
+
+
+
+/* ckeditor5 CSS */
+.ck-editor__top{
+  width:99%;
+}
+.ck.ck-editor{
+  width:99%;
+  margin:auto
+}
+.ck-editor__editable{
+  min-height:300px;
+}
+
+
+</style>
+</head>
+<body>
+<main>
+  <section class="writingModal_box">
+    <div class="inner">
+      <h2 class="blind">심플 스토리 작성</h2>
+      <div>
+        <form action="">
+          <fieldset>
+            <legend class="blind">글 쓰기</legend>
+            <div>
+              <label for="writtingTitle">글 제목:</label>
+              <input type="text" id="writtingTitle">
+            </div>
+            <div>
+              <label for="writtingDate">작성 날짜:</label>
+              <input type="text" id="writtingDate">
+            </div>
+            <div class="pay_box">
+              <div class="paymentKind">
+                <div class="selectingPayment">
+                  <div>
+                    <label for="spendFood">
+                      <span class="material-icons">
+                        restaurant
+                        </span><br>
+                      <span>식사</span> 
+                    </label><br>
+                    <input type="radio" name="iSpendIt" id="spendFood" value="food">
+                  </div>
+                  <div>
+                    <label for="spendMoving">
+                      <span class="material-icons">
+                        airport_shuttle
+                      </span><br>
+                      <span>교통</span>
+                    </label><br>
+                    <input type="radio" name="iSpendIt" id="spendMoving" value="transportation">
+                  </div>
+                  <div>
+                    <label for ="spendAccomon">
+                      <span class="material-icons">
+                        hotel
+                      </span><br>
+                      <span>숙소</span>
+                    </label><br>
+                    <input type="radio" name="iSpendIt" id="spendAccomon" value="accomondation">
+                  </div>
+                  <div>
+                    <label for="spendAttraction">
+                      <span class="material-icons">
+                        attractions
+                      </span><br>
+                      <span>어트랙션</span>
+                    </label><br>
+                    <input type="radio" name="iSpendIt" id="spendAttraction" value="attraction">
+                  </div>
+                  <div>
+                    <label for="spendShopping">
+                      <span class="material-icons">
+                        local_mall
+                      </span><br>
+                      <span>쇼핑</span>
+                    </label><br>
+                    <input type="radio" name="iSpendIt" id="spendShopping" value="shopping">
+                  </div>
+                  <div>
+                    <label for="spendEtc">
+                      <span class="material-icons">
+                        table_bar
+                      </span><br>
+                      <span>기타</span>
+                    </label><br>
+                    <input type="radio" name="iSpendIt" id="spendEtc" value="etc">
+                  </div>
+                </div>
+              </div>
+              <div class="writingAmount">
+                <div class="how_much_paid">
+                  <label for="amount">지출 금액</label>
+                  <input type="text" id="amount"><span id="localCurrencyUnit"></span>
+                </div>
+                <div class="add_btn">
+                  <p class="addHistoryBox">
+                    내역 추가
+                  </p>
+                  <span class="material-icons">
+                    add
+                  </span>
+                </div>
+                  
+              </div>
+            </div>
+            <div class="main_text">
+              <textarea name="editor" id="editor" cols="30" rows="10"></textarea>
+            </div>
+            <div class="btn_box">
+              <button type="button">취소</button>
+              <button type="button">작성 완료</button>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>  
+</body>
+</html>
