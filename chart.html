@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <!-- css -->
+  <link rel="stylesheet" href="./css/reset.css">
+
+  <!-- vue 2.x -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+  <!-- vuetify -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vuetify@2.6.13/dist/vuetify.min.css">
+
+<style>
+.static_title {
+  background-color:rgb(189, 204, 252);
+  text-align: center;
+}
+</style>
+</head>
+<body>
+  <div id="app">
+    <v-app>
+      <v-main>
+        <v-contatiner class="static_title">
+          <v-row justify="center">
+            <v-col cols="auto" class="static_title">
+              <h2>지출 통계</h2>
+              <h3><span>TH</span> 여행 지출 내역</h3>
+            </v-col>
+          </v-row>
+        </v-contatiner>
+        <v-contatiner>
+          <v-row justify="center">
+            <v-col cols="auto">
+              
+            </v-col>
+          </v-row>
+        </v-contatiner>
+      </v-main>
+    </v-app>
+  </div>
+  <div>
+    <h2>json server 리퀘스트 테스트</h2>
+    <div>
+      <p id="test1"></p>
+      <p id="test2"></p>
+      <p id="test3"></p>
+    </div>
+  </div>
+
+
+
+
+  <!-- 컴파일러 -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+  <!-- 플러그인 역할 -->
+  <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+  <script>
+    const profile = 'http://localhost:3000/test';
+    // fetch('http://localhost:4001/posts')
+    // .then((res) => res.json())
+    // .then((myJson) => {
+    //     console.log(myJson);
+    //     const test1 = document.getElementById('test1');
+    //   }
+    // )
+    /** GET **/
+    // fetch(profile, {
+    //   method:'GET',
+    //   headers:{'content-type':'application/json'}
+    // })
+    //   .then((res) => res.json())
+    //   .then(data => console.log(data[3].title))
+    //   .catch(error => console.error('에러코드:',error))
+
+    /** POST **/
+    // fetch(profile, {
+    //   method:'POST',
+    //   body: JSON.stringify({
+    //     "id": 4,
+    //     "title": "근데 delploy는 어떻게 함",
+    //     "body": "나도 몰라!"
+    //   }),
+    //   headers: {'content-type':'application/json'}
+    // }).then((res) => {
+    //   if (res.status === 200 || res.status === 201) {
+    //     res.json().then(json => console.log(json));
+    //   } else {
+    //     console.error(res.statusText);
+    //   }
+    // }).catch(err => console.error('에러코드:',error));
+
+    /** PATCH **/
+    // fetch(`${profile}/1`, {
+    //   method:"PATCH",
+    //   headers:{'content-type':'application/json'},
+    //   body:JSON.stringify({
+    //     "title":"수정했음요"
+    //   })
+    // })
+    //   .then(res => res.json())
+    //   .then(data => console.log(data))
+    //   .catch(error => console.error('에러코드:',error))
+    
+    /** DELETE **/
+    // fetch(`${profile}/7`, {
+    //   method:"DELETE",
+    //   headers:{'content-type':'application/json'},
+    // })
+    //   .catch(error => console.error('에러코드:',error))
+    
+
+
+
+  </script>
+  
+</body>
+</html>
