@@ -18,14 +18,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@300;400;700&display=swap" rel="stylesheet">
   <!-- jquery -->
   <script src="./js/jquery-3.6.1.min.js"></script>
-  
-  
-  <script>
-    window.onload = () => {
-      ClassicEditor.create( document.querySelector( '#editor' ), { language: "ko"} 
-      );
-    }
-  </script>
+  <!-- airdatepicker -->
+  <link href="./css/datepicker.min.css" rel="stylesheet" type="text/css" media="all">
+  <script src="./js/datepicker.min.js"></script> 
+  <script src="./js/datepicker.ko.js"></script>
   
 <style>
 html{
@@ -33,6 +29,16 @@ html{
 }
 body{
   font-family: 'dongle';
+}
+.scrollbar{
+  overflow:overlay;
+}
+.scrollbar::-webkit-scrollbar {
+    width: 5px;
+}
+.scrollbar::-webkit-scrollbar-thumb {
+    background-color: hsla(0, 0%, 42%, 0.35);
+    border-radius: 100px;
 }
 .writingModal_box{
   background-color:rgba(255, 231, 231, 0.8);
@@ -47,6 +53,8 @@ body{
 }
 .writingModal_box input{
   outline:none;
+  background:transparent;
+  padding:2px;
 }
 .writingModal_box .inner{
   background-color: rgb(247, 247, 247);
@@ -55,6 +63,21 @@ body{
   box-sizing: border-box;
   padding:10px;
 }
+.writingModal_box select{
+  appearance: none; 
+  -webkit-appearance: none;
+  height:100%;
+  padding:2px;
+  border-radius:5px;
+  font-family: 'dongle';
+  font-size:1.2rem;
+  text-align: center;
+}
+
+.writingModal_box select::-ms-expand { 
+  display:none; 
+}
+
 
 .writingModal_box .pay_box{
   margin:10px 0;
@@ -68,14 +91,13 @@ body{
   justify-content: space-between;
   align-items: center;
 }
-
 .writingModal_box .selectingPayment{
   width:100%;
   margin:0 auto 2px;
   padding:5px 0;
   display:flex;
   justify-content: space-around;
-  border: 1px solid #222;
+  border: 1px solid hsla(0, 0%, 42%, 0.35);
   box-sizing: border-box;
 }
 .writingModal_box .writingTitleBox input{
@@ -130,6 +152,11 @@ body{
   font-size:1.4rem;
 }
 
+.writingModal_box .hiddenYbox{
+  height: 140px;
+  overflow-y: auto;
+}
+
 .writingModal_box .btn_box{
   display:flex;
   justify-content: space-around;
@@ -141,9 +168,6 @@ body{
   height:30px;
   border-radius:5px;
 }
-
-
-
 
 /* ckeditor5 CSS */
 .ck-editor__top{
@@ -157,7 +181,6 @@ body{
   min-height:300px;
 }
 
-
 </style>
 </head>
 <body>
@@ -170,13 +193,14 @@ body{
           <fieldset>
             <legend class="blind">글 쓰기</legend>
             <div class="writingTitleBox">
-              <label for="writingTitle">글 제목:</label>
+              <label for="writingTitle">글 제목</label>
               <input type="text" id="writtingTitle">
             </div>
+            <hr>
             <div class="basicInfoBox">
               <div>
                 <label for="writtingDate">작성 날짜:</label>
-                <input type="text" id="writtingDate">
+                <input type="text" id="datepicker">
               </div>
               <div>
                 <select>
@@ -189,7 +213,6 @@ body{
                 </select>
               </div>
             </div>
-
             <div class="forPaybox">
               <p>
                 지출 기록
@@ -209,76 +232,81 @@ body{
                 </p>
               </div>
             </div>
-            <div class="pay_box" id="payBox0" name="payBox">
-              <div class="paymentKind">
-                <div class="selectingPayment">
-                  <div>
-                    <label for="spendFood">
-                      <span class="material-icons">
-                        restaurant
+            <div class="hiddenYbox scrollbar">
+              <div class="pay_box" id="payBox0" name="payBox">
+                <div class="paymentKind">
+                  <div class="selectingPayment">
+                    <div>
+                      <label for="spendFood">
+                        <span class="material-icons">
+                          restaurant
+                          </span><br>
+                        <span>식사</span> 
+                      </label><br>
+                      <input type="radio" name="iSpendIt0" id="spendFood" value="food">
+                    </div>
+                    <div>
+                      <label for="spendMoving">
+                        <span class="material-icons">
+                          airport_shuttle
                         </span><br>
-                      <span>식사</span> 
-                    </label><br>
-                    <input type="radio" name="iSpendIt0" id="spendFood" value="food">
-                  </div>
-                  <div>
-                    <label for="spendMoving">
-                      <span class="material-icons">
-                        airport_shuttle
-                      </span><br>
-                      <span>교통</span>
-                    </label><br>
-                    <input type="radio" name="iSpendIt0" id="spendMoving" value="transportation">
-                  </div>
-                  <div>
-                    <label for ="spendAccomon">
-                      <span class="material-icons">
-                        hotel
-                      </span><br>
-                      <span>숙소</span>
-                    </label><br>
-                    <input type="radio" name="iSpendIt0" id="spendAccomon" value="accomondation">
-                  </div>
-                  <div>
-                    <label for="spendAttraction">
-                      <span class="material-icons">
-                        attractions
-                      </span><br>
-                      <span>어트랙션</span>
-                    </label><br>
-                    <input type="radio" name="iSpendIt0" id="spendAttraction" value="attraction">
-                  </div>
-                  <div>
-                    <label for="spendShopping">
-                      <span class="material-icons">
-                        local_mall
-                      </span><br>
-                      <span>쇼핑</span>
-                    </label><br>
-                    <input type="radio" name="iSpendIt0" id="spendShopping" value="shopping">
-                  </div>
-                  <div>
-                    <label for="spendEtc">
-                      <span class="material-icons">
-                        table_bar
-                      </span><br>
-                      <span>기타</span>
-                    </label><br>
-                    <input type="radio" name="iSpendIt0" id="spendEtc" value="etc">
+                        <span>교통</span>
+                      </label><br>
+                      <input type="radio" name="iSpendIt0" id="spendMoving" value="transportation">
+                    </div>
+                    <div>
+                      <label for ="spendAccomon">
+                        <span class="material-icons">
+                          hotel
+                        </span><br>
+                        <span>숙소</span>
+                      </label><br>
+                      <input type="radio" name="iSpendIt0" id="spendAccomon" value="accomondation">
+                    </div>
+                    <div>
+                      <label for="spendAttraction">
+                        <span class="material-icons">
+                          attractions
+                        </span><br>
+                        <span>어트랙션</span>
+                      </label><br>
+                      <input type="radio" name="iSpendIt0" id="spendAttraction" value="attraction">
+                    </div>
+                    <div>
+                      <label for="spendShopping">
+                        <span class="material-icons">
+                          local_mall
+                        </span><br>
+                        <span>쇼핑</span>
+                      </label><br>
+                      <input type="radio" name="iSpendIt0" id="spendShopping" value="shopping">
+                    </div>
+                    <div>
+                      <label for="spendEtc">
+                        <span class="material-icons">
+                          table_bar
+                        </span><br>
+                        <span>기타</span>
+                      </label><br>
+                      <input type="radio" name="iSpendIt0" id="spendEtc" value="etc">
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="writingAmount">
-                <div class="how_much_paid">
-                  <label for="amount">지출 금액:</label>
-                  <input type="text" id="amount" class="amount">THB<span id="localCurrencyUnit"></span>
+                <div class="writingAmount">
+                  <div class="how_much_paid">
+                    <label for="amount">지출 금액:</label>
+                    <input type="text" id="amount" class="amount">THB<span id="localCurrencyUnit"></span>
+                  </div>
+                    <input type="text" id="currencyInput" hidden>
+                  <div class="memo_box">
+                    <label for="memo">메모:</label>
+                    <input type="text" id="memo" class="memo">
+                  </div>
                 </div>
-                <div class="memo_box">
-                  <label for="memo">메모:</label>
-                  <input type="text" id="memo" class="memo">
-                </div>
+                <hr>
               </div>
             </div>
+            
             <div class="main_text">
               <textarea name="editor" id="editor" cols="30" rows="10"></textarea>
             </div>
@@ -293,6 +321,19 @@ body{
   </section>
 </main>
 <script>
+/** air-datepicker **/
+$("#datepicker").datepicker({
+  language: 'ko'
+});
+
+/** ckeditor5 **/
+window.onload = () => {
+  ClassicEditor.create( document.querySelector( '#editor' ), { language: "ko"}
+  );
+
+}
+
+/** add paymentBox **/
 function paymentFunc() {
   const addBtn = document.getElementById('add_btn');
   const deleteBtn = document.getElementById('delete_btn');
@@ -301,22 +342,22 @@ function paymentFunc() {
   let i = 1;
 
   addBtn.addEventListener("click", () => {
-    if(document.querySelectorAll('.pay_box').length < 3){
+    if(document.querySelectorAll('.pay_box').length < 4){
       const newPayBox = payBox.cloneNode(true);
       payBox.after(newPayBox);
       newPayBox.id = 'payBox' + i;
       $('#payBox' + i).find("input").attr("name", "iSpendIt" + i);
       i++;
       console.log(clonned);
-    } else {
-      return alert("최대 2칸만 추가 할 수 있습니다.")
+    }  else {
+      return alert("최대 3칸 추가 할 수 있습니다.")
     };
   });
 
   deleteBtn.addEventListener("click", () => {
     let decrease = clonned.length;
     if(decrease >= 2){
-      clonned[1].remove();
+      clonned[decrease - 1].remove();
       decrease--;
       i--;
       i = 0 ? i = 1 : i;
@@ -324,8 +365,27 @@ function paymentFunc() {
     };
   });
 };
-paymentFunc()
- 
+paymentFunc();
+
+/* get today */
+  function todayNow() {
+      let putDate = document.getElementById("datepicker");
+      let getDate = new Date();
+      let today = `${getDate.getFullYear()}-${('0' + (getDate.getMonth() + 1)).slice(-2)}-${('0' + getDate.getDate()).slice(-2)}`;
+
+      putDate.value = today;
+
+      putDate.addEventListener('mouseout', () => {
+        if(!putDate.value) {
+          putDate.value = today;
+        }
+      });
+      
+    }
+todayNow();
+
+
+
   
 
 </script>
