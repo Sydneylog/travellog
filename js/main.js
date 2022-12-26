@@ -4,6 +4,24 @@ const imageToggleChecked= document.getElementById("imageToggleCheck");
 
 /*** window.onload lightness mod setting & API call ***/
   window.onload = () => {
+  /** checklist **/
+  fetch('http://localhost:4001/checkList', {
+    method:'GET',
+    headers:{'content-type':'application/json'}
+  })
+  .then((res) => res.json())
+  .then(data => console.log(data))
+  .catch(error => console.error('에러코드:',error));
+  function createCheckList () {
+    for(i = 0; i < data.length - 1; i++) {
+    
+
+    }
+  }
+  
+
+
+
   /** geolocation **/
   navigator.geolocation.getCurrentPosition(function locationNow (position) {
     //console.log(position);

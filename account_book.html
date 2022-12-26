@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+  <style>
+  .account_book_box {
+    width:100%;
+    padding:0 2% 0 2%;
+  }
+  .account_book_box h2{
+    text-align:center;
+  }
+  /* 도넛 차트 */
+ 
+  /* 도넛 차트 테이블  */
+  .account_book_box .donut_text_part {
+    border: 1px solid red;
+    width:96%;
+    margin-top:20px;
+  }
+  .account_book_box .account_list_box .donut_text_part .account_th{
+    font-weight:bold;
+  }
+
+  /* 가계부 내용 */
+  .account_book_box .account_list_box .contetnt_table {
+    width:100%
+  }
+  .account_book_box .account_list_box .contetnt_table td{
+    text-align:center
+  }
+  </style>
+</head>
+<body>
+  <section class="account_section">
+    <div class="account_book_box">
+      <h2>여행 가계부</h2>
+      <div class="inner">
+        <div class="chart_box">
+          <canvas id="myChart" width="400" height="400"></canvas>
+        </div>
+          <div class="donut_text_part">
+            <div class="donut_text">
+              <table class="account_list_box">
+                <th class="account_th">
+                  <tr class="contetnt_table">
+                    <td class="date_field">날짜</td>
+                    <td class="category_field">항목</td>
+                    <td class="memo_field">메모</td>
+                    <td class="cost_field">비용</td>
+                  </tr>
+                </th>
+                <tr class="contetnt_table">
+                  <td>2022-08-11</td>
+                  <td>식사</td>
+                  <td>tdork width Green curry</td>
+                  <td>70THB</td>
+                </tr>
+                <tr class="contetnt_table">
+                  <td>2021-08-11</td>
+                  <td>교통</td>
+                  <td>숙소까지 버스</td>
+                  <td>20THB</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script>
+    // 도넛차트 베이스
+    const ctx = document.getElementById('myChart').getContext('2d');
+    const myChart = new Chart(ctx, {
+        type: 'doughnut',
+        plugins:[ChartDataLabels],
+        data: {
+            labels: ['식사', '교통', '어트랙션', '쇼핑', '숙소', '기타'],
+            datasets: [{
+                label: '# of Votes',
+                data: [12, 5, 3, 5, 10, 20],
+                datalabels:{
+                  color:'white',
+                },
+                backgroundColor: [
+                    'rgba(255, 99, 132)',
+                    'rgba(54, 162, 235)',
+                    'rgba(255, 206, 86)',
+                    'rgba(75, 192, 192)',
+                    'rgba(153, 102, 255)',
+                    'rgba(255, 159, 64)'
+                ],
+                borderWidth: 2
+            }]
+        },
+        options: {
+           y: {
+
+           }
+        }
+    });
+
+  </script>
+</body>
+</html>

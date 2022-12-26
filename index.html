@@ -189,26 +189,44 @@
       <div class="inner">
       <!-- check_list_box -->
         <div class="checklist_box themed_box">
-          <h2 class="themed_pattern1">
-            My Checklist
-          </h2>
+          <div class="checklist_title">
+            <h2 class="themed_pattern1">
+              My check_list_box
+            </h2>
+            <div>
+            <div class="title_edit_icons">
+              <div>
+                <p class="blind">수정</p>
+                <p class="material-icons">
+                  drive_file_rename_outline
+                </p>
+              </div>
+              <div>
+                <p class="blind">삭제</p>
+                <p class="material-icons">
+                  delete_outline
+                </p>
+              </div>
+            </div>
+            </div>
+          </div>
           <form>
             <fieldset>
               <legend class="blind">체크리스트 목록</legend>
               <div class="themed_pattern2">
-                <input type="checkbox" name="checkList" id="list1"  value="list1" class="checkList">
+                <input type="checkbox" name="checkList" id="list1"  value="list1" class="checkList" hidden>
                 <label for="list1">
                   1. 비자 발급 및 만료일 확인 (태국 비자 ~08.16 까지임)
                 </label>
               </div>
               <div class="themed_pattern1">
-                <input type="checkbox" name="checkList" id="list2"  value="list2" class="checkList">
+                <input type="checkbox" name="checkList" id="list2"  value="list2" class="checkList" hidden>
                 <label for="list2">
                   2. 치앙마이에서 탈 스쿠터 알아보기 (국제 운전 면허증 배낭 안쪽에 있음)
                 </label>
               </div>
               <div class="themed_pattern2">
-                <input type="checkbox" name="checkList" id="list3" value="list3" class="checkList">
+                <input type="checkbox" name="checkList" id="list3" value="list3" class="checkList" hidden>
                 <label for="list3">
                   3. 게스트하우스에서 8:30에 밴 픽업 함
                 </label>

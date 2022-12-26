@@ -320,6 +320,9 @@ content{
 	font-family: 'Dongle', sans-serif;
 	margin-bottom:2%
 }
+.dual_menu .checklist_box .checklist_title {
+	display:flex;
+}
 .dual_menu .checklist_box h2{
 	font-size:1.8rem;
 	font-weight:700;
@@ -327,12 +330,22 @@ content{
 	padding: 2%;
 	display:flex;
 	justify-content: center;
-	align-items: center;	
+	align-items: center;
+	background-color:transparent;
+	width:100%;	
 }
-.dual_menu .checklist_box h2 span:nth-child(2){
-	margin-left:7px;
+.dual_menu .checklist_box .title_edit_icons {
+	display:flex;
+	justify-content: space-between;
+}
+.dual_menu .checklist_box .title_edit_icons p{
+	cursor: pointer;
 	font-size:1.4rem
 }
+.dual_menu .checklist_box .title_edit_icons p:not(:last-child) {
+	margin-right:10px;
+}
+
 .dual_menu .checklist_box label{
 	font-size:1.3rem;
 	font-weight:300;

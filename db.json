@@ -1,0 +1,151 @@
+{
+  "token": {
+    "access_token": "9k3kljnslkdj_34lk2j34lks09sv",
+    "userId": 123
+  },
+
+  "account_book": [
+    {
+      "id": 1,
+      "storyCard":"동남아 배낭여행",
+      "country": "TH",
+      "date": "굿",
+      "category":"foodBeverage",
+      "memo":"망고 쥬스",
+      "cost":"15",
+      "currencyUnit":"THB",
+      "exchangeRate":"70"
+    },
+    {
+      "id": 2,
+      "storyCard":"동남아 배낭여행",
+      "country": "TH",
+      "date": "굿",
+      "category":"shopping",
+      "memo":"팔찌",
+      "cost":"5",
+      "currencyUnit":"THB",
+      "exchangeRate":"70"
+    },
+    {
+      "id": 3,
+      "storyCard":"동남아 배낭여행",
+      "country": "TH",
+      "date": "굿",
+      "category":"accomondation",
+      "memo":"게스트하우스",
+      "cost":"200",
+      "currencyUnit":"THB",
+      "exchangeRate":"70"
+    },
+    {
+      "id": 4,
+      "storyCard":"동남아 배낭여행",
+      "country": "TH",
+      "date": "굿",
+      "category":"transfortation",
+      "memo":"교통비",
+      "cost":"120",
+      "currencyUnit":"THB",
+      "exchangeRate":"70"
+    },
+    {
+      "id": 5,
+      "storyCard":"상하이",
+      "country": "CN",
+      "date": "굿",
+      "category":"shopping",
+      "memo":"운동화",
+      "cost":"210",
+      "currencyUnit":"CNY",
+      "exchangeRate":"165"
+    },
+    {
+      "id": 6,
+      "storyCard":"퍼스 & 시드니",
+      "country": "AU",
+      "date": "굿",
+      "category":"shopping",
+      "memo":"운동화",
+      "cost":"210",
+      "currencyUnit":"CNY",
+      "exchangeRate":"165"
+    }
+  ],
+
+  "travel_diary":[
+    {
+      "id":1,
+      "title":"태국왔다감",
+      "storyCard":"동남아 배낭여행",
+      "country":"TH",
+      "date":"",
+      "content":"여기와서 재미있게 놀았다",
+      "pictures":[
+        {
+          "idx": 1,
+          "pictureUrl":"./images/.jpg"
+        },
+        {
+          "idx": 2,
+          "pictureUrl":"./images/.jpg"
+        }
+      ]
+    },
+    {
+      "id":2,
+      "title":"상하이 해외연수",
+      "storyCard":"상하이",
+      "country":"CN",
+      "date":"",
+      "content":"맛있는 것도 많이 먹고, 좋은 경험을 해서 좋았다.",
+      "pictures":[
+        {
+          "idx": 1,
+          "pictureUrl":"./images/.jpg"
+        },
+        {
+          "idx": 2,
+          "pictureUrl":"./images/.jpg"
+        }
+      ]
+    },
+    {
+      "id":3,
+      "title":"호주워킹홀리데이",
+      "storyCard":"퍼스 & 시드니",
+      "country":"AU",
+      "date":"",
+      "content":"여러가지 힘든일도 있었지만 다양한 좋은 경험들을 많이 할 수 있었다.",
+      "pictures":[
+        {
+          "idx": 1,
+          "pictureUrl":"./images/.jpg"
+        },
+        {
+          "idx": 2,
+          "pictureUrl":"./images/.jpg"
+        }
+      ]
+    }
+  ],
+  
+  "checkList":[
+    {
+      "id":1,
+      "memo":"비자 발급 및 만료일 확인 (태국 비자 ~08.16 까지임)"
+    },
+    {
+      "id":2,
+      "memo":"치앙마이에서 탈 스쿠터 알아보기 (국제 운전 면허증 배낭 안쪽에 있음)"
+    },
+    {
+      "id":3,
+      "memo":"게스트하우스에서 8:30에 밴 픽업 함"
+    },
+    {
+      "id":4,
+      "memo":"까먹지 말것!4"
+    }
+  ]
+}
