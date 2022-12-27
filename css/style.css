@@ -29,6 +29,7 @@ html{
 .strikethrough{
 	text-decoration: line-through;
 }
+
 .red_btn{
 	color:#db4c4c;
 }
@@ -84,10 +85,13 @@ body{
 .themed_pattern1{
 	background:var(--background);
 	color:var(--textColor);
+	border-bottom:var(--borderColor) 1px solid;
 }
 .themed_pattern2{
 	background:var(--boxColor);
 	color:var(--textColor);
+	outline:none;
+	border:var(--borderColor) 1px solid;
 }
 .themed_text{
 	color:var(--textColor)
@@ -345,7 +349,31 @@ content{
 .dual_menu .checklist_box .title_edit_icons p:not(:last-child) {
 	margin-right:10px;
 }
-
+.dual_menu .checklist_box .arrangeCheck {
+	display:flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.dual_menu .checklist_box .check_buttons {
+	display:flex;
+	justify-content: space-between;
+}
+.dual_menu .checklist_box button {
+	font-family: 'dongle';
+	font-size:1.5rem;
+	font-weight: 300;
+	width:40px;
+}
+.dual_menu .checklist_box button:first-child {
+	margin-right:5px;
+}
+.dual_menu .checklist_box .memo_check{
+	font-size:1.5rem;
+}
+.dual_menu .checklist_box .strikethrough{
+	text-decoration: line-through;
+	
+}
 .dual_menu .checklist_box label{
 	font-size:1.3rem;
 	font-weight:300;
@@ -577,6 +605,10 @@ content{
 @media screen and (min-width : 500px){
 	html{
 		font-size:18px;
+	}
+	.dual_menu .checklist_box .title_edit_icons p{
+		cursor: pointer;
+		font-size:1.1rem
 	}
 }
 

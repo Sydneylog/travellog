@@ -1,24 +1,120 @@
-const checkboxes = document.getElementsByName('checkList').length;
+
 const imageToggleChecked= document.getElementById("imageToggleCheck");
+const checkListURL = 'http://localhost:4001/checkList';
+
+
+/** checklist **/
+/* call checklist */
+(function () {
+  'use strict';
+
+  const get = (target) => {
+    return document.querySelector(target);
+  };
+
+  //식별자에 사용되는 $는 document.getElementById처럼 단일한 변수임을 표시하는 것
+  //변수명으로 사용도가 낮은$를 변수명 앞에 붙여 다른 변수와 충돌을 방지하는 것
+  const $checklistAll = get(".checklistField");
+
+
+  const createCheckElement = (checklist) => {
+    //const{a, b} = c의 의미는 const a = c.a; const b = c.b의 의미로 객체안의 값을 바로 변수로 할당시킨다.
+    //const[state, dispatch] = useReducer() 같은 대괄호의 경우 retun type의 두개인데 이것을 둘 다 받아 쓰기위해 array 로 받는 것임
+    //statae 라는 obj가 첫번째 return, dispatch라는 게 두번째 return
+    const {id, memo} = checklist;
+    console.log(checklist);
+    console.log(id);
+    
+    const $checklistItem = document.createElement('div');
+    $checklistItem.dataset.id = id;
+    $checklistItem.classList.add("themed_pattern1", "arrangeCheck");
+    $checklistItem.innerHTML = 
+    `
+    <input type="checkbox" id="list${id}" name="checkList" class="checkList" hidden /> 
+    <label class="checkText" for="list${id}">
+      <span id="checklist${id}" class="memo_check">${memo}</span>
+    </label>
+    <div class="check_buttons">
+      <button class="check-edit-button themed_pattern2">수정</button>
+      <button class="check-delete-button themed_pattern2">삭제</button>
+    </div>
+    `;
+    console.log('체크리스트아이템:', $checklistItem);
+    //checklist동적생성
+    return $checklistItem;
+    
+  };
+
+  const renderCheck = (checklist) => {
+    checklist.forEach((item) => {
+      const checkElement = createCheckElement(item);
+      $checklistAll.appendChild(checkElement)
+    });
+  };
+
+  const getCheck = () => {
+    fetch(checkListURL, {
+      method:'GET',
+      headers:{'content-type':'application/json'}
+    })
+    .then((res) => res.json())
+    .then((checklist) => {
+        renderCheck(checklist);
+        console.log(checklist);
+      }
+    )
+    .catch(error => console.error('에러코드:', error))
+  };
+
+  const init = () => {
+    window.addEventListener("DOMContentLoaded", getCheck);
+  };
+  init();
+})();
+
+/* edit & delete */
+
+ 
+
+
+
+
 
 
 /*** window.onload lightness mod setting & API call ***/
-  window.onload = () => {
-  /** checklist **/
-  fetch('http://localhost:4001/checkList', {
-    method:'GET',
-    headers:{'content-type':'application/json'}
-  })
-  .then((res) => res.json())
-  .then(data => console.log(data))
-  .catch(error => console.error('에러코드:',error));
-  function createCheckList () {
-    for(i = 0; i < data.length - 1; i++) {
-    
+window.onload = () => {
 
+  /* strikethrough */
+  $(document).on("click", ".checkText", function(){
+    $(this).toggleClass('strikethrough');
+  })
+  // $("input[name='checkList']").click(function(){
+  //   if($(this).is(":checked")){
+  //     confirm("해당 체크리스트를 삭제 하시겠습니까?")
+  //   }
+  // })
+
+  /* checkbox_localstorage */
+  // to save 
+  const checkboxes = document.querySelectorAll(".checkList").length;
+  console.log(checkboxes)
+  function toSave() {
+    for (let i = 1; i <= checkboxes; i++){
+      const checkbox = document.getElementById('list' + String(i));
+      localStorage.setItem('list' + String(i), checkbox.checked);
     }
   }
-  
+  // to load just using vanilla JS
+  for(let i = 1; i <= checkboxes; i++){
+    if(localStorage.length > 0){
+      const checkedContent = document.getElementById('list' + String(i)).nextElementSibling;
+      let checked = document.getElementById('list' + String(i)).checked = JSON.parse(localStorage.getItem('list' + String(i)));
+      if (checked) checkedContent.classList.add('strikethrough')
+    }
+  }
+  /* saving event */ 
+  window.addEventListener('change', toSave); 
+
 
 
 
@@ -221,7 +317,7 @@ const imageToggleChecked= document.getElementById("imageToggleCheck");
   });
 /* image_loading_toggle */
   let imagesAll = document.querySelectorAll('img');
-  function imageSet(){
+  (function imageSet(){
     if(localStorage.getItem('imageState')){
       imageToggleChecked.checked = false;
       for(i = 0; i < imagesAll.length; i++){
@@ -230,8 +326,8 @@ const imageToggleChecked= document.getElementById("imageToggleCheck");
     } else {
       return false
     }
-  }
-  imageSet();
+  })();
+ 
 
   imageToggleChecked.addEventListener('click', () => {
     let imagesAll = document.querySelectorAll('img');
@@ -251,34 +347,6 @@ const imageToggleChecked= document.getElementById("imageToggleCheck");
   
 
 
-/** check_list **/
-/* strikethrough */
-  $("input[name='checkList']").click(function(){
-    $(this).next().toggleClass('strikethrough');
-  })
-  $("input[name='checkList']").click(function(){
-    if($(this).is(":checked")){
-      confirm("해당 체크리스트를 삭제 하시겠습니까?")
-    }
-  })
-  /* checkbox_localstorage */
-  // to save 
-  function toSave() {
-    for (let i = 1; i <= checkboxes; i++){
-      const checkbox = document.getElementById('list' + String(i));
-      localStorage.setItem('list' + String(i), checkbox.checked);
-    }
-  }
-  // to load just using vanilla JS
-  for(let i = 1; i <= checkboxes; i++){
-    if(localStorage.length > 0){
-      const checkedContent = document.getElementById('list' + String(i)).nextElementSibling;
-      let checked = document.getElementById('list' + String(i)).checked = JSON.parse(localStorage.getItem('list' + String(i)));
-      if (checked) checkedContent.classList.add('strikethrough')
-    }
-  }
-/* saving event */ 
-  window.addEventListener('change', toSave);  
 
 /** bottom_menu **/ 
 /* width-recognition */
