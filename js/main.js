@@ -15,6 +15,8 @@ const checkListURL = 'http://localhost:4001/checkList';
   //식별자에 사용되는 $는 document.getElementById처럼 단일한 변수임을 표시하는 것
   //변수명으로 사용도가 낮은$를 변수명 앞에 붙여 다른 변수와 충돌을 방지하는 것
   const $checklistAll = get(".checklistField");
+  const $checklistContainer = get(".checklistField");
+  const $checkForm = get(".check-form");  
 
 
   const createCheckElement = (checklist) => {
@@ -27,16 +29,17 @@ const checkListURL = 'http://localhost:4001/checkList';
     
     const $checklistItem = document.createElement('div');
     $checklistItem.dataset.id = id;
-    $checklistItem.classList.add("themed_pattern1", "arrangeCheck");
+    $checklistItem.id = id;
+    $checklistItem.classList.add("themed_pattern1", "arrangeCheck", "checklist");
     $checklistItem.innerHTML = 
     `
     <input type="checkbox" id="list${id}" name="checkList" class="checkList" hidden /> 
     <label class="checkText" for="list${id}">
-      <span id="checklist${id}" class="memo_check">${memo}</span>
+      <span id="checklist" class="memo_check">${memo}</span>
     </label>
     <div class="check_buttons">
-      <button class="check-edit-button themed_pattern2">수정</button>
-      <button class="check-delete-button themed_pattern2">삭제</button>
+      <button type="button" class="check-edit-button themed_pattern2">수정</button>
+      <button type="button" id="deleteBtn${id}" class="check-delete-button themed_pattern2">삭제</button>
     </div>
     `;
     console.log('체크리스트아이템:', $checklistItem);
@@ -51,7 +54,7 @@ const checkListURL = 'http://localhost:4001/checkList';
       $checklistAll.appendChild(checkElement)
     });
   };
-
+  /** get checklist **/
   const getCheck = () => {
     fetch(checkListURL, {
       method:'GET',
@@ -60,21 +63,86 @@ const checkListURL = 'http://localhost:4001/checkList';
     .then((res) => res.json())
     .then((checklist) => {
         renderCheck(checklist);
-        console.log(checklist);
+        //console.log(checklist);
       }
     )
     .catch(error => console.error('에러코드:', error))
   };
 
+  /** add checklist **/
+  const addCheck = () => {
+    //e.preventDefault는 html에서 a태그나 submit 의 data를 전송시키거나 이동하는등의 동작이 있는데 해당 매소드는 그것을 방지함
+    //e.stopPropagation() 이벤트가 상위 엘리먼트에게 전달되는 것을 막아줌
+    e.preventDefault();
+    const addIcon = document.getElementById("addIcon");
+    const memoBox = document.getElementById("memoBox");
+    addIcon.addEventListener("click", memoBox.setAttribute("display", "block"))
+    const $input = $checkForm.querySelector('input[type="text"]');
+    const checkValue = $input.value;
+    const check = {
+      checked: false,
+      memo: checkValue
+    };
+
+    fetch(checkListURL, {
+      method:'POST',
+      headers: {'content-type':'application/json; charset=UTF-8'},
+      body: JSON.stringify(check),
+    })
+      .then((res) => {
+        if (res.status === 200 || res.status === 201) {
+          res.json();
+        } else {
+          console.error(res.statusText);
+        }
+      })
+      .catch((error) => console.error('에러코드:',error));
+  }
+
+
+  /** delete checklist **/
+  const deleteCheck = (e) => {
+    console.log(e.target.className);
+    if(e.target.className !== 'check-delete-button themed_pattern2' ) return;
+    const $removeTarget = e.target.closest(".checklist");
+    console.log("제거대상데이터셋", $removeTarget)
+    const id = $removeTarget.dataset.id;
+    
+
+    fetch(`${checkListURL}/${id}`, {
+      method:"DELETE",
+      headers:{'content-type':'application/json'},
+      body:JSON.stringify({ id }),
+    })
+      .then((res) => {
+        res.json();
+      })
+      .then(() => {
+        getCheck()
+      })
+      .catch(error => console.error('에러코드:',error));
+  }
+
+
+
   const init = () => {
     window.addEventListener("DOMContentLoaded", getCheck);
+    $checkForm.addEventListener("submit", addCheck);
+    $checklistContainer.addEventListener("click", deleteCheck);
+
   };
+
   init();
+
 })();
 
-/* edit & delete */
 
- 
+
+
+
+
+  
+
 
 
 
@@ -205,7 +273,6 @@ window.onload = () => {
           console.log('외교부 공지 없음');
           document.getElementById("diplomatNothing").innerText = `${weatherCountry}의 외교부 공지사항 데이터가 없습니다.`;
           document.getElementById("notice_box").style.display = 'none';
-
         }
         });
         /* flag */
@@ -272,7 +339,7 @@ window.onload = () => {
         console.log('최종 저장 된 모드:' + localStorage.getItem('color-theme'))
     });
     
-    lightIcon.addEventListener('click', e => {
+    lightIcon.addEventListener('click', (e) => {
       console.log(e.target.className);
       console.log(e.target.style.display);
       if (e.target.style.display = 'block'){
@@ -284,7 +351,8 @@ window.onload = () => {
         console.log(document.documentElement.getAttribute('color-theme'));
         console.log('최종 저장 된 모드:' + localStorage.getItem('color-theme'))
   });
-  }
+
+}
 
 /** mobile_menu **/
 /* mobile_menu_toggle */
@@ -327,7 +395,6 @@ window.onload = () => {
       return false
     }
   })();
- 
 
   imageToggleChecked.addEventListener('click', () => {
     let imagesAll = document.querySelectorAll('img');
@@ -343,9 +410,6 @@ window.onload = () => {
         console.log(localStorage.getItem('imageState'));
       }
     })
-  
-  
-
 
 
 /** bottom_menu **/ 
@@ -369,28 +433,7 @@ window.onload = () => {
     }
   })
 
-  /* writing */
-    const simpleWriting = {
-      template:`
-      <div class='themed_box simplewriting_box'>
-        <div class='inner>
-          <h2 class='themed_story_text'>빠른 글 작성</h2>
-        </div>
-      </div>
-      `
-    }
-    const rtSimpleWriting = [{
-      path: '/simplewriting',
-      component: simpleWriting
-      }
-    ]
-    const router = new VueRouter({
-      routes : rtSimpleWriting
-    })
-    let app = new Vue({
-      el: "#app",
-      router
-    })
+  
     
 
 

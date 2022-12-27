@@ -326,7 +326,45 @@ content{
 }
 .dual_menu .checklist_box .checklist_title {
 	display:flex;
+	position:relative;
+	
 }
+.dual_menu .checklist_box .checklist_title .memo_box {
+	display:flex;
+	position:absolute;
+	top:50%;
+	left:2%;
+	height:50%;
+	transform:translateY(-50%);
+	width:92%;
+	font-size:1.4rem;
+	font-weight:300;
+	display:none;
+}
+.dual_menu .checklist_box .checklist_title .memo_box .newMemo {
+	height:100%;
+	width:85%;
+	padding:2% 2%;
+	box-sizing: border-box;
+	outline:none;
+	
+}
+.dual_menu .checklist_box .memo_box .add_check_buttons{
+	position:relative;
+	width:10%;
+	height:50%
+}
+.dual_menu .checklist_box .memo_box .add_check_buttons button {
+	position:absolute;
+	top:0;
+	left:0;
+	height:100%;
+	width:100%;
+	display:flex;
+	align-items: center;
+	justify-content: center;
+}
+
 .dual_menu .checklist_box h2{
 	font-size:1.8rem;
 	font-weight:700;

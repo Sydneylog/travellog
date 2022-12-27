@@ -98,7 +98,7 @@
       <div class="inner">
         <h3 class="blind">모바일 메뉴</h3>
         <div>
-          <form action="">
+          <form action="" class="check-form">
             <fieldset>
               <legend class="blind">검색</legend>
               <label for="searchBar" class="blind">검색 박스</label>
@@ -193,11 +193,18 @@
             <h2>
               My check_list_box
             </h2>
+            <div class="memo_box" id="memoBox">
+              <input type="text" value="" class="newMemo">
+              <div class="add_check_buttons">
+                <button type="submit">완료</button>
+                <button type="button">취소</button>
+              </div>
+            </div>
             <div>
             <div class="title_edit_icons">
               <div>
                 <p class="blind">수정</p>
-                <p class="material-icons">
+                <p class="material-icons" id="addIcon">
                   drive_file_rename_outline
                 </p>
               </div>
