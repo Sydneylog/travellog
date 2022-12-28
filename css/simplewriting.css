@@ -1,0 +1,162 @@
+.writingModal_box{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-family: 'dongle';
+  z-index:5;
+}
+.writingModal_box > div{
+  padding:2px;
+}
+.writingModal_box input{
+  outline:none;
+  background-color:var(--input);
+  border: 1px solid hsla(0, 0%, 42%, 0.35);
+  padding:2px;
+}
+.writingModal_box .inner{
+  width:92%;
+  max-width:600px;
+  box-sizing: border-box;
+  padding:10px;
+}
+.writingModal_box select{
+  appearance: none;
+  width:100%; 
+  -webkit-appearance: none;
+  height:28px;
+  border-radius:5px;
+  font-family: 'dongle';
+  font-size:1.1rem;
+  text-align: center;
+  display:flex;
+  color: var(--textColor);
+  background-color: var(--input);
+}
+
+.writingModal_box select::-ms-expand { 
+  display:none; 
+}
+
+.writingModal_box .pay_box{
+  width:100%;
+  margin:10px 0;
+}
+.writingModal_box .basicInfoBox{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.writingModal_box .selectingPayment{
+  width:100%;
+  margin:0 auto 2px;
+  padding:5px 0;
+  display:flex;
+  justify-content: space-around;
+  box-sizing: border-box;
+  border: 1px solid hsla(0, 0%, 42%, 0.35)
+}
+.writingModal_box .writingTitleBox input{
+  width:87%;
+  height:20px;
+}
+.writingModal_box hr{
+  margin:10px 0;
+}
+.writingModal_box #datepicker {
+  height:20px;
+  width:80px;
+  color:var(--textColor);
+  text-align:center;
+}
+.writingModal_box .selectingPayment div{
+  text-align: center;
+  width:50%;
+  line-height:1.3rem;
+}
+.writingModal_box .selectingPayment .material-icons {
+  font-size: 1.8rem;
+}
+.writingModal_box .forPaybox p{
+  font-size:1.1rem;
+}
+.writingModal_box .forPaybox .btn_box {
+  width:50px;
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+  width:50px;
+  margin-top:10px;
+}
+.writingModal_box .forPaybox .btn_box span {
+  font-size:1.2rem;
+}
+.writingModal_box .writingAmount {
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.writingModal_box .writingAmount .amount {
+  width: 50%;
+  height:20px
+}
+.writingModal_box .writingAmount .memo_box {
+  width:70%;
+  display:flex;
+  justify-content: right;
+}
+.writingModal_box .writingAmount .memo{
+  height:20px;
+}
+.writingModal_box .writingAmount .memo_text {
+  width:12%;
+  display:flex;
+  align-items: center;
+}
+.writingModal_box .forPaybox{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.writingModal_box .forPaybox p{
+  display:flex;
+  align-items: center;
+  cursor:pointer;
+}
+.writingModal_box  .forPaybox .btn_text {
+  font-size:1.4rem;
+  font-weight:300
+}
+.writingModal_box .forPaybox .material-icons {
+  font-size:1.4rem;
+}
+.writingModal_box .hiddenYbox{
+  height: 100%;
+  max-height:300px;
+  overflow-y: auto;
+}
+
+.writingModal_box .btn_box button{
+  width:100px;
+  height:30px;
+  border-radius:5px;
+}
+
+/* ckeditor5 CSS */
+.ck-editor__top{
+  width:99%;
+}
+.ck.ck-editor{
+  width:99%;
+  margin:auto
+}
+.ck-editor__editable{
+  min-height:300px;
+}

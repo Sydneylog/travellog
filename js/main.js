@@ -1,247 +1,63 @@
-
-const imageToggleChecked= document.getElementById("imageToggleCheck");
-const checkListURL = 'http://localhost:4001/checkList';
-
-
-/** checklist **/
-/* call checklist */
-(function () {
-  'use strict';
-
-  const get = (target) => {
-    return document.querySelector(target);
-  };
-
-  //식별자에 사용되는 $는 document.getElementById처럼 단일한 변수임을 표시하는 것
-  //변수명으로 사용도가 낮은$를 변수명 앞에 붙여 다른 변수와 충돌을 방지하는 것
-  const $checklistAll = get(".checklistField");
-  const $checklistContainer = get(".checklistField");
-  const $checkForm = get(".check-form");  
-
-
-  const createCheckElement = (checklist) => {
-    //const{a, b} = c의 의미는 const a = c.a; const b = c.b의 의미로 객체안의 값을 바로 변수로 할당시킨다.
-    //const[state, dispatch] = useReducer() 같은 대괄호의 경우 retun type의 두개인데 이것을 둘 다 받아 쓰기위해 array 로 받는 것임
-    //statae 라는 obj가 첫번째 return, dispatch라는 게 두번째 return
-    const {id, memo} = checklist;
-    console.log(checklist);
-    console.log(id);
-    
-    const $checklistItem = document.createElement('div');
-    $checklistItem.dataset.id = id;
-    $checklistItem.id = id;
-    $checklistItem.classList.add("themed_pattern1", "arrangeCheck", "checklist");
-    $checklistItem.innerHTML = 
-    `
-    <input type="checkbox" id="checkbox" name="checkbox" class="checkbox" hidden /> 
-    <input type="text" id="list" name="checkList" class="checkList" hidden /> 
-    <label class="checkText memo_check " for="list" id="checklist">${memo}</label>
-    <div class="hidden_btn_box">
-      <div class="check_buttons">
-        <button type="button" class="check-edit-button themed_pattern2">수정</button>
-        <button type="button" id="deleteBtn" class="check-delete-button themed_pattern2">삭제</button>
-      </div>
-    </div>
-    <div class="hidden_modifier_btn_box">
-      <div class="modify_buttons">
-        <button type="button" class="modify-confirm-button themed_pattern2">확인</button>
-        <button type="button" class="check-cancel-button themed_pattern2">취소</button>
-      </div>
-    </div>
-    `;
-    console.log('체크리스트아이템:', $checklistItem);
-    //checklist동적생성
-    return $checklistItem;
-    
-  };
-
-  const renderCheck = (checklist) => {
-    checklist.forEach((item) => {
-      const checkElement = createCheckElement(item);
-      $checklistAll.appendChild(checkElement)
-    });
-  };
-  /** get checklist **/
-  const getCheck = () => {
-    fetch(checkListURL, {
-      method:'GET',
-      headers:{'content-type':'application/json'}
-    })
-    .then((res) => res.json())
-    .then((checklist) => {
-        renderCheck(checklist);
-        //console.log(checklist);
+/** lightness mode **/
+(function lightnessMode () {
+  const darkIcon = document.querySelector('.dark_icon');
+  const lightIcon = document.querySelector('.light_icon');
+  //로컬 저장소에서 저장된 값 찾기
+  const isUserColorTheme = localStorage.getItem('color-theme');
+    //console.log('저장소 값:'+ isUserColorTheme);
+  //로컬 저장소에 없을 경우 시스템 설정을 기준으로 한다
+  const isOsColorTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    //console.log('isOsColorTheme:'+ isOsColorTheme);
+    function whichOne(){
+      if(isUserColorTheme){
+        return isUserColorTheme
+      } else {
+        return isOsColorTheme
       }
-    )
-    .catch(error => console.error('에러코드:', error))
-  };
-
-
-
-
-  /** add checklist **/
-  /* open add input */
-  (function showInput() {
-    const addIcon = document.getElementById("addIcon")
-    console.log(addIcon)
-    const memoBoxWrap = get(".memo_box_wrap");
-    const cancelBtn = get(".add_cancel_btn");
-
-    addIcon.addEventListener("click", () => {
-      memoBoxWrap.style.display = "block"
-    })
-    cancelBtn.addEventListener("click", () => {
-      memoBoxWrap.style.display = "none"
-    })
-    
-  })()
-
-  /* insert checklist*/
-  const addCheck = (e) => {
-    //e.preventDefault는 html에서 a태그나 submit 의 data를 전송시키거나 이동하는등의 동작이 있는데 해당 매소드는 그것을 방지함
-    //e.stopPropagation() 이벤트가 상위 엘리먼트에게 전달되는 것을 막아줌
-    e.preventDefault();
-    const $input = $checkForm.querySelector('input[type="text"]');
-    console.log('달러인풋:', $input)
-    const checkValue = $input.value;
-    const check = {
-      checked: false,
-      memo: checkValue
     };
+    const presentTheme = whichOne();
 
-    fetch(checkListURL, {
-      method:'POST',
-      headers: {'content-type':'application/json; charset=UTF-8'},
-      body: JSON.stringify(check),
-    })
-      .then((res) => {
-        if (res.status === 200 || res.status === 201) {
-          res.json();
-        } else {
-          console.error(res.statusText);
-        }
-      })
-      .catch((error) => console.error('에러코드:',error));
-  }
-
-  /** update checklist **/
-  /* input modifier */
-  const modifierInput = (e) => {
-    //console.log("수정버튼클릭함")
-    const $modifyTarget = e.target.closest(".checklist");
-    //console.log("목표타겟:", $modifyTarget)
-    const $modifyInput = $modifyTarget.querySelector("#list");
-    const $modifyLabel = $modifyTarget.querySelector("label");
-    const $targetValue =  $modifyTarget.innerText;
-    const $editBtnBox = $modifyTarget.querySelector(".hidden_btn_box");
-    const $modifyBtnBox = $modifyTarget.querySelector(".hidden_modifier_btn_box");
-
-    if(e.target.className === "check-edit-button themed_pattern2") {
-      $editBtnBox.style.display = "none";
-      $modifyBtnBox.style.display = "block";
-      $modifyLabel.style.display = "none";
-      $modifyInput.style.display = "block";
-      $modifyInput.value="";
-      $modifyInput.focus();
-      $modifyInput.value = $targetValue
+    if(presentTheme == 'dark'){
+      localStorage.setItem('color-theme', 'dark');
+      document.documentElement.setAttribute('color-theme', 'dark');
+      darkIcon.style.display = 'block';
+      lightIcon.style.display = 'none';
+    } else {
+      localStorage.setItem('color-theme', 'light');
+      document.documentElement.setAttribute('color-theme', 'light');
+      darkIcon.style.display = 'none';
+      lightIcon.style.display = 'block';
     }
-
-    if(e.target.className === "check-cancel-button themed_pattern2") {
-      $editBtnBox.style.display = "block";
-      $modifyBtnBox.style.display = "none";
-      $modifyLabel.style.display = "block";
-      $modifyInput.style.display = "none";
-    }
-  }
-
-  /* upadate checklist */
-  const modifier = (e) => {
-    if (e.target.className === "modify-confirm-button themed_pattern2") {
-      console.log("모디파이 확인 버튼")
-      const $modifyTarget = e.target.closest(".checklist");
-      const $modifyInput = $modifyTarget.querySelector("#list");
-      const id = $modifyTarget.dataset.id;
-      const memo = $modifyInput.value;
-
-      fetch(`${checkListURL}/${id}`, {
-      method:"PATCH",
-      headers:{'content-type':'application/json'},
-      body:JSON.stringify({ memo })
-    })
-      .then((res) => {
-        res.json();
-      })
-      .then(() => {
-        getCheck();
-      })
-      .catch(error => console.error('에러코드:',error))
-    } else return;
-  };
-
-
-  /* delete checklist */
-  const deleteCheck = (e) => {
-    if(e.target.className !== 'check-delete-button themed_pattern2' ) return;
-    const $removeTarget = e.target.closest(".checklist");
-    console.log("제거대상데이터셋", $removeTarget)
-    const id = $removeTarget.dataset.id;
+  /** 아이콘 클릭에 따른 상대 라이트&다크 모드 전환 **/
+    darkIcon.addEventListener('click', e => {
+      //console.log(e.target.className);
+      //console.log(e.target.style.display);
+      if (e.target.style.display = 'block'){
+        localStorage.setItem('color-theme', 'light');
+        document.documentElement.setAttribute('color-theme', 'light');
+        darkIcon.style.display = 'none';
+        lightIcon.style.display = 'block';
+      }
+        //console.log(document.documentElement.getAttribute('color-theme'));
+        //console.log('최종 저장 된 모드:' + localStorage.getItem('color-theme'))
+    });
     
-
-    fetch(`${checkListURL}/${id}`, {
-      method:"DELETE",
-      headers:{'content-type':'application/json'},
-      body:JSON.stringify({ id }),
-    })
-      .then((res) => {
-        res.json();
-      })
-      .then(() => {
-        getCheck()
-      })
-      .catch(error => console.error('에러코드:',error));
-  }
-
-
-
-  const init = () => {
-    window.addEventListener("DOMContentLoaded", getCheck);
-    $checkForm.addEventListener("submit", addCheck);
-    $checklistContainer.addEventListener("click", modifierInput);
-    $checklistContainer.addEventListener("click", modifier);
-    $checklistContainer.addEventListener("click", deleteCheck);
-
-  };
-
-  init();
-
+    lightIcon.addEventListener('click', (e) => {
+      //console.log(e.target.className);
+      //console.log(e.target.style.display);
+      if (e.target.style.display = 'block'){
+        localStorage.setItem('color-theme', 'dark');
+        document.documentElement.setAttribute('color-theme', 'dark');
+        darkIcon.style.display = 'block';
+        lightIcon.style.display = 'none';
+      } 
+        //console.log(document.documentElement.getAttribute('color-theme'));
+        //console.log('최종 저장 된 모드:' + localStorage.getItem('color-theme'))
+  });
 })();
 
-
-
-
-
-
-  
-
-
-
-
-
-
-
-/*** window.onload lightness mod setting & API call ***/
-window.onload = () => {
-
-  /* strikethrough */
-  $(document).on("click", ".checkText", function(){
-    $(this).toggleClass('strikethrough');
-  })
-  // $("input[name='checkList']").click(function(){
-  //   if($(this).is(":checked")){
-  //     confirm("해당 체크리스트를 삭제 하시겠습니까?")
-  //   }
-  // })
-
+/*** APIs call ***/
+(function () {
   /** geolocation **/
   navigator.geolocation.getCurrentPosition(function locationNow (position) {
     //console.log(position);
@@ -306,8 +122,8 @@ window.onload = () => {
         fetch(diplomatSafteyUrl)
         .then((res) => res.json())
         .then((myJson) => {
-        console.log(myJson);
-        console.log('공지사항길이', myJson.data.length);
+        //console.log(myJson);
+        //console.log('공지사항길이', myJson.data.length);
         
         if (myJson.data.length != 0){
           document.getElementById("notice_box").style.display = 'block';
@@ -326,7 +142,7 @@ window.onload = () => {
             }
           }
         } else {
-          console.log('외교부 공지 없음');
+          //console.log('외교부 공지 없음');
           document.getElementById("diplomatNothing").innerText = `${weatherCountry}의 외교부 공지사항 데이터가 없습니다.`;
           document.getElementById("notice_box").style.display = 'none';
         }
@@ -344,153 +160,368 @@ window.onload = () => {
       });
       
   });
+})();
 
-  /** loading lightness mode **/
-  const darkIcon = document.querySelector('.dark_icon');
-  const lightIcon = document.querySelector('.light_icon');
-  //로컬 저장소에서 저장된 값 찾기
-  const isUserColorTheme = localStorage.getItem('color-theme');
-    //console.log('저장소 값:'+ isUserColorTheme);
-  //로컬 저장소에 없을 경우 시스템 설정을 기준으로 한다
-  const isOsColorTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    //console.log('isOsColorTheme:'+ isOsColorTheme);
-    function whichOne(){
-      if(isUserColorTheme){
-        return isUserColorTheme
-      } else {
-        return isOsColorTheme
-      }
-    };
-    const presentTheme = whichOne();
-  //const presentTheme = () => (isUserColorTheme ? isUserColorTheme : isOsColorTheme);
-    //console.log('작동되어야 하는 값' + presentTheme)
-  //checklist
+/** checklist **/
+(function checklist () {
+  /* call checklist */
+  'use strict';
+  const checkListURL = 'http://localhost:4001/checkList';
+  const get = (target) => {
+    return document.querySelector(target);
+  };
+  //식별자에 사용되는 $는 document.getElementById처럼 단일한 변수임을 표시하는 것
+  //변수명으로 사용도가 낮은$를 변수명 앞에 붙여 다른 변수와 충돌을 방지하는 것
+  const $checklistAll = get(".checklistField");
+  const $checklistContainer = get(".checklistField");
+  const $checkForm = get(".check-form");  
 
-  /** initializing lightness mode **/
-    // console.log(isUserColorTheme);
-    // console.log(isOsColorTheme);
-    // console.log(presentTheme);
-    if(presentTheme == 'dark'){
-      localStorage.setItem('color-theme', 'dark');
-      document.documentElement.setAttribute('color-theme', 'dark');
-      darkIcon.style.display = 'block';
-      lightIcon.style.display = 'none';
-    } else {
-      localStorage.setItem('color-theme', 'light');
-      document.documentElement.setAttribute('color-theme', 'light');
-      darkIcon.style.display = 'none';
-      lightIcon.style.display = 'block';
-    }
-  /** 아이콘 클릭에 따른 상대 라이트&다크 모드 전환 **/
-    darkIcon.addEventListener('click', e => {
-      console.log(e.target.className);
-      console.log(e.target.style.display);
-      if (e.target.style.display = 'block'){
-        localStorage.setItem('color-theme', 'light');
-        document.documentElement.setAttribute('color-theme', 'light');
-        darkIcon.style.display = 'none';
-        lightIcon.style.display = 'block';
-      }
-        console.log(document.documentElement.getAttribute('color-theme'));
-        console.log('최종 저장 된 모드:' + localStorage.getItem('color-theme'))
-    });
+  /** rendering checklist **/
+  /* structure */
+  const createCheckElement = (checklist) => {
+    //const{a, b} = c의 의미는 const a = c.a; const b = c.b의 의미로 객체안의 값을 바로 변수로 할당시킨다.
+    //const[state, dispatch] = useReducer() 같은 대괄호의 경우 retun type의 두개인데 이것을 둘 다 받아 쓰기위해 array 로 받는 것임
+    //statae 라는 obj가 첫번째 return, dispatch라는 게 두번째 return
+    const {id, memo} = checklist;
+    //console.log(checklist);
+    //console.log(id);
     
-    lightIcon.addEventListener('click', (e) => {
-      console.log(e.target.className);
-      console.log(e.target.style.display);
-      if (e.target.style.display = 'block'){
-        localStorage.setItem('color-theme', 'dark');
-        document.documentElement.setAttribute('color-theme', 'dark');
-        darkIcon.style.display = 'block';
-        lightIcon.style.display = 'none';
-      } 
-        console.log(document.documentElement.getAttribute('color-theme'));
-        console.log('최종 저장 된 모드:' + localStorage.getItem('color-theme'))
-  });
+    const $checklistItem = document.createElement('div');
+    $checklistItem.dataset.id = id;
+    $checklistItem.id = id;
+    $checklistItem.classList.add("themed_pattern1", "arrangeCheck", "checklist");
+    $checklistItem.innerHTML = 
+    `
+    <input type="checkbox" id="checkbox" name="checkbox" class="checkbox" hidden /> 
+    <input type="text" id="list" name="checkList" class="checkList" hidden /> 
+    <label class="checkText memo_check " for="list" id="checklist">${memo}</label>
+    <div class="hidden_btn_box">
+      <div class="check_buttons">
+        <button type="button" class="check-edit-button themed_pattern2">수정</button>
+        <button type="button" id="deleteBtn" class="check-delete-button themed_pattern2">삭제</button>
+      </div>
+    </div>
+    <div class="hidden_modifier_btn_box">
+      <div class="modify_buttons">
+        <button type="button" class="modify-confirm-button themed_pattern2">확인</button>
+        <button type="button" class="check-cancel-button themed_pattern2">취소</button>
+      </div>
+    </div>
+    `;
+    //console.log('체크리스트아이템:', $checklistItem);
+    //checklist동적생성
+    return $checklistItem;
+    
+  };
+  /* render */
+  const renderCheck = (checklist) => {
+    checklist.forEach((item) => {
+      const checkElement = createCheckElement(item);
+      $checklistAll.appendChild(checkElement)
+    });
+  };
 
-}
+  /** get checklist **/
+  const getCheck = () => {
+    fetch(checkListURL, {
+      method:'GET',
+      headers:{'content-type':'application/json'}
+    })
+    .then((res) => res.json())
+    .then((checklist) => {
+        renderCheck(checklist);
+        //console.log(checklist);
+      }
+    )
+    .catch(error => console.error('에러코드:', error))
+  };
 
-/** mobile_menu **/
-/* mobile_menu_toggle */
-  $(".mobile_list").click(function(){
-    $(".mobile_menu").fadeToggle(200)
-  });
-  /*arcordian_menu*/
-  $(".mobile_menu_list").click(function(){
-    $(this).children('ul').slideToggle(200);
-    $(".mobile_menu_list").children('ul').not($(this).children('ul')).slideUp(200);
-  });
-  /* displayOff when click back */
-  $(document).mouseup(function(e){
-    if($(".mobile_menu_list").children("ul").has(e.target).length === 0){
-      $(".mobile_menu_list").children("ul").slideUp(0)
+  /** add checklist **/
+  /* open add input */
+  (function showInput() {
+    const addIcon = document.getElementById("addIcon")
+    //console.log(addIcon)
+    const memoBoxWrap = get(".memo_box_wrap");
+    const cancelBtn = get(".add_cancel_btn");
+
+    addIcon.addEventListener("click", () => {
+      memoBoxWrap.style.display = "block"
+    })
+    cancelBtn.addEventListener("click", () => {
+      memoBoxWrap.style.display = "none"
+    })
+    
+  })()
+
+  /* insert checklist*/
+  const addCheck = (e) => {
+    //e.preventDefault는 html에서 a태그나 submit 의 data를 전송시키거나 이동하는등의 동작이 있는데 해당 매소드는 그것을 방지함
+    //e.stopPropagation() 이벤트가 상위 엘리먼트에게 전달되는 것을 막아줌
+    e.preventDefault();
+    const $input = $checkForm.querySelector('input[type="text"]');
+    //console.log('달러인풋:', $input)
+    const checkValue = $input.value;
+    const check = {
+      checked: false,
+      memo: checkValue
     };
-  });
 
-  /*width-recognition*/
-  $(window).resize(function(){
-    const windowWidth = $(window).width();
-    if (windowWidth >= 768) {
-      $(".mobile_menu legend").addClass("blind");
-      $(".mobile_menu").show();
-    } 
-    if (windowWidth < 768) {
-      $(".mobile_menu legend").removeClass("blind");
-      $(".mobile_menu").hide();
-    }
-  });
-/* image_loading_toggle */
-  let imagesAll = document.querySelectorAll('img');
-  (function imageSet(){
-    if(localStorage.getItem('imageState')){
-      imageToggleChecked.checked = false;
-      for(i = 0; i < imagesAll.length; i++){
-        imagesAll[i].setAttribute('src', '../images/travellogLogo.png');
-      }
-    } else {
-      return false
-    }
-  })();
+    fetch(checkListURL, {
+      method:'POST',
+      headers: {'content-type':'application/json; charset=UTF-8'},
+      body: JSON.stringify(check),
+    })
+      .then((res) => {
+        if (res.status === 200 || res.status === 201) {
+          res.json();
+        } else {
+          //console.error(res.statusText);
+        }
+      })
+      .catch((error) => console.error('에러코드:',error));
+  }
 
-  imageToggleChecked.addEventListener('click', () => {
-    let imagesAll = document.querySelectorAll('img');
-    if(!imageToggleChecked.checked){
-      for(i = 0; i < imagesAll.length; i++){
-        imagesAll[i].setAttribute('src', '../images/travellogLogo.png');
+  /** update checklist **/
+  /* open input modifier */
+  const modifierInput = (e) => {
+    //console.log("수정버튼클릭함")
+    const $modifyTarget = e.target.closest(".checklist");
+    //console.log("목표타겟:", $modifyTarget)
+    const $modifyInput = $modifyTarget.querySelector("#list");
+    const $modifyLabel = $modifyTarget.querySelector("label");
+    const $targetValue =  $modifyTarget.innerText;
+    const $editBtnBox = $modifyTarget.querySelector(".hidden_btn_box");
+    const $modifyBtnBox = $modifyTarget.querySelector(".hidden_modifier_btn_box");
+
+    if(e.target.className === "check-edit-button themed_pattern2") {
+      $editBtnBox.style.display = "none";
+      $modifyBtnBox.style.display = "block";
+      $modifyLabel.style.display = "none";
+      $modifyInput.style.display = "block";
+      $modifyInput.value="";
+      $modifyInput.focus();
+      $modifyInput.value = $targetValue
+    }
+
+    if(e.target.className === "check-cancel-button themed_pattern2") {
+      $editBtnBox.style.display = "block";
+      $modifyBtnBox.style.display = "none";
+      $modifyLabel.style.display = "block";
+      $modifyInput.style.display = "none";
+    }
+  }
+
+  /* upadate checklist */
+  const modifier = (e) => {
+    if (e.target.className === "modify-confirm-button themed_pattern2") {
+      //console.log("모디파이 확인 버튼")
+      const $modifyTarget = e.target.closest(".checklist");
+      const $modifyInput = $modifyTarget.querySelector("#list");
+      const id = $modifyTarget.dataset.id;
+      const memo = $modifyInput.value;
+
+      fetch(`${checkListURL}/${id}`, {
+      method:"PATCH",
+      headers:{'content-type':'application/json'},
+      body:JSON.stringify({ memo })
+    })
+      .then((res) => {
+        res.json();
+      })
+      .then(() => {
+        getCheck();
+      })
+      .catch(error => console.error('에러코드:',error))
+    } else return;
+  };
+
+
+  /** delete checklist **/
+  const deleteCheck = (e) => {
+    if(e.target.className !== 'check-delete-button themed_pattern2' ) return;
+    const $removeTarget = e.target.closest(".checklist");
+    const id = $removeTarget.dataset.id;
+
+    fetch(`${checkListURL}/${id}`, {
+      method:"DELETE",
+      headers:{'content-type':'application/json'},
+      body:JSON.stringify({ id }),
+    })
+      .then((res) => {
+        res.json();
+      })
+      .then(() => {
+        getCheck()
+      })
+      .catch(error => console.error('에러코드:',error));
+  }
+
+  /** run each function **/
+  const init = () => {
+    window.addEventListener("DOMContentLoaded", getCheck);
+    $checkForm.addEventListener("submit", addCheck);
+    $checklistContainer.addEventListener("click", modifierInput);
+    $checklistContainer.addEventListener("click", modifier);
+    $checklistContainer.addEventListener("click", deleteCheck);
+  };
+  init();
+  
+  /* strikethrough */
+  $(document).on("click", ".checkText", function(){
+    $(this).toggleClass('strikethrough');
+  })
+
+})();
+
+/** UI menu **/
+(function uiMenu () {
+  const imageToggleChecked= document.getElementById("imageToggleCheck");
+  /** mobile_menu **/
+  /* mobile_menu_toggle */
+    $(".mobile_list").click(function(){
+      $(".mobile_menu").fadeToggle(200)
+    });
+    /*arcordian_menu*/
+    $(".mobile_menu_list").click(function(){
+      $(this).children('ul').slideToggle(200);
+      $(".mobile_menu_list").children('ul').not($(this).children('ul')).slideUp(200);
+    });
+    /* displayOff when click back */
+    $(document).mouseup(function(e){
+      if($(".mobile_menu_list").children("ul").has(e.target).length === 0){
+        $(".mobile_menu_list").children("ul").slideUp(0)
+      };
+    });
+
+    /*width-recognition*/
+    $(window).resize(function(){
+      const windowWidth = $(window).width();
+      if (windowWidth >= 768) {
+        $(".mobile_menu legend").addClass("blind");
+        $(".mobile_menu").show();
+      } 
+      if (windowWidth < 768) {
+        $(".mobile_menu legend").removeClass("blind");
+        $(".mobile_menu").hide();
       }
-      localStorage.setItem('imageState', imageToggleChecked.checked);
-      console.log(localStorage.getItem('imageState'));
+    });
+
+  /** bottom_menu **/ 
+  /* width-recognition */
+    $(window).resize(function(){
+      const windowWidth = $(window).width();
+      if (windowWidth >= 768) {
+        $(".bottom_menu_wrap").slideUp(0);
+      } else{
+        $(".bottom_menu_wrap").slideDown(0);
+      }
+    });
+    /* height-recognition */
+    $(window).scroll(function(){
+      const windowWidth = $(window).width();
+      const scrollHeight = $(window).scrollTop();
+      if (scrollHeight > 80 && windowWidth < 768) {
+        $(".bottom_menu_wrap").slideDown(0);
       } else {
-        localStorage.removeItem('imageState');
-        setTimeout(function() {window.location.reload()}, 300);
-        console.log(localStorage.getItem('imageState'));
+        $(".bottom_menu_wrap").slideUp(0);
       }
     })
 
+    /* image_loading_toggle */
+    let imagesAll = document.querySelectorAll('img');
+    (function imageSet(){
+      if(localStorage.getItem('imageState')){
+        imageToggleChecked.checked = false;
+        for(i = 0; i < imagesAll.length; i++){
+          imagesAll[i].setAttribute('src', '../images/travellogLogo.png');
+        }
+      } else {
+        return false
+      }
+    })();
 
-/** bottom_menu **/ 
-/* width-recognition */
-  $(window).resize(function(){
-    const windowWidth = $(window).width();
-    if (windowWidth >= 768) {
-      $(".bottom_menu_wrap").slideUp(0);
-    } else{
-      $(".bottom_menu_wrap").slideDown(0);
-    }
+    imageToggleChecked.addEventListener('click', () => {
+      let imagesAll = document.querySelectorAll('img');
+      if(!imageToggleChecked.checked){
+        for(i = 0; i < imagesAll.length; i++){
+          imagesAll[i].setAttribute('src', '../images/travellogLogo.png');
+        }
+        localStorage.setItem('imageState', imageToggleChecked.checked);
+        console.log(localStorage.getItem('imageState'));
+        } else {
+          localStorage.removeItem('imageState');
+          setTimeout(function() {window.location.reload()}, 300);
+          console.log(localStorage.getItem('imageState'));
+        }
+    })
+})();
+
+/** Modal **/
+(function modal () {
+  /** simplewriting **/
+  $("#datepicker").datepicker({
+    language: 'ko'
   });
-  /* height-recognition */
-  $(window).scroll(function(){
-    const windowWidth = $(window).width();
-    const scrollHeight = $(window).scrollTop();
-    if (scrollHeight > 80 && windowWidth < 768) {
-      $(".bottom_menu_wrap").slideDown(0);
-    } else {
-      $(".bottom_menu_wrap").slideUp(0);
-    }
-  })
 
-  
+  /** ckeditor5 **/
+  window.onload = () => {
+    ClassicEditor.create( document.querySelector( '#editor' ), { language: "ko"}
+    );
+  }
+
+  /** add paymentBox **/
+  function paymentFunc() {
+    const addBtn = document.getElementById('add_btn');
+    const deleteBtn = document.getElementById('delete_btn');
+    let payBox = document.getElementById('payBox0');
+    let clonned = document.getElementsByName("payBox");
+    let i = 1;
+
+    addBtn.addEventListener("click", () => {
+      if(document.querySelectorAll('.pay_box').length < 4){
+        const newPayBox = payBox.cloneNode(true);
+        payBox.after(newPayBox);
+        newPayBox.id = 'payBox' + i;
+        $('#payBox' + i).find("input").attr("name", "iSpendIt" + i);
+        i++;
+        console.log(clonned);
+      }  else {
+        return alert("최대 3칸 추가 할 수 있습니다.")
+      };
+    });
+
+    deleteBtn.addEventListener("click", () => {
+      let decrease = clonned.length;
+      if(decrease >= 2){
+        clonned[decrease - 1].remove();
+        decrease--;
+        i--;
+        i = 0 ? i = 1 : i;
+        console.log(clonned);
+      };
+    });
+  };
+  paymentFunc();
+
+  /* get today */
+  function todayNow() {
+    let putDate = document.getElementById("datepicker");
+    let getDate = new Date();
+    let today = `${getDate.getFullYear()}-${('0' + (getDate.getMonth() + 1)).slice(-2)}-${('0' + getDate.getDate()).slice(-2)}`;
+
+    putDate.value = today;
+
+    putDate.addEventListener('mouseout', () => {
+      if(!putDate.value) {
+        putDate.value = today;
+      }
+    });
     
+  }
+  todayNow();
+})();
+
+
 
 
 

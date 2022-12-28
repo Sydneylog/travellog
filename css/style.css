@@ -44,6 +44,7 @@ html{
 	--borderColor:hsla(0,0%,100%, 0.1);
 	--shadowText:rgba(255, 255, 255, 0.4);
 	--boxColor:#2c2c2c;
+	--input:#353535;
 }
 :root[color-theme='light']{
 	--background:#fff;
@@ -52,6 +53,7 @@ html{
 	--shadowText:#222;
 	--boxColor:#fafafa;
 	--boxShadow:1px 1px 8px rgba(187, 187, 187, 0.438);
+	--input:#ffffff;
 }
 body{
 	background:var(--background);
@@ -92,6 +94,9 @@ body{
 	color:var(--textColor);
 	outline:none;
 	border:var(--borderColor) 1px solid;
+}
+.themed_input{
+	background-color:var(--input)
 }
 .themed_text{
 	color:var(--textColor)
@@ -655,15 +660,6 @@ content{
 .desktop_menu{
 	display:none;
 }
-
-/** simple writing **/
-.simplewriting_box{
-	position:absolute;
-	width:100vw;
-	height:100vh;
-	background-color: rgba(0, 0, 0, .6);
-}
-
 
 
 /* breakpoint - 500px */
