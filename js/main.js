@@ -33,13 +33,20 @@ const checkListURL = 'http://localhost:4001/checkList';
     $checklistItem.classList.add("themed_pattern1", "arrangeCheck", "checklist");
     $checklistItem.innerHTML = 
     `
-    <input type="checkbox" id="list${id}" name="checkList" class="checkList" hidden /> 
-    <label class="checkText" for="list${id}">
-      <span id="checklist" class="memo_check">${memo}</span>
-    </label>
-    <div class="check_buttons">
-      <button type="button" class="check-edit-button themed_pattern2">수정</button>
-      <button type="button" id="deleteBtn${id}" class="check-delete-button themed_pattern2">삭제</button>
+    <input type="checkbox" id="checkbox" name="checkbox" class="checkbox" hidden /> 
+    <input type="text" id="list" name="checkList" class="checkList" hidden /> 
+    <label class="checkText memo_check " for="list" id="checklist">${memo}</label>
+    <div class="hidden_btn_box">
+      <div class="check_buttons">
+        <button type="button" class="check-edit-button themed_pattern2">수정</button>
+        <button type="button" id="deleteBtn" class="check-delete-button themed_pattern2">삭제</button>
+      </div>
+    </div>
+    <div class="hidden_modifier_btn_box">
+      <div class="modify_buttons">
+        <button type="button" class="modify-confirm-button themed_pattern2">확인</button>
+        <button type="button" class="check-cancel-button themed_pattern2">취소</button>
+      </div>
     </div>
     `;
     console.log('체크리스트아이템:', $checklistItem);
@@ -69,15 +76,33 @@ const checkListURL = 'http://localhost:4001/checkList';
     .catch(error => console.error('에러코드:', error))
   };
 
+
+
+
   /** add checklist **/
-  const addCheck = () => {
+  /* open add input */
+  (function showInput() {
+    const addIcon = document.getElementById("addIcon")
+    console.log(addIcon)
+    const memoBoxWrap = get(".memo_box_wrap");
+    const cancelBtn = get(".add_cancel_btn");
+
+    addIcon.addEventListener("click", () => {
+      memoBoxWrap.style.display = "block"
+    })
+    cancelBtn.addEventListener("click", () => {
+      memoBoxWrap.style.display = "none"
+    })
+    
+  })()
+
+  /* insert checklist*/
+  const addCheck = (e) => {
     //e.preventDefault는 html에서 a태그나 submit 의 data를 전송시키거나 이동하는등의 동작이 있는데 해당 매소드는 그것을 방지함
     //e.stopPropagation() 이벤트가 상위 엘리먼트에게 전달되는 것을 막아줌
     e.preventDefault();
-    const addIcon = document.getElementById("addIcon");
-    const memoBox = document.getElementById("memoBox");
-    addIcon.addEventListener("click", memoBox.setAttribute("display", "block"))
     const $input = $checkForm.querySelector('input[type="text"]');
+    console.log('달러인풋:', $input)
     const checkValue = $input.value;
     const check = {
       checked: false,
@@ -99,10 +124,63 @@ const checkListURL = 'http://localhost:4001/checkList';
       .catch((error) => console.error('에러코드:',error));
   }
 
+  /** update checklist **/
+  /* input modifier */
+  const modifierInput = (e) => {
+    //console.log("수정버튼클릭함")
+    const $modifyTarget = e.target.closest(".checklist");
+    //console.log("목표타겟:", $modifyTarget)
+    const $modifyInput = $modifyTarget.querySelector("#list");
+    const $modifyLabel = $modifyTarget.querySelector("label");
+    const $targetValue =  $modifyTarget.innerText;
+    const $editBtnBox = $modifyTarget.querySelector(".hidden_btn_box");
+    const $modifyBtnBox = $modifyTarget.querySelector(".hidden_modifier_btn_box");
 
-  /** delete checklist **/
+    if(e.target.className === "check-edit-button themed_pattern2") {
+      $editBtnBox.style.display = "none";
+      $modifyBtnBox.style.display = "block";
+      $modifyLabel.style.display = "none";
+      $modifyInput.style.display = "block";
+      $modifyInput.value="";
+      $modifyInput.focus();
+      $modifyInput.value = $targetValue
+    }
+
+    if(e.target.className === "check-cancel-button themed_pattern2") {
+      $editBtnBox.style.display = "block";
+      $modifyBtnBox.style.display = "none";
+      $modifyLabel.style.display = "block";
+      $modifyInput.style.display = "none";
+    }
+  }
+
+  /* upadate checklist */
+  const modifier = (e) => {
+    if (e.target.className === "modify-confirm-button themed_pattern2") {
+      console.log("모디파이 확인 버튼")
+      const $modifyTarget = e.target.closest(".checklist");
+      const $modifyInput = $modifyTarget.querySelector("#list");
+      const id = $modifyTarget.dataset.id;
+      const memo = $modifyInput.value;
+
+      fetch(`${checkListURL}/${id}`, {
+      method:"PATCH",
+      headers:{'content-type':'application/json'},
+      body:JSON.stringify({ memo })
+    })
+      .then((res) => {
+        res.json();
+      })
+      .then(() => {
+        getCheck();
+      })
+      .catch(error => console.error('에러코드:',error))
+    } else return;
+  };
+
+
+  /* delete checklist */
   const deleteCheck = (e) => {
-    console.log(e.target.className);
     if(e.target.className !== 'check-delete-button themed_pattern2' ) return;
     const $removeTarget = e.target.closest(".checklist");
     console.log("제거대상데이터셋", $removeTarget)
@@ -128,6 +206,8 @@ const checkListURL = 'http://localhost:4001/checkList';
   const init = () => {
     window.addEventListener("DOMContentLoaded", getCheck);
     $checkForm.addEventListener("submit", addCheck);
+    $checklistContainer.addEventListener("click", modifierInput);
+    $checklistContainer.addEventListener("click", modifier);
     $checklistContainer.addEventListener("click", deleteCheck);
 
   };
@@ -161,30 +241,6 @@ window.onload = () => {
   //     confirm("해당 체크리스트를 삭제 하시겠습니까?")
   //   }
   // })
-
-  /* checkbox_localstorage */
-  // to save 
-  const checkboxes = document.querySelectorAll(".checkList").length;
-  console.log(checkboxes)
-  function toSave() {
-    for (let i = 1; i <= checkboxes; i++){
-      const checkbox = document.getElementById('list' + String(i));
-      localStorage.setItem('list' + String(i), checkbox.checked);
-    }
-  }
-  // to load just using vanilla JS
-  for(let i = 1; i <= checkboxes; i++){
-    if(localStorage.length > 0){
-      const checkedContent = document.getElementById('list' + String(i)).nextElementSibling;
-      let checked = document.getElementById('list' + String(i)).checked = JSON.parse(localStorage.getItem('list' + String(i)));
-      if (checked) checkedContent.classList.add('strikethrough')
-    }
-  }
-  /* saving event */ 
-  window.addEventListener('change', toSave); 
-
-
-
 
   /** geolocation **/
   navigator.geolocation.getCurrentPosition(function locationNow (position) {
