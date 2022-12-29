@@ -73,58 +73,10 @@
   ],
   "travel_diary": [
     {
-      "id": 1,
-      "title": "태국왔다감",
-      "storyCard": "동남아 배낭여행",
-      "country": "TH",
-      "date": "",
-      "content": "여기와서 재미있게 놀았다",
-      "pictures": [
-        {
-          "idx": 1,
-          "pictureUrl": "./images/.jpg"
-        },
-        {
-          "idx": 2,
-          "pictureUrl": "./images/.jpg"
-        }
-      ]
-    },
-    {
-      "id": 2,
-      "title": "상하이 해외연수",
-      "storyCard": "상하이",
-      "country": "CN",
-      "date": "",
-      "content": "맛있는 것도 많이 먹고, 좋은 경험을 해서 좋았다.",
-      "pictures": [
-        {
-          "idx": 1,
-          "pictureUrl": "./images/.jpg"
-        },
-        {
-          "idx": 2,
-          "pictureUrl": "./images/.jpg"
-        }
-      ]
-    },
-    {
-      "id": 3,
-      "title": "호주워킹홀리데이",
-      "storyCard": "퍼스 & 시드니",
-      "country": "AU",
-      "date": "",
-      "content": "여러가지 힘든일도 있었지만 다양한 좋은 경험들을 많이 할 수 있었다.",
-      "pictures": [
-        {
-          "idx": 1,
-          "pictureUrl": "./images/.jpg"
-        },
-        {
-          "idx": 2,
-          "pictureUrl": "./images/.jpg"
-        }
-      ]
+      "title": "1235215325",
+      "date": "2022-12-29",
+      "content": "<p>125321532315</p>",
+      "id": 1
     }
   ],
   "checkList": [

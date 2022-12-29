@@ -253,7 +253,7 @@
     
   })()
 
-  /* insert checklist*/
+  /* POST checklist*/
   const addCheck = (e) => {
     //e.preventDefault는 html에서 a태그나 submit 의 data를 전송시키거나 이동하는등의 동작이 있는데 해당 매소드는 그것을 방지함
     //e.stopPropagation() 이벤트가 상위 엘리먼트에게 전달되는 것을 막아줌
@@ -275,7 +275,7 @@
         if (res.status === 200 || res.status === 201) {
           res.json();
         } else {
-          //console.error(res.statusText);
+          console.error(res.statusText);
         }
       })
       .catch((error) => console.error('에러코드:',error));
@@ -495,17 +495,12 @@
     language: 'ko'
   });
 
-  /** ckeditor5 **/
-  ClassicEditor.create(document.querySelector( '#editor' ), { language: "ko"}
-  );
-
-
   /** add paymentBox **/
   (function paymentFunc() {
     const addBtn = document.getElementById('add_btn');
     const deleteBtn = document.getElementById('delete_btn');
     const payBoxWrap = document.querySelector(".pay_box_wrap")
-    let payBox = document.getElementById('payBox');
+    let payBox = document.getElementById('payBox0');
     let clonned = document.getElementsByName("payBox");
 
     let i = 1;
@@ -581,7 +576,69 @@
 })();
 
 /** Modal POST **/
-(function modal () {
+(function modalInsert () {
+  const diaryURL = "http://localhost:4001/travel_diary";
+  
+  const $modalForm = document.querySelector(".modal_form");
+
+  let myEditor;
+
+  ClassicEditor
+    .create(document.querySelector("#editor"), { language: "ko"})
+    .then( (editor) => {
+      console.log('Editor was initialized:', editor );
+      myEditor = editor;
+    })
+    .catch((err) => {
+      console.error(err.stack);
+    });
+
+  
+  const insertModal = (e) => {
+    e.preventDefault();
+    
+    //const selectBox = document.getElementById("selectBox")
+    const $modalTitle = $modalForm.querySelector(".writing_title");
+    const $modalDate = $modalForm.querySelector(".date_picker");
+    const modalTitle = $modalTitle.value;
+    const modalDate = $modalDate.value;
+    //const selectedOption = selectBox.options[selectBox.selectedIndex];
+    //console.log(selectedOption)
+    const mainText = myEditor.getData();
+    const diaryContent = {
+      title: modalTitle,
+      date: modalDate,
+      //category: selectedOption,
+      content: mainText
+    };
+    console.log(modalTitle)
+    console.log(modalDate)
+    //console.log(selectedOption)
+    console.log(mainText)
+
+
+    fetch(diaryURL, {
+      method:'POST',
+      headers: {'content-type':'application/json; charset=UTF-8'},
+      body: JSON.stringify(diaryContent)
+    })
+      .then((res) => {
+        if (res.status === 200 || res.status === 201) {
+          res.json();
+        } else {
+          console.error(res.statusText);
+        }
+      })
+      .catch((error) => console.error('에러코드:',error));
+   
+    //const $modalPayBox = $modalForm.querySelector(".pay_box")
+    //지출 카테고리 메모
+  };
+
+  const runInsert = () => {
+    $modalForm.addEventListener("submit", insertModal)
+  }
+  runInsert();
 
 })();
 

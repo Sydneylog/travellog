@@ -62,7 +62,7 @@
 
   <!-- to solve mixed content error -->
   <!-- https에서 비동기로 http사이트에 request할 경우 암호화 이슈 때문에 문제가 발생한다 -->
-  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"/>
 </head>
 
 <body class="scrollbar hide_scroll">
@@ -466,7 +466,7 @@
     <section class="writingModal_box themed_background">
       <div class="inner themed_box">
         <h2 class="blind">심플 스토리 작성</h2>
-          <form>
+          <form class="modal_form">
             <fieldset class="simple_box">
               <legend class="blind">글 쓰기</legend>
               <div class="writingTitleBox">
@@ -477,16 +477,16 @@
               <div class="basicInfoBox">
                 <div>
                   <label for="writtingDate">작성 날짜:</label>
-                  <input type="text" id="datepicker">
+                  <input type="text" id="datepicker" class="date_picker">
                 </div>
-                <div class="select_box">
+                <div class="select_box" id="selectBox">
                   <select>
-                    <option>스토리 카드 선택</option>
-                    <option>기본 폴더</option>
-                    <option>동남아 배낭여행</option>
-                    <option>춘천 여행</option>
-                    <option>상하이</option>
-                    <option>퍼스 & 시드니</option>
+                    <option class="select_option" value="스토리 카드 선택">스토리 카드 선택</option>
+                    <option class="select_option" value="기본 폴더">기본 폴더</option>
+                    <option class="select_option" value="동남아 배낭여행">동남아 배낭여행</option>
+                    <option class="select_option" value="춘천 여행">춘천 여행</option>
+                    <option class="select_option" value="상하이">상하이</option>
+                    <option class="select_option" value="퍼스 & 시드니">퍼스 & 시드니</option>
                   </select>
                 </div>
               </div>
@@ -510,7 +510,7 @@
                 </div>
               </div>
               <div class="hiddenYbox scrollbar pay_box_wrap">
-                <div class="pay_box" id="payBox" name="payBox">
+                <div class="pay_box" id="payBox0" name="payBox">
                   <div class="paymentKind">
                     <div class="selectingPayment themed_border">
                       <div>
@@ -582,12 +582,12 @@
                   </div>
                 </div>
               </div>
-              <div class="main_text">
-                <textarea name="editor" id="editor" cols="30" rows="10"></textarea>
-              </div>
+              <textarea id="editor">
+               
+              </textarea>
               <div class="btn_box_last">
                 <button type="button" class="wrting_cancel_btn themed_button">취소</button>
-                <button type="button" class="wrting_ok_btn">작성 완료</button>
+                <button type="submit" class="wrting_ok_btn">작성 완료</button>
               </div>
             </fieldset>
           </form>
