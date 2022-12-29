@@ -456,39 +456,76 @@
     })
 })();
 
-/** Modal **/
+/** Modal UI **/
 (function modal () {
+  const get = (target) => {
+    return document.querySelector(target)
+  };
+
+  /** close modal button **/ 
+  (() => {
+    const $closeModalBtn = get(".wrting_cancel_btn");
+    const $openModalBtns = document.querySelectorAll(".open_modal");
+    const $modalSection = get(".writingModal_box");
+    const mobileMenu = get(".mobile_menu");
+    const $hideScroll = get(".hide_scroll");
+    
+    /* close modal */
+    $closeModalBtn.addEventListener("click", () => {
+      $modalSection.style.display = "none";
+      $hideScroll.style.overflow = "overlay";
+    });
+
+    /* open modal*/
+    for (const $openModalBtn of $openModalBtns) { 
+      $openModalBtn.addEventListener("click", () => {
+        if(mobileMenu.style.display = "block") {
+          mobileMenu.style.display = "none";
+          $hideScroll.style.overflow = "hidden";
+        }
+        $modalSection.style.display = "block";
+       
+      })
+    }
+  })();
+
+
   /** simplewriting **/
   $("#datepicker").datepicker({
     language: 'ko'
   });
 
   /** ckeditor5 **/
-  window.onload = () => {
-    ClassicEditor.create( document.querySelector( '#editor' ), { language: "ko"}
-    );
-  }
+  ClassicEditor.create(document.querySelector( '#editor' ), { language: "ko"}
+  );
+
 
   /** add paymentBox **/
-  function paymentFunc() {
+  (function paymentFunc() {
     const addBtn = document.getElementById('add_btn');
     const deleteBtn = document.getElementById('delete_btn');
-    let payBox = document.getElementById('payBox0');
+    const payBoxWrap = document.querySelector(".pay_box_wrap")
+    let payBox = document.getElementById('payBox');
     let clonned = document.getElementsByName("payBox");
-    let i = 1;
 
+    let i = 1;
+    
     addBtn.addEventListener("click", () => {
-      if(document.querySelectorAll('.pay_box').length < 4){
+      if(payBoxWrap.style.display="none"){
+        payBoxWrap.style.display="block"
+      } 
+      if(clonned.length < 4){
         const newPayBox = payBox.cloneNode(true);
         payBox.after(newPayBox);
         newPayBox.id = 'payBox' + i;
         $('#payBox' + i).find("input").attr("name", "iSpendIt" + i);
         i++;
         console.log(clonned);
-      }  else {
+      } else {
         return alert("최대 3칸 추가 할 수 있습니다.")
       };
     });
+      
 
     deleteBtn.addEventListener("click", () => {
       let decrease = clonned.length;
@@ -496,12 +533,31 @@
         clonned[decrease - 1].remove();
         decrease--;
         i--;
-        i = 0 ? i = 1 : i;
+        
+        console.log(i);
         console.log(clonned);
+      } else if (decrease = 1){
+        payBoxWrap.style.display="none"
+        i = 0;
+        j = 0;
       };
     });
-  };
-  paymentFunc();
+
+    const selectedBlue = (e) => {
+      const $state = e.target.closest(".selected_input");
+      console.log($state);
+      // $state.addEventListener("onchange", () => {
+      //   this.checked ? e.target.closest(".select_mark").style.color = "red" : "";
+      // })
+    }
+
+    const init = () => {
+      payBox.addEventListener("click", selectedBlue);
+    };
+    init();
+    
+  })();
+  
 
   /* get today */
   function todayNow() {
@@ -519,8 +575,15 @@
     
   }
   todayNow();
+
+  
+
 })();
 
+/** Modal POST **/
+(function modal () {
+
+})();
 
 
 
