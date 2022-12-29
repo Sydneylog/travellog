@@ -59,6 +59,10 @@
 
   <!-- js -->
   <script defer src="./js/main.js"></script>
+
+  <!-- to solve mixed content error -->
+  <!-- https에서 비동기로 http사이트에 request할 경우 암호화 이슈 때문에 문제가 발생한다 -->
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 </head>
 
 <body class="scrollbar hide_scroll">
