@@ -76,19 +76,19 @@
       "title": "1235215325",
       "date": "2022-12-29",
       "content": "<p>125321532315</p>",
-      "accountBook":[
+      "accountBook": [
         {
-          "cost":"120",
+          "cost": "120",
           "category": "shopping",
           "memo": "교통비"
         },
         {
-          "cost":"60",
+          "cost": "60",
           "category": "food",
           "memo": "스트릿푸드 팟타이"
         }
       ],
-      "storyCategory":"동남아 배낭여행",
+      "storyCategory": "동남아 배낭여행",
       "currencyUnit": "THB",
       "exchangeRate": "73",
       "id": 1
@@ -115,5 +115,1489 @@
       "memo": "육로 루트 방콕->치앙마이->루앙남타->",
       "id": 4
     }
+  ],
+  "coutryNameCurrency":[
+    {
+      "id": 1,
+      "countryKR": "아프가니스탄",
+      "countryCode": "AF",
+      "currencyCode": "USD"
+     },
+     {
+      "id": 2,
+      "countryKR": "알바니아",
+      "countryCode": "AL",
+      "currencyCode": "EUR"
+     },
+     {
+      "id": 3,
+      "countryKR": "올란드 제도",
+      "countryCode": "AX",
+      "currencyCode": "EUR"
+     },
+     {
+      "id": 4,
+      "countryKR": "알제리",
+      "countryCode": "DZ",
+      "currencyCode": "DZD"
+     },
+     {
+      "id": 5,
+      "countryKR": "미국령 사모아",
+      "countryCode": "AS",
+      "currencyCode": "USD"
+     },
+     {
+      "id": 6,
+      "countryKR": "안도라",
+      "countryCode": "AD",
+      "currencyCode": "EUR"
+     },
+     {
+      "id": 7,
+      "countryKR": "앙골라",
+      "countryCode": "AO",
+      "currencyCode": "AOA"
+     },
+     {
+      "id": 8,
+      "countryKR": "앙귈라",
+      "countryCode": "AI",
+      "currencyCode": "XCD"
+     },
+     {
+      "id": 9,
+      "countryKR": "앤티가 바부다",
+      "countryCode": "AG",
+      "currencyCode": "XCD"
+     },
+     {
+      "id": 10,
+      "countryKR": "아르헨티나",
+      "countryCode": "AR",
+      "currencyCode": "ARS"
+     },
+     {
+      "id": 11,
+      "countryKR": "아르메니아",
+      "countryCode": "AM",
+      "currencyCode": "AMD"
+     },
+     {
+      "id": 12,
+      "countryKR": "아루바",
+      "countryCode": "AW",
+      "currencyCode": "AWG"
+     },
+     {
+      "id": 13,
+      "countryKR": "호주",
+      "countryCode": "AU",
+      "currencyCode": "AUD"
+     },
+     {
+      "id": 14,
+      "countryKR": "오스트리아",
+      "countryCode": "AT",
+      "currencyCode": "EUR"
+     },
+     {
+      "id": 15,
+      "countryKR": "아제르바이잔",
+      "countryCode": "AZ",
+      "currencyCode": "AZM"
+     },
+     {
+      "id": 16,
+      "countryKR": "아조레스",
+      "countryCode": "PT",
+      "currencyCode": "EUR"
+     },
+     {
+      "id": 17,
+      "countryKR": "바하마",
+      "countryCode": "BS",
+      "currencyCode": "BSD"
+     },
+     {
+      "id": 18,
+      "countryKR": "바레인",
+      "countryCode": "BH",
+      "currencyCode": "BHD"
+     },
+     {
+      "id": 19,
+      "countryKR": "방글라데시",
+      "countryCode": "BD",
+      "currencyCode": "BDT"
+     },
+     {
+      "id": 20,
+      "countryKR": "바베이도스",
+      "countryCode": "BB",
+      "currencyCode": "BBD"
+     },
+     {
+      "id": 21,
+      "countryKR": "벨라루스",
+      "countryCode": "BY",
+      "currencyCode": "BYR"
+     },
+     {
+      "id": 22,
+      "countryKR": "벨기에",
+      "countryCode": "BE",
+      "currencyCode": "EUR"
+     },
+     {
+      "id": 23,
+      "countryKR": "벨리즈",
+      "countryCode": "BZ",
+      "currencyCode": "BZD"
+     },
+     {
+      "id": 24,
+      "countryKR": "베냉",
+      "countryCode": "BJ",
+      "currencyCode": "XOF"
+     },
+     {
+      "id": 25,
+      "countryKR": "버뮤다",
+      "countryCode": "BM",
+      "currencyCode": "BMD"
+     },
+     {
+      "id": 26,
+      "countryKR": "부탄",
+      "countryCode": "BT",
+      "currencyCode": "BTN"
+     },
+     {
+      "id": 27,
+      "countryKR": "볼리비아",
+      "countryCode": "BO",
+      "currencyCode": "BOB"
+     },
+     {
+      "id": 28,
+      "countryKR": "보네르, 세인트 유스타티우스, 사바",
+      "countryCode": "BQ",
+      "currencyCode": "USD"
+     },
+     {
+      "id": 29,
+      "countryKR": "보스니아",
+      "countryCode": "BA",
+      "currencyCode": "BAM"
+     },
+     {
+      "id": 30,
+      "countryKR": "보츠와나",
+      "countryCode": "BW",
+      "currencyCode": "BWP"
+     },
+     {
+      "id": 31,
+      "countryKR": "브라질",
+      "countryCode": "BR",
+      "currencyCode": "BRL"
+     },
+     {
+      "id": 32,
+      "countryKR": "영국령 버진 제도",
+      "countryCode": "VG",
+      "currencyCode": "USD"
+     },
+     {
+      "id": 33,
+      "countryKR": "브루나이",
+      "countryCode": "BN",
+      "currencyCode": "BND"
+     },
+     {
+      "id": 34,
+      "countryKR": "불가리아",
+      "countryCode": "BG",
+      "currencyCode": "EUR"
+     },
+     {
+      "id": 35,
+      "countryKR": "부르키나파소",
+      "countryCode": "BF",
+      "currencyCode": "XOF"
+     },
+     {
+      "id": 36,
+      "countryKR": "부룬디",
+      "countryCode": "BI",
+      "currencyCode": "BIF"
+     },
+     {
+      "id": 37,
+      "countryKR": "캄보디아",
+      "countryCode": "KH",
+      "currencyCode": "KHR"
+     },
+     {
+      "id": 38,
+      "countryKR": "카메룬",
+      "countryCode": "CM",
+      "currencyCode": "XAF"
+     },
+     {
+      "id": 39,
+      "countryKR": "캐나다",
+      "countryCode": "CA",
+      "currencyCode": "CAD"
+     },
+     {
+      "id": 40,
+      "countryKR": "카나리아 제도",
+      "countryCode": "ES",
+      "currencyCode": "EUR"
+     },
+     {
+      "id": 41,
+      "countryKR": "카보베르데",
+      "countryCode": "CV",
+      "currencyCode": "CVE"
+     },
+     {
+      "id": 42,
+      "countryKR": "케이맨 제도",
+      "countryCode": "KY",
+      "currencyCode": "KYD"
+     },
+     {
+      "id": 43,
+      "countryKR": "중앙아프리카공화국",
+      "countryCode": "CF",
+      "currencyCode": "XAF"
+     },
+     {
+      "id": 44,
+      "countryKR": "세우타",
+      "countryCode": "XC",
+      "currencyCode": "EUR"
+     },
+     {
+      "id": 45,
+      "countryKR": "차드",
+      "countryCode": "TD",
+      "currencyCode": "XAF"
+     },
+     {
+      "id": 46,
+      "countryKR": "칠레",
+      "countryCode": "CL",
+      "currencyCode": "CLP"
+     },
+     {
+      "id": 47,
+      "countryKR": "중국",
+      "countryCode": "CN",
+      "currencyCode": "RMB"
+     },
+     {
+      "id": 48,
+      "countryKR": "콜롬비아",
+      "countryCode": "CO",
+      "currencyCode": "COP"
+     },
+     {
+      "id": 49,
+      "countryKR": "코모로",
+      "countryCode": "KM",
+      "currencyCode": "USD"
+     },
+     {
+      "id": 50,
+      "countryKR": "콩고",
+      "countryCode": "CG",
+      "currencyCode": "XAF"
+     },
+     {
+      "id": 51,
+      "countryKR": "콩고민주공화국",
+      "countryCode": "CD",
+      "currencyCode": "CDF"
+     },
+     {
+      "id": 52,
+      "countryKR": "쿡 제도",
+      "countryCode": "CK",
+      "currencyCode": "NZD"
+     },
+     {
+      "id": 53,
+      "countryKR": "코스타리카",
+      "countryCode": "CR",
+      "currencyCode": "CRC"
+     },
+     {
+      "id": 54,
+      "countryKR": "크로아티아",
+      "countryCode": "HR",
+      "currencyCode": "EUR"
+     },
+     {
+      "id": 55,
+      "countryKR": "쿠바",
+      "countryCode": "CU",
+      "currencyCode": "CU"
+     },
+     {
+      "id": 56,
+      "countryKR": "쿠라카오",
+      "countryCode": "CW",
+      "currencyCode": "USD"
+     },
+     {
+      "id": 57,
+      "countryKR": "키프로스",
+      "countryCode": "CY",
+      "currencyCode": "EUR"
+     },
+     {
+      "id": 58,
+      "countryKR": "체코 공화국",
+      "countryCode": "CZ",
+      "currencyCode": "CZK"
+     },
+     {
+      "id": 59,
+      "countryKR": "덴마크",
+      "countryCode": "DK",
+      "currencyCode": "DKK"
+     },
+     {
+      "id": 60,
+      "countryKR": "지부티",
+      "countryCode": "DJ",
+      "currencyCode": "DJF"
+     },
+     {
+      "id": 61,
+      "countryKR": "도미니카",
+      "countryCode": "DM",
+      "currencyCode": "XCD"
+     },
+     {
+      "id": 62,
+      "countryKR": "도미니카 공화국",
+      "countryCode": "DO",
+      "currencyCode": "DOP"
+     },
+     {
+      "id": 63,
+      "countryKR": "동티모르",
+      "countryCode": "TL",
+      "currencyCode": "USD"
+     },
+     {
+      "id": 64,
+      "countryKR": "에콰도르",
+      "countryCode": "EC",
+      "currencyCode": "USD"
+     },
+     {
+      "id": 65,
+      "countryKR": "이집트",
+      "countryCode": "EG",
+      "currencyCode": "EGP"
+     },
+     {
+      "id": 66,
+      "countryKR": "엘살바도르",
+      "countryCode": "SV",
+      "currencyCode": "USD"
+     },
+     {
+      "id": 67,
+      "countryKR": "잉글랜드",
+      "countryCode": "GB",
+      "currencyCode": "GBP"
+     },
+     {
+      "id": 68,
+      "countryKR": "적도 기니",
+      "countryCode": "GQ",
+      "currencyCode": "XAF"
+     },
+     {
+      "id": 69,
+      "countryKR": "에리트레아",
+      "countryCode": "ER",
+      "currencyCode": "ERN"
+     },
+     {
+      "id": 70,
+      "countryKR": "에스토니아",
+      "countryCode": "EE",
+      "currencyCode": "EUR"
+     },
+     {
+      "id": 71,
+      "countryKR": "에티오피아",
+      "countryCode": "ET",
+      "currencyCode": "ETB"
+     },
+     {
+      "id": 72,
+      "countryKR": "유럽",
+      "countryCode": "EP",
+      "currencyCode": "EUR"
+     },
+     {
+      "id": 73,
+      "countryKR": "페로 제도",
+      "countryCode": "FO",
+      "currencyCode": "DKK"
+     },
+     {
+      "id": 74,
+      "countryKR": "피지",
+      "countryCode": "FJ",
+      "currencyCode": "FJD"
+     },
+     {
+      "id": 75,
+      "countryKR": "핀란드",
+      "countryCode": "FI",
+      "currencyCode": "EUR"
+     },
+     {
+      "id": 76,
+      "countryKR": "프랑스",
+      "countryCode": "FR",
+      "currencyCode": "EUR"
+     },
+     {
+      "id": 77,
+      "countryKR": "프랑스령 기아나",
+      "countryCode": "GF",
+      "currencyCode": "EUR"
+     },
+     {
+      "id": 78,
+      "countryKR": "프랑스령 폴리네시아",
+      "countryCode": "PF",
+      "currencyCode": "XPF"
+     },
+     {
+      "id": 79,
+      "countryKR": "가봉",
+      "countryCode": "GA",
+      "currencyCode": "XAF"
+     },
+     {
+      "id": 80,
+      "countryKR": "감비아",
+      "countryCode": "GM",
+      "currencyCode": "GMD"
+     },
+     {
+      "id": 81,
+      "countryKR": "그루지야",
+      "countryCode": "GE",
+      "currencyCode": "GEL"
+     },
+     {
+      "id": 82,
+      "countryKR": "독일",
+      "countryCode": "DE",
+      "currencyCode": "EUR"
+     },
+     {
+      "id": 83,
+      "countryKR": "가나",
+      "countryCode": "GH",
+      "currencyCode": "GHS"
+     },
+     {
+      "id": 84,
+      "countryKR": "지브롤터",
+      "countryCode": "GI",
+      "currencyCode": "GIP"
+     },
+     {
+      "id": 85,
+      "countryKR": "그리스",
+      "countryCode": "GR",
+      "currencyCode": "EUR"
+     },
+     {
+      "id": 86,
+      "countryKR": "그린랜드",
+      "countryCode": "GL",
+      "currencyCode": "DKK"
+     },
+     {
+      "id": 87,
+      "countryKR": "그레나다",
+      "countryCode": "GD",
+      "currencyCode": "XCD"
+     },
+     {
+      "id": 88,
+      "countryKR": "과들루프",
+      "countryCode": "GP",
+      "currencyCode": "EUR"
+     },
+     {
+      "id": 89,
+      "countryKR": "괌",
+      "countryCode": "GU",
+      "currencyCode": "USD"
+     },
+     {
+      "id": 90,
+      "countryKR": "과테말라",
+      "countryCode": "GT",
+      "currencyCode": "GTQ"
+     },
+     {
+      "id": 91,
+      "countryKR": "건지",
+      "countryCode": "GG",
+      "currencyCode": "GBP"
+     },
+     {
+      "id": 92,
+      "countryKR": "기니",
+      "countryCode": "GN",
+      "currencyCode": "GNF"
+     },
+     {
+      "id": 93,
+      "countryKR": "기니비사우",
+      "countryCode": "GW",
+      "currencyCode": "XOF"
+     },
+     {
+      "id": 94,
+      "countryKR": "가이아나",
+      "countryCode": "GY",
+      "currencyCode": "GYD"
+     },
+     {
+      "id": 95,
+      "countryKR": "아이티",
+      "countryCode": "HT",
+      "currencyCode": "HTG"
+     },
+     {
+      "id": 96,
+      "countryKR": "네덜란드",
+      "countryCode": "NL",
+      "currencyCode": "EUR"
+     },
+     {
+      "id": 97,
+      "countryKR": "온두라스",
+      "countryCode": "HN",
+      "currencyCode": "HNL"
+     },
+     {
+      "id": 98,
+      "countryKR": "홍콩",
+      "countryCode": "HK",
+      "currencyCode": "HKD"
+     },
+     {
+      "id": 99,
+      "countryKR": "헝가리",
+      "countryCode": "HU",
+      "currencyCode": "HUF"
+     },
+     {
+      "id": 100,
+      "countryKR": "아이슬란드",
+      "countryCode": "IS",
+      "currencyCode": "ISK"
+     },
+     {
+      "id": 101,
+      "countryKR": "인도",
+      "countryCode": "IN",
+      "currencyCode": "INR"
+     },
+     {
+      "id": 102,
+      "countryKR": "인도네시아",
+      "countryCode": "ID",
+      "currencyCode": "IDR"
+     },
+     {
+      "id": 103,
+      "countryKR": "이라크",
+      "countryCode": "IQ",
+      "currencyCode": "NID"
+     },
+     {
+      "id": 104,
+      "countryKR": "아일랜드 공화국",
+      "countryCode": "IE",
+      "currencyCode": "EUR"
+     },
+     {
+      "id": 105,
+      "countryKR": "이스라엘",
+      "countryCode": "IL",
+      "currencyCode": "ILS"
+     },
+     {
+      "id": 106,
+      "countryKR": "이탈리아",
+      "countryCode": "IT",
+      "currencyCode": "EUR"
+     },
+     {
+      "id": 107,
+      "countryKR": "아이보리 코스트",
+      "countryCode": "CI",
+      "currencyCode": "XOF"
+     },
+     {
+      "id": 108,
+      "countryKR": "자메이카",
+      "countryCode": "JM",
+      "currencyCode": "JMD"
+     },
+     {
+      "id": 109,
+      "countryKR": "일본",
+      "countryCode": "JP",
+      "currencyCode": "JPY"
+     },
+     {
+      "id": 110,
+      "countryKR": "저지",
+      "countryCode": "JE",
+      "currencyCode": "GBP"
+     },
+     {
+      "id": 111,
+      "countryKR": "요르단",
+      "countryCode": "JO",
+      "currencyCode": "JOD"
+     },
+     {
+      "id": 112,
+      "countryKR": "카자흐스탄",
+      "countryCode": "KZ",
+      "currencyCode": "KZT"
+     },
+     {
+      "id": 113,
+      "countryKR": "케냐",
+      "countryCode": "KE",
+      "currencyCode": "KES"
+     },
+     {
+      "id": 114,
+      "countryKR": "키리바시",
+      "countryCode": "KI",
+      "currencyCode": "AUD"
+     },
+     {
+      "id": 115,
+      "countryKR": "대한민국",
+      "countryCode": "KR",
+      "currencyCode": "KRW"
+     },
+     {
+      "id": 116,
+      "countryKR": "코스라에",
+      "countryCode": "FM",
+      "currencyCode": "USD"
+     },
+     {
+      "id": 117,
+      "countryKR": "코소보",
+      "countryCode": "KV",
+      "currencyCode": "EUR"
+     },
+     {
+      "id": 118,
+      "countryKR": "쿠웨이트",
+      "countryCode": "KW",
+      "currencyCode": "KWD"
+     },
+     {
+      "id": 119,
+      "countryKR": "키르기스스탄",
+      "countryCode": "KG",
+      "currencyCode": "KGS"
+     },
+     {
+      "id": 120,
+      "countryKR": "라오스",
+      "countryCode": "LA",
+      "currencyCode": "LAK"
+     },
+     {
+      "id": 121,
+      "countryKR": "라트비아",
+      "countryCode": "LV",
+      "currencyCode": "EUR"
+     },
+     {
+      "id": 122,
+      "countryKR": "레바논",
+      "countryCode": "LB",
+      "currencyCode": "LBP"
+     },
+     {
+      "id": 123,
+      "countryKR": "레소토",
+      "countryCode": "LS",
+      "currencyCode": "LSL"
+     },
+     {
+      "id": 124,
+      "countryKR": "라이베리아",
+      "countryCode": "LR",
+      "currencyCode": "LRD"
+     },
+     {
+      "id": 125,
+      "countryKR": "리비아",
+      "countryCode": "LY",
+      "currencyCode": "LYD"
+     },
+     {
+      "id": 126,
+      "countryKR": "리히텐슈타인",
+      "countryCode": "LI",
+      "currencyCode": "CHF"
+     },
+     {
+      "id": 127,
+      "countryKR": "리투아니아",
+      "countryCode": "LT",
+      "currencyCode": "EUR"
+     },
+     {
+      "id": 128,
+      "countryKR": "룩셈부르크",
+      "countryCode": "LU",
+      "currencyCode": "EUR"
+     },
+     {
+      "id": 129,
+      "countryKR": "마카오",
+      "countryCode": "MO",
+      "currencyCode": "MOP"
+     },
+     {
+      "id": 130,
+      "countryKR": "마케도니아(FYROM)",
+      "countryCode": "MK",
+      "currencyCode": "EUR"
+     },
+     {
+      "id": 131,
+      "countryKR": "마다가스카르",
+      "countryCode": "MG",
+      "currencyCode": "MGA"
+     },
+     {
+      "id": 132,
+      "countryKR": "마데이라",
+      "countryCode": "PT",
+      "currencyCode": "EUR"
+     },
+     {
+      "id": 133,
+      "countryKR": "말라위",
+      "countryCode": "MW",
+      "currencyCode": "MWK"
+     },
+     {
+      "id": 134,
+      "countryKR": "말레이시아",
+      "countryCode": "MY",
+      "currencyCode": "MYR"
+     },
+     {
+      "id": 135,
+      "countryKR": "몰디브",
+      "countryCode": "MV",
+      "currencyCode": "MVR"
+     },
+     {
+      "id": 136,
+      "countryKR": "말리",
+      "countryCode": "ML",
+      "currencyCode": "XOF"
+     },
+     {
+      "id": 137,
+      "countryKR": "몰타",
+      "countryCode": "MT",
+      "currencyCode": "EUR"
+     },
+     {
+      "id": 138,
+      "countryKR": "마셜 제도",
+      "countryCode": "MH",
+      "currencyCode": "USD"
+     },
+     {
+      "id": 139,
+      "countryKR": "마르티니크",
+      "countryCode": "MQ",
+      "currencyCode": "EUR"
+     },
+     {
+      "id": 140,
+      "countryKR": "모리타니",
+      "countryCode": "MR",
+      "currencyCode": "MRO"
+     },
+     {
+      "id": 141,
+      "countryKR": "모리셔스",
+      "countryCode": "MU",
+      "currencyCode": "MUR"
+     },
+     {
+      "id": 142,
+      "countryKR": "마요트",
+      "countryCode": "YT",
+      "currencyCode": "EUR"
+     },
+     {
+      "id": 143,
+      "countryKR": "멜리야",
+      "countryCode": "XL",
+      "currencyCode": "EUR"
+     },
+     {
+      "id": 144,
+      "countryKR": "멕시코",
+      "countryCode": "MX",
+      "currencyCode": "MXN"
+     },
+     {
+      "id": 145,
+      "countryKR": "미크로네시아 연방국",
+      "countryCode": "FM",
+      "currencyCode": "USD"
+     },
+     {
+      "id": 146,
+      "countryKR": "몰도바",
+      "countryCode": "MD",
+      "currencyCode": "MDL"
+     },
+     {
+      "id": 147,
+      "countryKR": "모나코",
+      "countryCode": "MC",
+      "currencyCode": "EUR"
+     },
+     {
+      "id": 148,
+      "countryKR": "몽골",
+      "countryCode": "MN",
+      "currencyCode": "MNT"
+     },
+     {
+      "id": 149,
+      "countryKR": "몬테네그로",
+      "countryCode": "ME",
+      "currencyCode": "EUR"
+     },
+     {
+      "id": 150,
+      "countryKR": "몬트세라트",
+      "countryCode": "MS",
+      "currencyCode": "XCD"
+     },
+     {
+      "id": 151,
+      "countryKR": "모로코",
+      "countryCode": "MA",
+      "currencyCode": "MAD"
+     },
+     {
+      "id": 152,
+      "countryKR": "모잠비크",
+      "countryCode": "MZ",
+      "currencyCode": "MZM"
+     },
+     {
+      "id": 153,
+      "countryKR": "나미비아",
+      "countryCode": "NA",
+      "currencyCode": "NAD"
+     },
+     {
+      "id": 154,
+      "countryKR": "네팔",
+      "countryCode": "NP",
+      "currencyCode": "NPR"
+     },
+     {
+      "id": 155,
+      "countryKR": "네덜란드",
+      "countryCode": "NL",
+      "currencyCode": "EUR"
+     },
+     {
+      "id": 156,
+      "countryKR": "뉴칼레도니아",
+      "countryCode": "NC",
+      "currencyCode": "XPF"
+     },
+     {
+      "id": 157,
+      "countryKR": "뉴질랜드",
+      "countryCode": "NZ",
+      "currencyCode": "NZD"
+     },
+     {
+      "id": 158,
+      "countryKR": "니카라과",
+      "countryCode": "NI",
+      "currencyCode": "NIO"
+     },
+     {
+      "id": 159,
+      "countryKR": "니제르",
+      "countryCode": "NE",
+      "currencyCode": "XOF"
+     },
+     {
+      "id": 160,
+      "countryKR": "나이지리아",
+      "countryCode": "NG",
+      "currencyCode": "NGN"
+     },
+     {
+      "id": 161,
+      "countryKR": "노퍽 섬",
+      "countryCode": "NF",
+      "currencyCode": "AUD"
+     },
+     {
+      "id": 162,
+      "countryKR": "북아일랜드",
+      "countryCode": "GB",
+      "currencyCode": "GBP"
+     },
+     {
+      "id": 163,
+      "countryKR": "북마리아나 제도",
+      "countryCode": "MP",
+      "currencyCode": "USD"
+     },
+     {
+      "id": 164,
+      "countryKR": "노르웨이",
+      "countryCode": "NO",
+      "currencyCode": "NOK"
+     },
+     {
+      "id": 165,
+      "countryKR": "오만",
+      "countryCode": "OM",
+      "currencyCode": "OMR"
+     },
+     {
+      "id": 166,
+      "countryKR": "파키스탄",
+      "countryCode": "PK",
+      "currencyCode": "PKR"
+     },
+     {
+      "id": 167,
+      "countryKR": "팔라우",
+      "countryCode": "PW",
+      "currencyCode": "USD"
+     },
+     {
+      "id": 168,
+      "countryKR": "파나마",
+      "countryCode": "PA",
+      "currencyCode": "PAB"
+     },
+     {
+      "id": 169,
+      "countryKR": "파푸아뉴기니",
+      "countryCode": "PG",
+      "currencyCode": "PGK"
+     },
+     {
+      "id": 170,
+      "countryKR": "파라과이",
+      "countryCode": "PY",
+      "currencyCode": "PYG"
+     },
+     {
+      "id": 171,
+      "countryKR": "페루",
+      "countryCode": "PE",
+      "currencyCode": "PEN"
+     },
+     {
+      "id": 172,
+      "countryKR": "필리핀",
+      "countryCode": "PH",
+      "currencyCode": "PHP"
+     },
+     {
+      "id": 173,
+      "countryKR": "폴란드",
+      "countryCode": "PL",
+      "currencyCode": "PLN"
+     },
+     {
+      "id": 174,
+      "countryKR": "포나페",
+      "countryCode": "FM",
+      "currencyCode": "USD"
+     },
+     {
+      "id": 175,
+      "countryKR": "포르투갈",
+      "countryCode": "PT",
+      "currencyCode": "EUR"
+     },
+     {
+      "id": 176,
+      "countryKR": "푸에르토리코",
+      "countryCode": "PR",
+      "currencyCode": "USD"
+     },
+     {
+      "id": 177,
+      "countryKR": "카타르",
+      "countryCode": "QA",
+      "currencyCode": "QAR"
+     },
+     {
+      "id": 178,
+      "countryKR": "레위니옹",
+      "countryCode": "RE",
+      "currencyCode": "EUR"
+     },
+     {
+      "id": 179,
+      "countryKR": "루마니아",
+      "countryCode": "RO",
+      "currencyCode": "ROL"
+     },
+     {
+      "id": 180,
+      "countryKR": "로타",
+      "countryCode": "MP",
+      "currencyCode": "USD"
+     },
+     {
+      "id": 181,
+      "countryKR": "러시아",
+      "countryCode": "RU",
+      "currencyCode": "RUB"
+     },
+     {
+      "id": 182,
+      "countryKR": "르완다",
+      "countryCode": "RW",
+      "currencyCode": "RWF"
+     },
+     {
+      "id": 183,
+      "countryKR": "사바",
+      "countryCode": "BQ",
+      "currencyCode": "ANG"
+     },
+     {
+      "id": 184,
+      "countryKR": "사이판",
+      "countryCode": "MP",
+      "currencyCode": "USD"
+     },
+     {
+      "id": 185,
+      "countryKR": "사모아",
+      "countryCode": "WS",
+      "currencyCode": "WST"
+     },
+     {
+      "id": 186,
+      "countryKR": "산마리노",
+      "countryCode": "SM",
+      "currencyCode": "EUR"
+     },
+     {
+      "id": 187,
+      "countryKR": "상투메프린시페",
+      "countryCode": "ST",
+      "currencyCode": "STD"
+     },
+     {
+      "id": 188,
+      "countryKR": "사우디아라비아",
+      "countryCode": "SA",
+      "currencyCode": "SAR"
+     },
+     {
+      "id": 189,
+      "countryKR": "스코틀랜드",
+      "countryCode": "GB",
+      "currencyCode": "GBP"
+     },
+     {
+      "id": 190,
+      "countryKR": "세네갈",
+      "countryCode": "SN",
+      "currencyCode": "XOF"
+     },
+     {
+      "id": 191,
+      "countryKR": "세르비아",
+      "countryCode": "RS",
+      "currencyCode": "EUR"
+     },
+     {
+      "id": 192,
+      "countryKR": "세이셸",
+      "countryCode": "SC",
+      "currencyCode": "SCR"
+     },
+     {
+      "id": 193,
+      "countryKR": "시에라리온",
+      "countryCode": "SL",
+      "currencyCode": "SLL"
+     },
+     {
+      "id": 194,
+      "countryKR": "싱가포르",
+      "countryCode": "SG",
+      "currencyCode": "SGD"
+     },
+     {
+      "id": 195,
+      "countryKR": "슬로바키아",
+      "countryCode": "SK",
+      "currencyCode": "EUR"
+     },
+     {
+      "id": 196,
+      "countryKR": "슬로베니아",
+      "countryCode": "SI",
+      "currencyCode": "EUR"
+     },
+     {
+      "id": 197,
+      "countryKR": "솔로몬 제도",
+      "countryCode": "SB",
+      "currencyCode": "SBD"
+     },
+     {
+      "id": 198,
+      "countryKR": "남아프리카",
+      "countryCode": "ZA",
+      "currencyCode": "ZAR"
+     },
+     {
+      "id": 199,
+      "countryKR": "스페인",
+      "countryCode": "ES",
+      "currencyCode": "EUR"
+     },
+     {
+      "id": 200,
+      "countryKR": "스리랑카",
+      "countryCode": "LK",
+      "currencyCode": "LKR"
+     },
+     {
+      "id": 201,
+      "countryKR": "세인트 바르텔레미",
+      "countryCode": "BL",
+      "currencyCode": "EUR"
+     },
+     {
+      "id": 202,
+      "countryKR": "세인트크리스토퍼",
+      "countryCode": "KN",
+      "currencyCode": "XCD"
+     },
+     {
+      "id": 203,
+      "countryKR": "세인트 크로이",
+      "countryCode": "VI",
+      "currencyCode": "USD"
+     },
+     {
+      "id": 204,
+      "countryKR": "세인트 유스타티우스",
+      "countryCode": "BQ",
+      "currencyCode": "ANG"
+     },
+     {
+      "id": 205,
+      "countryKR": "세인트 존",
+      "countryCode": "VI",
+      "currencyCode": "USD"
+     },
+     {
+      "id": 206,
+      "countryKR": "세인트키츠네비스",
+      "countryCode": "KN",
+      "currencyCode": "XCD"
+     },
+     {
+      "id": 207,
+      "countryKR": "세인트루시아",
+      "countryCode": "LC",
+      "currencyCode": "XCD"
+     },
+     {
+      "id": 208,
+      "countryKR": "쌩마뗑 및 세인트마틴",
+      "countryCode": "SX",
+      "currencyCode": "USD"
+     },
+     {
+      "id": 209,
+      "countryKR": "세인트토마스",
+      "countryCode": "VI",
+      "currencyCode": "USD"
+     },
+     {
+      "id": 210,
+      "countryKR": "세인트빈센트그레나딘",
+      "countryCode": "VC",
+      "currencyCode": "XCD"
+     },
+     {
+      "id": 211,
+      "countryKR": "수리남",
+      "countryCode": "SR",
+      "currencyCode": "SRG"
+     },
+     {
+      "id": 212,
+      "countryKR": "스와질랜드",
+      "countryCode": "SZ",
+      "currencyCode": "SZL"
+     },
+     {
+      "id": 213,
+      "countryKR": "스웨덴",
+      "countryCode": "SE",
+      "currencyCode": "SEK"
+     },
+     {
+      "id": 214,
+      "countryKR": "스위스",
+      "countryCode": "CH",
+      "currencyCode": "CHF"
+     },
+     {
+      "id": 215,
+      "countryKR": "타히티",
+      "countryCode": "PF",
+      "currencyCode": "XPF"
+     },
+     {
+      "id": 216,
+      "countryKR": "대만",
+      "countryCode": "TW",
+      "currencyCode": "TWD"
+     },
+     {
+      "id": 217,
+      "countryKR": "타지키스탄",
+      "countryCode": "TJ",
+      "currencyCode": "TJS"
+     },
+     {
+      "id": 218,
+      "countryKR": "탄자니아",
+      "countryCode": "TZ",
+      "currencyCode": "TZS"
+     },
+     {
+      "id": 219,
+      "countryKR": "태국",
+      "countryCode": "TH",
+      "currencyCode": "THB"
+     },
+     {
+      "id": 220,
+      "countryKR": "티니안",
+      "countryCode": "MP",
+      "currencyCode": "USD"
+     },
+     {
+      "id": 221,
+      "countryKR": "토고",
+      "countryCode": "TG",
+      "currencyCode": "XOF"
+     },
+     {
+      "id": 222,
+      "countryKR": "통가",
+      "countryCode": "TO",
+      "currencyCode": "TOP"
+     },
+     {
+      "id": 223,
+      "countryKR": "토르톨라",
+      "countryCode": "VG",
+      "currencyCode": "USD"
+     },
+     {
+      "id": 224,
+      "countryKR": "트리니다드토바고",
+      "countryCode": "TT",
+      "currencyCode": "TTD"
+     },
+     {
+      "id": 225,
+      "countryKR": "트루크",
+      "countryCode": "FM",
+      "currencyCode": "USD"
+     },
+     {
+      "id": 226,
+      "countryKR": "튀니지",
+      "countryCode": "TN",
+      "currencyCode": "TND"
+     },
+     {
+      "id": 227,
+      "countryKR": "터키",
+      "countryCode": "TR",
+      "currencyCode": "TRY"
+     },
+     {
+      "id": 228,
+      "countryKR": "투르크메니스탄",
+      "countryCode": "TM",
+      "currencyCode": "TMT"
+     },
+     {
+      "id": 229,
+      "countryKR": "터크스케이커스 제도",
+      "countryCode": "TC",
+      "currencyCode": "USD"
+     },
+     {
+      "id": 230,
+      "countryKR": "투발루",
+      "countryCode": "TV",
+      "currencyCode": "AUD"
+     },
+     {
+      "id": 231,
+      "countryKR": "미국령 버진 제도",
+      "countryCode": "VI",
+      "currencyCode": "USD"
+     },
+     {
+      "id": 232,
+      "countryKR": "우간다",
+      "countryCode": "UG",
+      "currencyCode": "UGX"
+     },
+     {
+      "id": 233,
+      "countryKR": "우크라이나",
+      "countryCode": "UA",
+      "currencyCode": "UAH"
+     },
+     {
+      "id": 234,
+      "countryKR": "유니언아일랜드",
+      "countryCode": "VC",
+      "currencyCode": "XCD"
+     },
+     {
+      "id": 235,
+      "countryKR": "아랍에미리트",
+      "countryCode": "AE",
+      "currencyCode": "AED"
+     },
+     {
+      "id": 236,
+      "countryKR": "영국",
+      "countryCode": "GB",
+      "currencyCode": "GBP"
+     },
+     {
+      "id": 237,
+      "countryKR": "미국",
+      "countryCode": "US",
+      "currencyCode": "USD"
+     },
+     {
+      "id": 238,
+      "countryKR": "우루과이",
+      "countryCode": "UY",
+      "currencyCode": "UYU"
+     },
+     {
+      "id": 239,
+      "countryKR": "우즈베키스탄",
+      "countryCode": "UZ",
+      "currencyCode": "UZS"
+     },
+     {
+      "id": 240,
+      "countryKR": "바누아투",
+      "countryCode": "VU",
+      "currencyCode": "VUV"
+     },
+     {
+      "id": 241,
+      "countryKR": "바티칸 시국",
+      "countryCode": "VA",
+      "currencyCode": "EUR"
+     },
+     {
+      "id": 242,
+      "countryKR": "베네수엘라",
+      "countryCode": "VE",
+      "currencyCode": "VEB"
+     },
+     {
+      "id": 243,
+      "countryKR": "베트남",
+      "countryCode": "VN",
+      "currencyCode": "VND"
+     },
+     {
+      "id": 244,
+      "countryKR": "버진 고르다",
+      "countryCode": "VG",
+      "currencyCode": "USD"
+     },
+     {
+      "id": 245,
+      "countryKR": "웨일스",
+      "countryCode": "GB",
+      "currencyCode": "GBP"
+     },
+     {
+      "id": 246,
+      "countryKR": "월리스 푸투나 제도",
+      "countryCode": "WF",
+      "currencyCode": "XPF"
+     },
+     {
+      "id": 247,
+      "countryKR": "야프",
+      "countryCode": "FM",
+      "currencyCode": "USD"
+     }
   ]
 }

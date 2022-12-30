@@ -78,38 +78,6 @@
     //weather API url
     const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=fca7b6ecde13fa2d4e140006f768fd79&units=metric`;
     
-    /** exchange rate API url **/
-
-    const $basicCurrencyUnit = String(geoplugin_currencyCode())
-    /* use local unit */
-    get(".localCurrencyUnit").innerText = $basicCurrencyUnit;
-    console.log($basicCurrencyUnit)
-
-    /* if location is Korea, to corfirm USDKRW*/
-    const unitOfCurrency = $basicCurrencyUnit === 'KRW' ? 'USD' : $basicCurrencyUnit
-    
-    const currencyHere = unitOfCurrency;
-    //console.log(currencyHere)
-    const exchangeUrl = `https://quotation-api-cdn.dunamu.com/v1/forex/recent?codes=FRX.KRW${currencyHere}`;
-
-    /* exchange rate */
-    fetch(exchangeUrl)
-      .then((res) => res.json())
-      .then((myJson) => {
-        console.log(myJson[0]);
-        const fxData = myJson[0];
-        const fxUnit = fxData.currencyCode;
-
-        console.log("현재환율:", fxData.cashBuyingPrice.toString())        
-        //현지가 한국일 경우의 환율은 1반환 아닐경우 현지 환율 반환
-        const koreaExchangeRate = $basicCurrencyUnit === "KRW" ? Number(1) : fxData.cashBuyingPrice.toString()
-        
-        getId("fxDate").innerText = myJson[0].date;
-        getId("baseRate").innerText = `${fxData.basePrice.toString()} ${fxUnit}/KRW`;
-        getId("fxBuying").innerText = `${fxData.cashBuyingPrice.toString()} ${fxUnit}/KRW`;
-        getId("exchangeRateNow").innerText = koreaExchangeRate;
-      });
-
     /* API-weather */
     fetch(weatherUrl)
       .then((res) => res.json())
@@ -135,6 +103,53 @@
 
         //diplomat flag API 
         const flagUrl = `https://apis.data.go.kr/1262000/CountryFlagService2/getCountryFlagList2?serviceKey=RHh9qBtKX0nX7AHYN9wc37tOXdekXhwz8L07fm3vc3rReNkBkkWM6YUaB0Eo3YDEiN7rRKN4mTfwePoyCFFUZA%3D%3D&returnType=JSON&numOfRows=1&cond[country_iso_alp2::EQ]=${weatherCountry}&pageNo=1`
+
+        const currencyCodeURL = `http://localhost:4001/coutryNameCurrency?countryCode=${weatherCountry}`;
+        
+        fetch(currencyCodeURL, {
+          method:'GET',
+          headers:{'content-type':'application/json'}
+        })
+        .then(res => res.json())
+        .then(data => {
+          const $basicCurrencyUnit = data[0].currencyCode;
+          /** exchange rate API url **/
+          /* use local unit */
+          get(".localCurrencyUnit").innerText = $basicCurrencyUnit;
+          console.log($basicCurrencyUnit)
+
+          /* if location is Korea, to corfirm USDKRW*/
+          const unitOfCurrency = $basicCurrencyUnit === 'KRW' ? 'USD' : $basicCurrencyUnit
+          const currencyHere = unitOfCurrency;
+          //console.log(currencyHere)
+          const exchangeUrl = `https://quotation-api-cdn.dunamu.com/v1/forex/recent?codes=FRX.KRW${currencyHere}`;
+
+          /* exchange rate */
+          fetch(exchangeUrl)
+            .then((res) => res.json())
+            .then((myJson) => {
+              console.log(myJson[0]);
+              const fxData = myJson[0];
+              const fxUnit = fxData.currencyCode;
+
+          console.log("현재환율:", fxData.cashBuyingPrice.toString())        
+          //현지가 한국일 경우의 환율은 1반환 아닐경우 현지 환율 반환
+          const koreaExchangeRate = $basicCurrencyUnit === "KRW" ? Number(1) : fxData.cashBuyingPrice.toString()
+              
+          getId("fxDate").innerText = myJson[0].date;
+          getId("baseRate").innerText = `${fxData.basePrice.toString()} ${fxUnit}/KRW`;
+          getId("fxBuying").innerText = `${fxData.cashBuyingPrice.toString()} ${fxUnit}/KRW`;
+          getId("exchangeRateNow").innerText = koreaExchangeRate;
+        });
+
+
+
+        })
+
+        
+
+
+
 
       
         /* diplomat saftey notice */
