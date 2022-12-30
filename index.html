@@ -33,9 +33,9 @@
 
   <!-- PWA -->
   <!-- manifest -->
-  <link rel="manifest" href="./manifest.json">
+  <!-- <link rel="manifest" href="./manifest.json"> -->
   <!-- service worker -->
-  <script src="./serviceWorker.js"></script>
+  <!-- <script src="./serviceWorker.js"></script> -->
 
   <!-- jquery -->
   <script src="./js/jquery-3.6.1.min.js"></script>
@@ -492,7 +492,7 @@
               </div>
               <div class="forPaybox">
                 <p>
-                  지출 기록
+                  지출 기록 
                 </p>
                 <div class="btn_box">
                   <p class="delete_btn" id="delete_btn">
@@ -507,10 +507,14 @@
                       add
                     </span>
                   </p>
+                  <div class="blind">
+                    <p>작성 국가</p>
+                    <span class="country_category"></span>
+                  </div>
                 </div>
               </div>
               <div class="hiddenYbox scrollbar pay_box_wrap">
-                <div class="pay_box" id="payBox0" name="payBox">
+                <div class="pay_box hide_display" id="payBox0" name="payBox">
                   <div class="paymentKind">
                     <div class="selectingPayment themed_border">
                       <div>
@@ -572,7 +576,8 @@
                   <div class="writingAmount">
                     <div class="how_much_paid">
                       <label for="amount">지출 금액:</label>
-                      <input type="text" id="amount" class="amount themed_input">THB<span id="localCurrencyUnit"></span>
+                      <input type="text" id="amount" class="amount themed_input">
+                      <span id="localCurrencyUnit"> </span>
                     </div>
                       <input type="text" id="currencyInput" hidden>
                     <div class="memo_box">
@@ -582,9 +587,7 @@
                   </div>
                 </div>
               </div>
-              <textarea id="editor">
-               
-              </textarea>
+              <textarea id="editor"></textarea>
               <div class="btn_box_last">
                 <button type="button" class="wrting_cancel_btn themed_button">취소</button>
                 <button type="submit" class="wrting_ok_btn">작성 완료</button>

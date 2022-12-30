@@ -58,6 +58,14 @@
 
 /*** APIs call ***/
 (function () {
+  /* getDOM */
+  const getId = (id) => {
+    return document.getElementById(id)
+  };
+  const get = (target) => {
+    return document.querySelector(target)
+  };
+
   /** geolocation **/
   navigator.geolocation.getCurrentPosition(function locationNow (position) {
     //console.log(position);
@@ -70,8 +78,12 @@
     const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=fca7b6ecde13fa2d4e140006f768fd79&units=metric`;
     
     /** exchange rate API url **/
+    /* use local unit */
+    document.getElementById("localCurrencyUnit").innerText = String(geoplugin_currencyCode());
+
+    /* if location is Korea, to get USDKRW exchangerate */
     function unitOfCurrency(){ 
-      if(String(geoplugin_currencyCode()) == 'KRW'){
+      if(String(geoplugin_currencyCode()) === 'KRW'){
         return 'USD'
       } else {
         return String(geoplugin_currencyCode())
@@ -80,18 +92,21 @@
     const currencyHere = unitOfCurrency();
     //console.log(currencyHere)
     const exchangeUrl = `https://quotation-api-cdn.dunamu.com/v1/forex/recent?codes=FRX.KRW${currencyHere}`;
+    
+   
 
     /* exchange rate */
     fetch(exchangeUrl)
       .then((res) => res.json())
       .then((myJson) => {
-        //console.log(myJson[0]);
+        console.log(myJson[0]);
         const fxData = myJson[0];
         const fxUnit = fxData.currencyCode;
         
-        document.getElementById("fxDate").innerText = fxData.date;
-        document.getElementById("baseRate").innerText = `${fxData.basePrice.toString()} ${fxUnit}/KRW`;
-        document.getElementById("fxBuying").innerText = `${fxData.cashBuyingPrice.toString()} ${fxUnit}/KRW`;
+        getId("fxDate").innerText = myJson[0].date;
+        getId("baseRate").innerText = `${fxData.basePrice.toString()} ${fxUnit}/KRW`;
+        getId("fxBuying").innerText = `${fxData.cashBuyingPrice.toString()} ${fxUnit}/KRW`;
+        
       });
 
     /* API-weather */
@@ -103,11 +118,14 @@
         const weatherIconId = myJson.weather[0].icon;
         const weatherCountry = myJson.sys.country;
 
-        document.getElementById("wCountry").innerText = myJson.sys.country;
-        document.getElementById("wCity").innerText = myJson.name;
-        document.getElementById("weather").innerText = myJson.weather[0].main;
-        document.getElementById("temperature").innerText = myJson.main.temp;
-        document.getElementById("humidity").innerText = myJson.main.humidity;
+        getId("wCountry").innerText = myJson.sys.country;
+        getId("wCity").innerText = myJson.name;
+        getId("weather").innerText = myJson.weather[0].main;
+        getId("temperature").innerText = myJson.main.temp;
+        getId("humidity").innerText = myJson.main.humidity;
+
+        get(".country_category").innerText = weatherCountry;
+        
 
         weatherIcon.setAttribute("src", "http://openweathermap.org/img/wn/" + weatherIconId + "@2x.png");
 
@@ -383,15 +401,17 @@
     });
     /*arcordian_menu*/
     $(".mobile_menu_list").click(function(){
-      $(this).children('ul').slideToggle(200);
+      $(this).children('ul').stop().slideToggle(200);
       $(".mobile_menu_list").children('ul').not($(this).children('ul')).slideUp(200);
+      
     });
     /* displayOff when click back */
-    $(document).mouseup(function(e){
-      if($(".mobile_menu_list").children("ul").has(e.target).length === 0){
-        $(".mobile_menu_list").children("ul").slideUp(0)
-      };
-    });
+    // 상단의 메뉴 토글의 슬라이드업이 하단의 코드로 인해 작동 되지 않는 문제 발생
+    // $(document).mouseup(function(e){
+    //   if($(".mobile_menu_list").children("ul").has(e.target).length === 0){
+    //     $(".mobile_menu_list").children("ul").slideUp(0)
+    //   };
+    // });
 
     /*width-recognition*/
     $(window).resize(function(){
@@ -502,14 +522,12 @@
     const payBoxWrap = document.querySelector(".pay_box_wrap")
     let payBox = document.getElementById('payBox0');
     let clonned = document.getElementsByName("payBox");
-
     let i = 1;
     
     addBtn.addEventListener("click", () => {
-      if(payBoxWrap.style.display="none"){
-        payBoxWrap.style.display="block"
-      } 
-      if(clonned.length < 4){
+      if(payBox.classList.contains("hide_display")){
+        payBox.classList.remove("hide_display")
+      } else if(clonned.length < 4){
         const newPayBox = payBox.cloneNode(true);
         payBox.after(newPayBox);
         newPayBox.id = 'payBox' + i;
@@ -520,6 +538,7 @@
         return alert("최대 3칸 추가 할 수 있습니다.")
       };
     });
+      
       
 
     deleteBtn.addEventListener("click", () => {
@@ -532,7 +551,7 @@
         console.log(i);
         console.log(clonned);
       } else if (decrease = 1){
-        payBoxWrap.style.display="none"
+        payBox.classList.add("hide_display")
         i = 0;
         j = 0;
       };
@@ -600,8 +619,12 @@
     //const selectBox = document.getElementById("selectBox")
     const $modalTitle = $modalForm.querySelector(".writing_title");
     const $modalDate = $modalForm.querySelector(".date_picker");
+    const $modalCountry = $modalForm.querySelector(".country_category");
+    const $modalCurrencyUnit = $modalForm.querySelector("#localCurrencyUnit");
     const modalTitle = $modalTitle.value;
     const modalDate = $modalDate.value;
+    const modalCurrencyUnit = $modalCurrencyUnit.innerText;
+    const modalCountryCate = $modalCountry.value;
     //const selectedOption = selectBox.options[selectBox.selectedIndex];
     //console.log(selectedOption)
     const mainText = myEditor.getData();
@@ -609,7 +632,9 @@
       title: modalTitle,
       date: modalDate,
       //category: selectedOption,
-      content: mainText
+      content: mainText,
+      currencyUnit: modalCurrencyUnit,
+      coutryCategory: modalCountryCate
     };
     console.log(modalTitle)
     console.log(modalDate)
