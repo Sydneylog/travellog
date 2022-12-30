@@ -511,6 +511,14 @@
                     <p>작성 국가</p>
                     <span class="country_category"></span>
                   </div>
+                  <div class="blind">
+                    <p>저장 환율</p>
+                    <span id="exchangeRateNow"></span>
+                  </div>
+                  <div class="blind">
+                    <p>화폐 단위</p>
+                    <span id="localCurrencyUnit" class="localCurrencyUnit"></span>
+                  </div>
                 </div>
               </div>
               <div class="hiddenYbox scrollbar pay_box_wrap">
@@ -577,7 +585,7 @@
                     <div class="how_much_paid">
                       <label for="amount">지출 금액:</label>
                       <input type="text" id="amount" class="amount themed_input">
-                      <span id="localCurrencyUnit"> </span>
+                      <span class="localCurrencyUnit"></span>
                     </div>
                       <input type="text" id="currencyInput" hidden>
                     <div class="memo_box">

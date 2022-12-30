@@ -71,29 +71,26 @@
     //console.log(position);
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
-    let nowDate = new Date().toISOString().substring(0,10).replace(/-/g,'');
+    //let nowDate = new Date().toISOString().substring(0,10).replace(/-/g,'');
 
     /* saving OPEN API url */
+    //-33.8667  151.2
     //weather API url
     const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=fca7b6ecde13fa2d4e140006f768fd79&units=metric`;
     
     /** exchange rate API url **/
-    /* use local unit */
-    document.getElementById("localCurrencyUnit").innerText = String(geoplugin_currencyCode());
 
-    /* if location is Korea, to get USDKRW exchangerate */
-    function unitOfCurrency(){ 
-      if(String(geoplugin_currencyCode()) === 'KRW'){
-        return 'USD'
-      } else {
-        return String(geoplugin_currencyCode())
-      }
-    }
-    const currencyHere = unitOfCurrency();
+    const $basicCurrencyUnit = String(geoplugin_currencyCode())
+    /* use local unit */
+    get(".localCurrencyUnit").innerText = $basicCurrencyUnit;
+    console.log($basicCurrencyUnit)
+
+    /* if location is Korea, to corfirm USDKRW*/
+    const unitOfCurrency = $basicCurrencyUnit === 'KRW' ? 'USD' : $basicCurrencyUnit
+    
+    const currencyHere = unitOfCurrency;
     //console.log(currencyHere)
     const exchangeUrl = `https://quotation-api-cdn.dunamu.com/v1/forex/recent?codes=FRX.KRW${currencyHere}`;
-    
-   
 
     /* exchange rate */
     fetch(exchangeUrl)
@@ -102,11 +99,15 @@
         console.log(myJson[0]);
         const fxData = myJson[0];
         const fxUnit = fxData.currencyCode;
+
+        console.log("현재환율:", fxData.cashBuyingPrice.toString())        
+        //현지가 한국일 경우의 환율은 1반환 아닐경우 현지 환율 반환
+        const koreaExchangeRate = $basicCurrencyUnit === "KRW" ? Number(1) : fxData.cashBuyingPrice.toString()
         
         getId("fxDate").innerText = myJson[0].date;
         getId("baseRate").innerText = `${fxData.basePrice.toString()} ${fxUnit}/KRW`;
         getId("fxBuying").innerText = `${fxData.cashBuyingPrice.toString()} ${fxUnit}/KRW`;
-        
+        getId("exchangeRateNow").innerText = koreaExchangeRate;
       });
 
     /* API-weather */
@@ -620,9 +621,11 @@
     const $modalTitle = $modalForm.querySelector(".writing_title");
     const $modalDate = $modalForm.querySelector(".date_picker");
     const $modalCountry = $modalForm.querySelector(".country_category");
+    const $modalExchangeRate = $modalForm.querySelector("#exchangeRateNow");
     const $modalCurrencyUnit = $modalForm.querySelector("#localCurrencyUnit");
     const modalTitle = $modalTitle.value;
     const modalDate = $modalDate.value;
+    const modalExchangeRate = $modalExchangeRate.innerText;
     const modalCurrencyUnit = $modalCurrencyUnit.innerText;
     const modalCountryCate = $modalCountry.value;
     //const selectedOption = selectBox.options[selectBox.selectedIndex];
@@ -633,6 +636,7 @@
       date: modalDate,
       //category: selectedOption,
       content: mainText,
+      exchnageRate: modalExchangeRate,
       currencyUnit: modalCurrencyUnit,
       coutryCategory: modalCountryCate
     };
@@ -655,9 +659,7 @@
         }
       })
       .catch((error) => console.error('에러코드:',error));
-   
-    //const $modalPayBox = $modalForm.querySelector(".pay_box")
-    //지출 카테고리 메모
+    
   };
 
   const runInsert = () => {
