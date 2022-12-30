@@ -22,6 +22,22 @@
   border: 1px solid hsla(0, 0%, 42%, 0.35);
   padding:2px;
 }
+.writingModal_box .writingTitleBox {
+  width:100%;
+}
+.writingModal_box .writingTitleBox .writing_title{
+  width:88%;
+  height:20px;
+}
+.writingModal_box hr{
+  margin:10px 0;
+}
+.writingModal_box #datepicker {
+  height:20px;
+  width:80px;
+  color:var(--textColor);
+  text-align:center;
+}
 
 .writingModal_box .inner{
   position:absolute;
@@ -52,15 +68,20 @@
   display:flex;
   color: var(--textColor);
   background-color: var(--input);
+  outline:none;
 }
 .writingModal_box .select_box .select_option{
   background-color:var(--boxColor);
   font-weight:300;
-  
 }
-
 .writingModal_box select::-ms-expand { 
   display:none; 
+}
+
+.writingModal_box .basicInfoBox{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .writingModal_box .pay_box{
@@ -71,11 +92,6 @@
   display:none;
 }
 
-.writingModal_box .basicInfoBox{
-  display:flex;
-  justify-content: space-between;
-  align-items: center;
-}
 .writingModal_box .selectingPayment{
   width:100%;
   margin:0 auto 2px;
@@ -84,27 +100,6 @@
   justify-content: space-around;
   box-sizing: border-box;
   /* border: 1px solid hsla(0, 0%, 42%, 0.1); */
-  
-}
-.writingModal_box .selectingPayment .selected_input {
-  display:none;
-}
-.writingModal_box .writingTitleBox {
-  width:100%;
-}
-
-.writingModal_box .writingTitleBox .writing_title{
-  width:88%;
-  height:20px;
-}
-.writingModal_box hr{
-  margin:10px 0;
-}
-.writingModal_box #datepicker {
-  height:20px;
-  width:80px;
-  color:var(--textColor);
-  text-align:center;
 }
 .writingModal_box .selectingPayment div{
   text-align: center;
@@ -114,19 +109,12 @@
 .writingModal_box .selectingPayment .material-icons {
   font-size: 1.8rem;
 }
-.writingModal_box .forPaybox p{
-  font-size:1.1rem;
-}
-.writingModal_box .forPaybox .btn_box {
-  width:50px;
-  display:flex;
-  align-items: center;
-  justify-content: space-between;
-  width:50px;
-  margin-top:10px;
-}
-.writingModal_box .forPaybox .btn_box span {
-  font-size:1.2rem;
+/* .writingModal_box .selectingPayment .selected_input {
+  display:none;
+} */
+.writingModal_box .selectingPayment span {
+  font-size: 1.0rem;
+  font-weight: 300;
 }
 .writingModal_box .writingAmount {
   display:flex;
@@ -155,6 +143,9 @@
   display:flex;
   align-items: center;
 }
+
+
+
 .writingModal_box .forPaybox{
   display:flex;
   justify-content: space-between;
@@ -162,10 +153,23 @@
 }
 
 .writingModal_box .forPaybox p{
+  font-size:1.1rem;
   display:flex;
   align-items: center;
   cursor:pointer;
 }
+.writingModal_box .forPaybox .btn_box {
+  width:50px;
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+  width:50px;
+  margin-top:10px;
+}
+.writingModal_box .forPaybox .btn_box span {
+  font-size:1.2rem;
+}
+
 .writingModal_box  .forPaybox .btn_text {
   font-size:1.4rem;
   font-weight:300

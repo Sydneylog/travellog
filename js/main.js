@@ -94,6 +94,7 @@
         getId("humidity").innerText = myJson.main.humidity;
 
         get(".country_category").innerText = weatherCountry;
+        //console.log("현재국가표시:", document.querySelector(".country_category").innerText);
         
 
         weatherIcon.setAttribute("src", "http://openweathermap.org/img/wn/" + weatherIconId + "@2x.png");
@@ -115,8 +116,8 @@
           const $basicCurrencyUnit = data[0].currencyCode;
           /** exchange rate API url **/
           /* use local unit */
-          get(".localCurrencyUnit").innerText = $basicCurrencyUnit;
-          console.log($basicCurrencyUnit)
+          document.querySelector(".localCurrencyUnit").innerText = $basicCurrencyUnit;
+          console.log("표시화폐단위:", document.querySelector(".localCurrencyUnit").innerText)
 
           /* if location is Korea, to corfirm USDKRW*/
           const unitOfCurrency = $basicCurrencyUnit === 'KRW' ? 'USD' : $basicCurrencyUnit
@@ -535,9 +536,10 @@
   (function paymentFunc() {
     const addBtn = document.getElementById('add_btn');
     const deleteBtn = document.getElementById('delete_btn');
-    const payBoxWrap = document.querySelector(".pay_box_wrap")
+    //const payBoxWrap = document.querySelector(".pay_box_wrap")
     let payBox = document.getElementById('payBox0');
     let clonned = document.getElementsByName("payBox");
+
     let i = 1;
     
     addBtn.addEventListener("click", () => {
@@ -549,13 +551,11 @@
         newPayBox.id = 'payBox' + i;
         $('#payBox' + i).find("input").attr("name", "iSpendIt" + i);
         i++;
-        console.log(clonned);
+        console.log(clonned.length);
       } else {
         return alert("최대 3칸 추가 할 수 있습니다.")
       };
     });
-      
-      
 
     deleteBtn.addEventListener("click", () => {
       let decrease = clonned.length;
@@ -563,28 +563,12 @@
         clonned[decrease - 1].remove();
         decrease--;
         i--;
-        
-        console.log(i);
-        console.log(clonned);
       } else if (decrease = 1){
         payBox.classList.add("hide_display")
         i = 0;
-        j = 0;
       };
     });
 
-    const selectedBlue = (e) => {
-      const $state = e.target.closest(".selected_input");
-      console.log($state);
-      // $state.addEventListener("onchange", () => {
-      //   this.checked ? e.target.closest(".select_mark").style.color = "red" : "";
-      // })
-    }
-
-    const init = () => {
-      payBox.addEventListener("click", selectedBlue);
-    };
-    init();
     
   })();
   
@@ -613,11 +597,9 @@
 /** Modal POST **/
 (function modalInsert () {
   const diaryURL = "http://localhost:4001/travel_diary";
-  
   const $modalForm = document.querySelector(".modal_form");
-
+  
   let myEditor;
-
   ClassicEditor
     .create(document.querySelector("#editor"), { language: "ko"})
     .then( (editor) => {
@@ -627,68 +609,83 @@
     .catch((err) => {
       console.error(err.stack);
     });
-
   
   const insertModal = (e) => {
     e.preventDefault();
     
-    //const selectBox = document.getElementById("selectBox")
-    const $modalTitle = $modalForm.querySelector(".writing_title");
-    const $modalDate = $modalForm.querySelector(".date_picker");
-    const $modalCountry = $modalForm.querySelector(".country_category");
-    const $modalExchangeRate = $modalForm.querySelector("#exchangeRateNow");
-    const $modalCurrencyUnit = $modalForm.querySelector("#localCurrencyUnit");
-    const modalTitle = $modalTitle.value;
-    const modalDate = $modalDate.value;
-    const modalExchangeRate = $modalExchangeRate.innerText;
-    const modalCurrencyUnit = $modalCurrencyUnit.innerText;
-    const modalCountryCate = $modalCountry.value;
-    //const selectedOption = selectBox.options[selectBox.selectedIndex];
-    //console.log(selectedOption)
-    const mainText = myEditor.getData();
-    const diaryContent = {
-      title: modalTitle,
-      date: modalDate,
-      //category: selectedOption,
-      content: mainText,
-      exchnageRate: modalExchangeRate,
-      currencyUnit: modalCurrencyUnit,
-      coutryCategory: modalCountryCate
-    };
-    console.log(modalTitle)
-    console.log(modalDate)
-    //console.log(selectedOption)
-    console.log(mainText)
+      const $modalTitle = $modalForm.querySelector(".writing_title");
+      const $modalDate = $modalForm.querySelector(".date_picker");
+      const $modalCountry = $modalForm.querySelector(".country_category");
+      const $modalExchangeRate = $modalForm.querySelector("#exchangeRateNow");
+      const $modalCurrencyUnit = $modalForm.querySelector("#localCurrencyUnit");
+      const $selectBox = $modalForm.querySelector(".selectedOne");
+      const $selected = $selectBox.options[$selectBox.selectedIndex];
 
+      const modalTitle = $modalTitle.value;
+      const modalDate = $modalDate.value;
+      const modalExchangeRate = $modalExchangeRate.innerText;
+      const modalCurrencyUnit = $modalCurrencyUnit.innerText;
+      const modalCountryCate = $modalCountry.innerText;
+      const selectedStoryCard = $selected.value;
 
-    fetch(diaryURL, {
-      method:'POST',
-      headers: {'content-type':'application/json; charset=UTF-8'},
-      body: JSON.stringify(diaryContent)
-    })
-      .then((res) => {
-        if (res.status === 200 || res.status === 201) {
-          res.json();
-        } else {
-          console.error(res.statusText);
+      /* 이중배열 for accountBooks */
+      const spendings = document.querySelectorAll(".amount");
+      const memos = document.querySelectorAll(".memo");
+      
+      $accountBooks = []
+      for (i = 0; i < spendings.length; i++) {
+        const $accountBook ={
+          cate: document.querySelector(`input[name="iSpendIt${i}"]:checked`).value,
+          cost: spendings[i].value,
+          memo: memos[i].value
         }
-      })
-      .catch((error) => console.error('에러코드:',error));
-    
-  };
+        $accountBooks.push($accountBook)
+      };
+      
+      console.log("배열 확인:",$accountBooks);
+      
+      const mainText = myEditor.getData();
+      const diaryContent = {  
+        title: modalTitle,
+        date: modalDate,
+        accountBooks: $accountBooks,
+        category: selectedStoryCard,
+        content: mainText,
+        exchnageRate: modalExchangeRate,
+        currencyUnit: modalCurrencyUnit,
+        countryCategory: modalCountryCate
+      };
 
+      
+      fetch(diaryURL, {
+        method:'POST',
+        headers: {'content-type':'application/json; charset=UTF-8'},
+        body: JSON.stringify(diaryContent)
+      })
+        .then((res) => {
+          if (res.status === 200 || res.status === 201) {
+            res.json();
+          } else {
+            console.error(res.statusText);
+          }
+        })
+        .catch((error) => console.error('에러코드:',error));
+      
+    };
+  
   const runInsert = () => {
     $modalForm.addEventListener("submit", insertModal)
   }
   runInsert();
 
 })();
-
-
-
-
-
   
 
-  
 
+
+  // for (itme of document.querySelectorAll(".select_mark")) {
+  //   itme.addEventListener("click", (e) => {
+  //     console.log(e.target.className);
+  //   })
+    
+  // }

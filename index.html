@@ -40,11 +40,6 @@
   <!-- jquery -->
   <script src="./js/jquery-3.6.1.min.js"></script>
  
-  <!-- vue -->
-  <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2"></script> -->
-  <!-- vue router -->
-  <!-- <script src="https://unpkg.com/vue-router@3/dist/vue-router.js"></script> -->
-
   <!-- ckeditor -->
   <script src="https://cdn.ckeditor.com/ckeditor5/35.4.0/classic/ckeditor.js"></script>
 
@@ -57,9 +52,8 @@
   <script defer src="./js/main.js"></script>
 
   <!-- to solve mixed content error -->
-  <!-- https에서 비동기로 http사이트에 request할 경우 암호화 이슈 때문에 문제가 발생한다 -->
-  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"/>
-</head>
+  <!-- https에서 비동기로 http사이트에 request할 경우 암호화 이슈 때문에 문제가 발생한다 그래서 그냥 해당 플러그인 삭제 후 디비 만듦-->
+
 
 <body class="scrollbar hide_scroll">
   <header>
@@ -476,7 +470,7 @@
                   <input type="text" id="datepicker" class="date_picker">
                 </div>
                 <div class="select_box" id="selectBox">
-                  <select>
+                  <select class="selectedOne">
                     <option class="select_option" value="스토리 카드 선택">스토리 카드 선택</option>
                     <option class="select_option" value="기본 폴더">기본 폴더</option>
                     <option class="select_option" value="동남아 배낭여행">동남아 배낭여행</option>
@@ -518,63 +512,61 @@
                 </div>
               </div>
               <div class="hiddenYbox scrollbar pay_box_wrap">
-                <div class="pay_box hide_display" id="payBox0" name="payBox">
-                  <div class="paymentKind">
-                    <div class="selectingPayment themed_border">
-                      <div>
-                        <label for="spendFood" class="select_mark">
-                          <span class="material-icons">
-                            restaurant
-                          </span><br>
-                          <span class="selected_text">식사</span> 
-                        </label><br>
-                        <input type="radio" name="iSpendIt0" id="spendFood" value="food" class="selected_input">
-                      </div>
-                      <div>
-                        <label for="spendMoving" class="select_mark">
-                          <span class="material-icons">
-                            airport_shuttle
-                          </span><br>
-                          <span class="selected_text">교통</span>
-                        </label><br>
-                        <input type="radio" name="iSpendIt0" id="spendMoving" value="transportation" class="selected_input">
-                      </div>
-                      <div>
-                        <label for ="spendAccomon" class="select_mark">
-                          <span class="material-icons">
-                            hotel
-                          </span><br>
-                          <span class="selected_text">숙소</span>
-                        </label><br>
-                        <input type="radio" name="iSpendIt0" id="spendAccomon" value="accomondation" class="selected_input">
-                      </div>
-                      <div>
-                        <label for="spendAttraction" class="select_mark">
-                          <span class="material-icons">
-                            attractions
-                          </span><br>
-                          <span class="selected_text">어트랙션</span>
-                        </label><br>
-                        <input type="radio" name="iSpendIt0" id="spendAttraction" value="attraction" class="selected_input">
-                      </div>
-                      <div>
-                        <label for="spendShopping" class="select_mark">
-                          <span class="material-icons">
-                            local_mall
-                          </span><br>
-                          <span class="selected_text">쇼핑</span>
-                        </label><br>
-                        <input type="radio" name="iSpendIt0" id="spendShopping" value="shopping" class="selected_input">
-                      </div>
-                      <div>
-                        <label for="spendEtc" class="select_mark">
-                          <span class="material-icons">
-                            table_bar
-                          </span><br>
-                          <span class="selected_text">기타</span>
-                        </label><br>
-                        <input type="radio" name="iSpendIt0" id="spendEtc" value="etc" class="selected_input">
-                      </div>
+                <div class="pay_box hide_display pay_box" id="payBox0" name="payBox">
+                  <div class="selectingPayment themed_border">
+                    <div>
+                      <label for="spendFood" class="select_mark">
+                        <span class="material-icons">
+                          restaurant
+                        </span><br>
+                        <span class="selected_text">식사</span> 
+                      </label><br>
+                      <input type="radio" name="iSpendIt0" id="spendFood" value="식사" class="selected_input">
+                    </div>
+                    <div>
+                      <label for="spendMoving" class="select_mark">
+                        <span class="material-icons">
+                          airport_shuttle
+                        </span><br>
+                        <span class="selected_text">교통</span>
+                      </label><br>
+                      <input type="radio" name="iSpendIt0" id="spendMoving" value="교통" class="selected_input">
+                    </div>
+                    <div>
+                      <label for ="spendAccomon" class="select_mark">
+                        <span class="material-icons">
+                          hotel
+                        </span><br>
+                        <span class="selected_text">숙소</span>
+                      </label><br>
+                      <input type="radio" name="iSpendIt0" id="spendAccomon" value="숙소" class="selected_input">
+                    </div>
+                    <div>
+                      <label for="spendAttraction" class="select_mark">
+                        <span class="material-icons">
+                          attractions
+                        </span><br>
+                        <span class="selected_text">어트랙션</span>
+                      </label><br>
+                      <input type="radio" name="iSpendIt0" id="spendAttraction" value="어트랙션" class="selected_input">
+                    </div>
+                    <div>
+                      <label for="spendShopping" class="select_mark">
+                        <span class="material-icons">
+                          local_mall
+                        </span><br>
+                        <span class="selected_text">쇼핑</span>
+                      </label><br>
+                      <input type="radio" name="iSpendIt0" id="spendShopping" value="쇼핑" class="selected_input">
+                    </div>
+                    <div>
+                      <label for="spendEtc" class="select_mark">
+                        <span class="material-icons">
+                          table_bar
+                        </span><br>
+                        <span class="selected_text">기타</span>
+                      </label><br>
+                      <input type="radio" name="iSpendIt0" id="spendEtc" value="기타" class="selected_input">
                     </div>
                   </div>
                   <div class="writingAmount">
