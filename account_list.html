@@ -347,51 +347,73 @@
           })
           .then((res) => res.json())
           .then((travel_diary) => {
-            //console.log(travel_diary)
-            function sumCost(target){
-              if(Array.isArray(target)){
-                return target.reduce((prev, current) => prev + current.cost, 0);
-              } else {
-                let sum = 0;
-                for (const idx of Object.values(target)) {
-                  sum += sumPrice(idx);
+            console.log(travel_diary)
+            let shopping = [];
+            let food = [];
+            let transportation = [];
+            let accomondation = [];
+            let attraction = [];
+            let etc= [];
+
+            for(i = 0; i < travel_diary.length; i++){
+              let $shopping = Object.keys(travel_diary[i].accountBooks).includes("shopping") ? travel_diary[i].accountBooks.shopping[0].cost : "";
+              let $food = Object.keys(travel_diary[i].accountBooks).includes("food") ? travel_diary[i].accountBooks.food[0].cost : "";
+             
+              let $transportation = Object.keys(travel_diary[i].accountBooks).includes("transportation") ? travel_diary[i].accountBooks.transportation[0].cost : "";
+              let $accomondation = Object.keys(travel_diary[i].accountBooks).includes("accomondation") ? travel_diary[i].accountBooks.accomondation[0].cost : "";
+              let $attraction = Object.keys(travel_diary[i]).includes("attraction") ? travel_diary[i].attraction.accomondation[0].cost : "";
+              let $etc = Object.keys(travel_diary[i]).includes("etc") ? travel_diary[i].etc.accomondation[0].cost : "";
+
+              shopping.push(Number($shopping));
+              food.push(Number($food));
+              transportation.push(Number($transportation));
+              attraction.push(Number($attraction));
+              accomondation.push(Number($accomondation));
+              etc.push(Number($etc));
+            };
+            const totalShopping = shopping.reduce((acc, curr) => (acc + curr));
+            const totalfood = food.reduce((acc, curr) => (acc + curr));
+            const totalAccomondation = accomondation.reduce((acc, curr) => (acc + curr));
+            const totalTransportation = transportation.reduce((acc, curr) => (acc + curr));
+            const totalAttraction = attraction.reduce((acc, curr) => (acc + curr));
+            const totalEtc = etc.reduce((acc, curr) => (acc + curr));
+            console.log(travel_diary[2].accountBooks.transportation[0].cost)
+            const total = totalShopping + totalfood + totalAccomondation + totalTransportation + totalAttraction + totalEtc;
+            console.log(total)
+            
+            const ctx = document.getElementById('myChart').getContext('2d');
+            const myChart = new Chart(ctx, {
+                type: 'doughnut',
+                plugins:[ChartDataLabels],
+                data: {
+                    labels: ['식사', '교통', '어트랙션', '쇼핑', '숙소', '기타'],
+                    datasets: [{
+                        label: '# of Votes',
+                        data: [totalfood, totalTransportation, totalAttraction, totalShopping, totalAccomondation, totalEtc],
+                        datalabels:{
+                          color:'white',
+                        },
+                        backgroundColor: [
+                            'rgba(255, 99, 132)',
+                            'rgba(54, 162, 235)',
+                            'rgba(255, 206, 86)',
+                            'rgba(75, 192, 192)',
+                            'rgba(153, 102, 255)',
+                            'rgba(255, 159, 64)'
+                        ],
+                        borderWidth: 2
+                    }]
                 }
-                return sum;
-              };
-            console.log(sumCost)
-            }
-            sumCost(travel_diary);
-            }
-          )
+            });
+
+
+
+          })
           .catch(error => console.error('에러코드:', error))
         };
      
 
 
-      const ctx = document.getElementById('myChart').getContext('2d');
-      const myChart = new Chart(ctx, {
-          type: 'doughnut',
-          plugins:[ChartDataLabels],
-          data: {
-              labels: ['식사', '교통', '어트랙션', '쇼핑', '숙소', '기타'],
-              datasets: [{
-                  label: '# of Votes',
-                  data: [12, 5, 3, 5, 10, 20],
-                  datalabels:{
-                    color:'white',
-                  },
-                  backgroundColor: [
-                      'rgba(255, 99, 132)',
-                      'rgba(54, 162, 235)',
-                      'rgba(255, 206, 86)',
-                      'rgba(75, 192, 192)',
-                      'rgba(153, 102, 255)',
-                      'rgba(255, 159, 64)'
-                  ],
-                  borderWidth: 2
-              }]
-          }
-      });
 
       (function () {
         window.addEventListener("DOMContentLoaded", getCheck);

@@ -77,21 +77,21 @@
       "title": "태국 2일차 여행",
       "date": "2023-01-03",
       "accountBooks": {
-        "교통": [
+        "transportation": [
           {
             "cate": "교통",
             "cost": "180",
             "memo": "관광지까지"
           }
         ],
-        "쇼핑": [
+        "shopping": [
           {
             "cate": "쇼핑",
             "cost": "120",
             "memo": "옐로 커리세트 메뉴"
           }
         ],
-        "식사": [
+        "food": [
           {
             "cate": "식사",
             "cost": "60",
@@ -102,43 +102,74 @@
       "category": "동남아 배낭여행",
       "content": "<p>둘째날둘째날둘째날둘째날둘째날둘째날둘째날둘째날</p>",
       "exchnageRate": "1",
-      "currencyUnit": "KRW",
+      "currencyUnit": "THB",
       "countryCategory": "KR"
     },
     {
       "title": "태국 1일차 여행",
       "date": "2023-01-01",
       "accountBooks": {
-        "sortedAccountBooks": {
-          "쇼핑": [
-            {
-              "cate": "쇼핑",
-              "cost": "110",
-              "memo": "쇼핑"
-            }
-          ],
-          "교통": [
-            {
-              "cate": "교통",
-              "cost": "220",
-              "memo": "숙소비"
-            }
-          ],
-          "숙소": [
-            {
-              "cate": "숙소",
-              "cost": "120",
-              "memo": "버스비"
-            }
-          ]
-        }
+        "shopping": [
+          {
+            "cate": "쇼핑",
+            "cost": "110",
+            "memo": "쇼핑"
+          }
+        ],
+        "transportation": [
+          {
+            "cate": "교통",
+            "cost": "220",
+            "memo": "숙소비"
+          }
+        ],
+        "accomondation": [
+          {
+            "cate": "숙소",
+            "cost": "120",
+            "memo": "버스비"
+          }
+        ]
       },
       "category": "동남아 배낭여행",
       "content": "",
       "exchnageRate": "1",
-      "currencyUnit": "KRW",
+      "currencyUnit": "THB",
       "countryCategory": "KR",
       "id": 2
+    },
+    {
+      "title": "3일차",
+      "date": "2023-01-03",
+      "accountBooks": {
+        "shopping": [
+          {
+            "cate": "쇼핑",
+            "cost": "123",
+            "memo": "쇼핑"
+          }
+        ],
+        "food": [
+          {
+            "cate": "식사",
+            "cost": "50",
+            "memo": "버스"
+          }
+        ],
+        "transportation": [
+          {
+            "cate": "교통",
+            "cost": "110",
+            "memo": "똠양스프"
+          }
+        ]
+      },
+      "category": "동남아 배낭여행",
+      "content": "<p>3일차3일차3일차</p>",
+      "exchnageRate": "1",
+      "currencyUnit": "THB",
+      "countryCategory": "KR",
+      "id": 3
     }
   ],
   "checkList": [

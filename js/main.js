@@ -633,7 +633,7 @@
       const memos = document.querySelectorAll(".memo");
       
       //배열생성
-      $accountBooks = []
+      $accountBooks = [];
       for (i = 0; i < spendings.length; i++) {
         const $accountBook ={
           cate: document.querySelector(`input[name="iSpendIt${i}"]:checked`).value,
@@ -657,7 +657,7 @@
       const diaryContent = {  
         title: modalTitle,
         date: modalDate,
-        accountBooks:{sortedAccountBooks},
+        accountBooks:sortedAccountBooks,
         category: selectedStoryCard,
         content: mainText,
         exchnageRate: modalExchangeRate,
