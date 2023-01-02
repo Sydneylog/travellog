@@ -73,136 +73,72 @@
   ],
   "travel_diary": [
     {
-      "title": "태국 첫 번째 날 오전 기록",
-      "date": "2022-12-30",
-      "accountBooks": [
-        {
-          "cate": "쇼핑",
-          "cost": "20",
-          "memo": "팔찌 한 개"
-        },
-        {
-          "cate": "식사",
-          "cost": "60",
-          "memo": "망고밥(디저트)"
-        },
-        {
-          "cate": "교통",
-          "cost": "120",
-          "memo": "버스비"
-        },
-        {
-          "cate": "숙소",
-          "cost": "260",
-          "memo": "게스트하우스"
-        }
-      ],
-      "category": "동남아 배낭여행",
-      "content": "<p>밥 먹고 식당 가고</p><p>공항에서 바로 나왔을 때</p><p>사우나에 들어 온 줄 알았다.</p>",
-      "exchnageRate": "1",
-      "currencyUnit": "KRW",
-      "countryCategory": "KR",
-      "id": 5
-    },
-    {
-      "title": "태국 첫 번째 날 오후 기록",
-      "date": "2022-12-30",
-      "accountBooks": [
-        {
-          "cate": "쇼핑",
-          "cost": "10",
-          "memo": "컨버터"
-        },
-        {
-          "cate": "식사",
-          "cost": "100",
-          "memo": "팟타이&모닝글로리볶음"
-        },
-        {
-          "cate": "교통",
-          "cost": "150",
-          "memo": "관광지 까지"
-        }
-      ],
-      "category": "동남아 배낭여행",
-      "content": "<p>밥 먹고 식당 가고</p><p>공항에서 바로 나왔을 때</p><p>사우나에 들어 온 줄 알았다.</p>",
-      "exchnageRate": "1",
-      "currencyUnit": "KRW",
-      "countryCategory": "KR",
-      "id": 6
-    },
-    {
-      "title": "2차 테스트",
-      "date": "2023-01-02",
-      "accountBooks": [
-        {
-          "cate": "쇼핑",
-          "cost": "30",
-          "memo": "순창고추장"
-        },
-        {
-          "cate": "교통",
-          "cost": "11",
-          "memo": "점심"
-        },
-        {
-          "cate": "식사",
-          "cost": "24",
-          "memo": "왕복 출근"
-        }
-      ],
-      "category": "퍼스 & 시드니",
-      "content": "<p>일상 생활 비용</p>",
-      "exchnageRate": "1",
-      "currencyUnit": "KRW",
-      "countryCategory": "KR",
-      "id": 7
-    },
-    {
-      "title": "방콕테스트",
-      "date": "2023-01-02",
-      "accountBooks": [
-        {
-          "cate": "식사",
-          "cost": "20",
-          "memo": "군것질"
-        },
-        {
-          "cate": "식사",
-          "cost": "16",
-          "memo": "망고쥬스"
-        }
-      ],
-      "category": "동남아 배낭여행",
-      "content": "",
-      "exchnageRate": "1",
-      "currencyUnit": "KRW",
-      "countryCategory": "KR",
-      "id": 8
-    },
-    {
-      "title": "테스트3",
-      "date": "2023-01-02",
-      "accountBooks": [
-        [
+      "id": 1,
+      "title": "태국 2일차 여행",
+      "date": "2023-01-03",
+      "accountBooks": {
+        "교통": [
           {
             "cate": "교통",
-            "cost": "11",
-            "memo": "비용테스트"
-          },
+            "cost": "180",
+            "memo": "관광지까지"
+          }
+        ],
+        "쇼핑": [
           {
-            "cate": "교통",
-            "cost": "112",
-            "memo": "비용테스트"
+            "cate": "쇼핑",
+            "cost": "120",
+            "memo": "옐로 커리세트 메뉴"
+          }
+        ],
+        "식사": [
+          {
+            "cate": "식사",
+            "cost": "60",
+            "memo": "팔찌 하나"
           }
         ]
-      ],
+      },
+      "category": "동남아 배낭여행",
+      "content": "<p>둘째날둘째날둘째날둘째날둘째날둘째날둘째날둘째날</p>",
+      "exchnageRate": "1",
+      "currencyUnit": "KRW",
+      "countryCategory": "KR"
+    },
+    {
+      "title": "태국 1일차 여행",
+      "date": "2023-01-01",
+      "accountBooks": {
+        "sortedAccountBooks": {
+          "쇼핑": [
+            {
+              "cate": "쇼핑",
+              "cost": "110",
+              "memo": "쇼핑"
+            }
+          ],
+          "교통": [
+            {
+              "cate": "교통",
+              "cost": "220",
+              "memo": "숙소비"
+            }
+          ],
+          "숙소": [
+            {
+              "cate": "숙소",
+              "cost": "120",
+              "memo": "버스비"
+            }
+          ]
+        }
+      },
       "category": "동남아 배낭여행",
       "content": "",
       "exchnageRate": "1",
       "currencyUnit": "KRW",
       "countryCategory": "KR",
-      "id": 9
+      "id": 2
     }
   ],
   "checkList": [

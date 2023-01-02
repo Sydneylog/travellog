@@ -632,6 +632,7 @@
       const spendings = document.querySelectorAll(".amount");
       const memos = document.querySelectorAll(".memo");
       
+      //배열생성
       $accountBooks = []
       for (i = 0; i < spendings.length; i++) {
         const $accountBook ={
@@ -641,14 +642,22 @@
         }
         $accountBooks.push($accountBook)
       };
-      
+      //배열속 객체로
       console.log("배열 확인:",$accountBooks);
-      
+      const sortedAccountBooks = $accountBooks.reduce((acc, curr) =>{
+        const {cate} = curr;
+        if (acc[cate]) acc[cate].push(curr);
+        else acc[cate] = [curr];
+        return acc;
+      }, {});
+      console.log(sortedAccountBooks);
+
+
       const mainText = myEditor.getData();
       const diaryContent = {  
         title: modalTitle,
         date: modalDate,
-        accountBooks:[$accountBooks],
+        accountBooks:{sortedAccountBooks},
         category: selectedStoryCard,
         content: mainText,
         exchnageRate: modalExchangeRate,
