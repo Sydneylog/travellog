@@ -1,5 +1,5 @@
 /** lightness mode **/
-(function lightnessMode () {
+(function () {
   const darkIcon = document.querySelector('.dark_icon');
   const lightIcon = document.querySelector('.light_icon');
   //로컬 저장소에서 저장된 값 찾기
@@ -198,7 +198,7 @@
 })();
 
 /** checklist **/
-(function checklist () {
+(function() {
   /* call checklist */
   'use strict';
   const checkListURL = 'http://localhost:4001/checkList';
@@ -409,7 +409,7 @@
 })();
 
 /** UI menu **/
-(function uiMenu () {
+(function () {
   const imageToggleChecked= document.getElementById("imageToggleCheck");
   /** mobile_menu **/
   /* mobile_menu_toggle */
@@ -494,7 +494,7 @@
 })();
 
 /** Modal UI **/
-(function modal () {
+(function() {
   const get = (target) => {
     return document.querySelector(target)
   };
@@ -595,7 +595,7 @@
 })();
 
 /** Modal POST **/
-(function modalInsert () {
+(function () {
   const diaryURL = "http://localhost:4001/travel_diary";
   const $modalForm = document.querySelector(".modal_form");
   
@@ -648,7 +648,7 @@
       const diaryContent = {  
         title: modalTitle,
         date: modalDate,
-        accountBooks: $accountBooks,
+        accountBooks:[$accountBooks],
         category: selectedStoryCard,
         content: mainText,
         exchnageRate: modalExchangeRate,

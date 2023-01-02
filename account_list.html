@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>account list</title>
+    <!-- viewport&favicon -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="favicon.png">
+    <!-- fonts -->
+  <!-- font:dohyeon -->
+  <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+  <!-- font:dongle 300 400 700 -->
+  <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@300;400;700&display=swap" rel="stylesheet">
+  <!-- css -->
+  <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/common.css">
+  <!-- jquery -->
+  <script src="./js/jquery-3.6.1.min.js"></script>
+  <!-- chart -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+  <!-- google material -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- js -->
+  <script defer src="./js/common.js"></script>
+  <style>
+    .account_content {
+      font-size: 1.4rem;
+      padding-top:60px;
+      margin:auto;
+      display:flex;
+      justify-content: center;
+    }
+    .account_content h2{
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    .account_content .inner{
+      width:80%;
+    }
+    .account_content .list_box{
+      font-family: "dongle";
+      width:100%;
+    }
+    .account_content .list_box .account_list {
+      border-radius:10px;
+      width:95%;
+      max-width:600px;
+      margin:auto;
+      font-size:1.5rem;
+      padding: 10px;
+      padding-left:20px;
+      display:block;
+      color:var(--textColor);
+      cursor: pointer;
+
+    }
+    .account_content .list_box .account_list:not(:last-child){
+      margin-bottom:5px;
+    }
+  </style>
+</head>
+<body>
+  <body class="scrollbar hide_scroll">
+    <header>
+    <!-- nav -->
+      <nav class="navbar themed_box">
+        <div class="inner">
+          <div class="top_left">
+            <h1>
+              <a href="./index.html" class="themed_box_title">
+                travelLog
+              </a>
+            </h1>
+            <span class="material-icons size">
+              <a href="#" class="themed_box_title">
+                notifications_none
+              </a>
+            </span>
+          </div>
+          <div class="top_right">
+            <div class="mod_selector">
+              <p class="material-icons dark_icon pointer mode_size">
+                mode_night
+              </p>
+              <p class="material-icons light_icon pointer mode_size">
+                light_mode
+              </p>
+            </div>
+            <span class="material-icons size pointer mobile_list">
+              manage_search
+            </span>
+          </div>
+        </div>
+      </nav>
+  
+    <!-- mobile_menu -->
+      <div class="mobile_menu themed_background">
+        <div class="inner">
+          <h3 class="blind">모바일 메뉴</h3>
+          <div>
+            <form>
+              <fieldset>
+                <legend class="blind">검색</legend>
+                <label for="searchBar" class="blind">검색 박스</label>
+                <div class="searchBar_wrap">
+                  <input type="text" class="searchBar" name="searchBar" id="searchBar">
+                  <span class="material-icons search_icon">
+                    search
+                  </span>
+                </div>
+              </fieldset>
+            </form>
+          </div>
+          <hr>
+          <ul class="tablet_nav .themed_text">
+            <li class="mobile_menu_list">
+              여행 일지 리스트
+              <span class="material-icons bottom_arrow">
+                arrow_drop_down
+              </span>
+              <ul class="themed_boxBackground">
+                <li>최근 작성 목록</li>
+                <li>일자 별 보기</li>
+                <li>장소 별 보기</li>
+              </ul>
+            </li>
+            <li class="mobile_menu_list">
+              일지 작성 하기
+              <span class="material-icons bottom_arrow">
+                arrow_drop_down
+              </span>
+              <ul class="themed_boxBackground">
+                <li>일지 작성</li>
+                <li class="open_modal">간편 작성</li>
+              </ul>
+            </li>
+            <li class="mobile_menu_list">
+              여행 경비 통계
+            </li>
+            <li class="mobile_menu_list">
+              체크리스트 작성
+            </li>
+          </ul>
+          <hr>
+  
+          <div class="imageload_toggle_box">
+            <h4>개인 설정</h4>
+            <fieldset>
+              <legend>이미지 로딩 선택</legend>
+              <input type="checkbox" class="image_toggle_check" id="imageToggleCheck" hidden checked>
+              <label for="imageToggleCheck">
+                <div class="image_switching">
+                  <div class="cirlce"></div>
+                </div>
+              </label>
+            </fieldset>
+          </div>
+        </div>
+      </div>
+  
+    <!-- desktop menu -->
+      <div class="desktop_menu themed_box">
+        <h2 class="blind">데스크탑 화면 메뉴</h2>
+        <ul>
+          <li>데스크탑 전용메뉴 테스트</li>
+          <li>데스크탑 전용메뉴 테스트</li>
+          <li>데스크탑 전용메뉴 테스트</li>
+          <li>데스크탑 전용메뉴 테스트</li>
+          <li>데스크탑 전용메뉴 테스트</li>
+        </ul>
+      </div>
+    </header>
+
+  <!-- content list -->
+  <section class="account_content">
+    <div class="inner">
+      <h2>- 스토리 카드 별 지출 통계 -</h2>
+      <div class="list_box">
+        <!-- <a class="account_list">
+          <p>테스트 모양 테스트</p>
+        </a> -->
+      </div>
+    </div>
+  </section>
+
+  <!-- chart -->
+  <section class="account_section">
+    <div class="account_book_box">
+      <h2>여행 가계부</h2>
+      <div class="inner">
+        <div class="chart_box">
+          <canvas id="myChart" width="400" height="400"></canvas>
+        </div>
+          <div class="donut_text_part">
+            <div class="donut_text">
+              <table class="account_list_box">
+                <th class="account_th">
+                  <tr class="contetnt_table">
+                    <td class="date_field">날짜</td>
+                    <td class="category_field">항목</td>
+                    <td class="memo_field">메모</td>
+                    <td class="cost_field">비용</td>
+                  </tr>
+                </th>
+                <tr class="contetnt_table">
+                  <td>2022-08-11</td>
+                  <td>식사</td>
+                  <td>tdork width Green curry</td>
+                  <td>70THB</td>
+                </tr>
+                <tr class="contetnt_table">
+                  <td>2021-08-11</td>
+                  <td>교통</td>
+                  <td>숙소까지 버스</td>
+                  <td>20THB</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- bottom_menu/ -->
+  <section class="bottom_menu_wrap">
+    <h3 class="blind">빠른 메뉴 상자</h3>
+      <ul class="bottom_menu_box themed_box">
+        <li class="bottom_icon1">
+          <span class="material-icons">
+            format_list_bulleted
+          </span><br>
+          <span class="icon_text">
+            일지 리스트
+          </span>
+        </li>
+        <li class="bottom_icon2">
+          <span class="material-icons">
+            add_a_photo
+          </span><br>
+          <span class="icon_text">
+            일지 작성
+          </span>
+        </li>
+        <li class="bottom_icon_mid open_modal" id="app">
+            <span class="material-icons">
+              radio_button_unchecked
+            </span><br>
+            <span class="icon_text">
+              간편 작성
+            </span>
+        </li>
+        <li class="bottom_icon3">
+          <a href="./account_list.html">
+            <span class="material-icons">
+              monetization_on
+            </span><br>
+            <span class="icon_text">
+              지출 통계
+            </span>
+          </a>
+        </li>
+        <li class="bottom_icon4">
+          <span class="material-icons">
+            draw
+          </span><br>
+          <span class="icon_text">
+            체크리스트
+          </span>
+        </li>
+      </ul>
+  </section>
+
+  <script>
+    /*  create list */
+    (function (){
+      const travelDiaryURL = 'http://localhost:4001/travel_diary';
+      const get = (target) => {
+        return document.querySelector(target);
+      };
+
+      /* GET list */
+      const getCheck = () => {
+        fetch(travelDiaryURL, {
+          method:'GET',
+          headers:{'content-type':'application/json'}
+        })
+        .then((res) => res.json())
+        .then((travel_diary) => {
+            const categorySort = []
+            for(item in travel_diary){
+              categorySort.push(travel_diary[item].category);
+            };
+            /* 중복 제거 */
+            let result = categorySort.reduce((sorted, duplicated) => sorted.includes(duplicated) ? sorted : [...sorted, duplicated], [])
+            //console.log(result);
+            render(result);
+            
+          }
+        )
+        .catch(error => console.error('에러코드:', error))
+      };
+     
+      const $listBox = get(".list_box");
+      const createList = (result) => {
+        const category = result;
+        //console.log(category);
+        const $accountLIst = document.createElement('a');
+        $accountLIst.classList.add("themed_box", "account_list", );
+        $accountLIst.innerHTML = 
+        `
+          <p>${category}</p>
+        `
+        return $accountLIst;
+      };
+      
+      /* render  */
+      const render = (result) => {
+        result.forEach((item) => {
+          const accountElem = createList(item);
+          $listBox.appendChild(accountElem)
+        })
+      }
+
+      /* run GET*/
+      (function () {
+        window.addEventListener("DOMContentLoaded", getCheck);
+      })();
+    })();
+
+    
+    /** chart **/
+    (function () {
+      const travelDiaryURL = 'http://localhost:4001/travel_diary?category=동남아 배낭여행';
+        const get = (target) => {
+          return document.querySelector(target);
+        };
+
+        const getCheck = () => {
+          fetch(travelDiaryURL, {
+            method:'GET',
+            headers:{'content-type':'application/json'}
+          })
+          .then((res) => res.json())
+          .then((travel_diary) => {
+            //console.log(travel_diary)
+            function sumCost(target){
+              if(Array.isArray(target)){
+                return target.reduce((prev, current) => prev + current.cost, 0);
+              } else {
+                let sum = 0;
+                for (const idx of Object.values(target)) {
+                  sum += sumPrice(idx);
+                }
+                return sum;
+              };
+            console.log(sumCost)
+            }
+            sumCost(travel_diary);
+            }
+          )
+          .catch(error => console.error('에러코드:', error))
+        };
+     
+
+
+      const ctx = document.getElementById('myChart').getContext('2d');
+      const myChart = new Chart(ctx, {
+          type: 'doughnut',
+          plugins:[ChartDataLabels],
+          data: {
+              labels: ['식사', '교통', '어트랙션', '쇼핑', '숙소', '기타'],
+              datasets: [{
+                  label: '# of Votes',
+                  data: [12, 5, 3, 5, 10, 20],
+                  datalabels:{
+                    color:'white',
+                  },
+                  backgroundColor: [
+                      'rgba(255, 99, 132)',
+                      'rgba(54, 162, 235)',
+                      'rgba(255, 206, 86)',
+                      'rgba(75, 192, 192)',
+                      'rgba(153, 102, 255)',
+                      'rgba(255, 159, 64)'
+                  ],
+                  borderWidth: 2
+              }]
+          }
+      });
+
+      (function () {
+        window.addEventListener("DOMContentLoaded", getCheck);
+      })();
+
+
+  })();
+
+
+
+  </script>
+</body>
+</html>

@@ -73,144 +73,136 @@
   ],
   "travel_diary": [
     {
-      "id": 1,
-      "title": "modalTitle",
-      "date": "modalDate",
-      "accountBooks": "$accountBooks",
-      "content": "mainText",
-      "exchnageRate": "modalExchangeRate",
-      "currencyUnit": "modalCurrencyUnit",
-      "countryCategory": "modalCountryCate"
-    },
-    {
-      "title": "글 종합 중간테스트",
+      "title": "태국 첫 번째 날 오전 기록",
       "date": "2022-12-30",
       "accountBooks": [
         {
-          "cost": "515321",
-          "memo": "6213525"
+          "cate": "쇼핑",
+          "cost": "20",
+          "memo": "팔찌 한 개"
         },
         {
-          "cost": "515321",
-          "memo": "6213525"
+          "cate": "식사",
+          "cost": "60",
+          "memo": "망고밥(디저트)"
         },
         {
-          "cost": "515321",
-          "memo": "6213525"
+          "cate": "교통",
+          "cost": "120",
+          "memo": "버스비"
         },
         {
-          "cost": "213",
-          "memo": "351242213"
+          "cate": "숙소",
+          "cost": "260",
+          "memo": "게스트하우스"
         }
       ],
-      "content": "<p>글 종합 중간테스트글 종합 중간테스트글 종합 중간테스트글 종합 중간테스트</p>",
+      "category": "동남아 배낭여행",
+      "content": "<p>밥 먹고 식당 가고</p><p>공항에서 바로 나왔을 때</p><p>사우나에 들어 온 줄 알았다.</p>",
       "exchnageRate": "1",
       "currencyUnit": "KRW",
-      "id": 2
+      "countryCategory": "KR",
+      "id": 5
     },
     {
-      "title": "",
+      "title": "태국 첫 번째 날 오후 기록",
       "date": "2022-12-30",
       "accountBooks": [
         {
-          "cost": "",
-          "memo": ""
+          "cate": "쇼핑",
+          "cost": "10",
+          "memo": "컨버터"
+        },
+        {
+          "cate": "식사",
+          "cost": "100",
+          "memo": "팟타이&모닝글로리볶음"
+        },
+        {
+          "cate": "교통",
+          "cost": "150",
+          "memo": "관광지 까지"
         }
       ],
-      "category": "스토리 카드 선택",
+      "category": "동남아 배낭여행",
+      "content": "<p>밥 먹고 식당 가고</p><p>공항에서 바로 나왔을 때</p><p>사우나에 들어 온 줄 알았다.</p>",
+      "exchnageRate": "1",
+      "currencyUnit": "KRW",
+      "countryCategory": "KR",
+      "id": 6
+    },
+    {
+      "title": "2차 테스트",
+      "date": "2023-01-02",
+      "accountBooks": [
+        {
+          "cate": "쇼핑",
+          "cost": "30",
+          "memo": "순창고추장"
+        },
+        {
+          "cate": "교통",
+          "cost": "11",
+          "memo": "점심"
+        },
+        {
+          "cate": "식사",
+          "cost": "24",
+          "memo": "왕복 출근"
+        }
+      ],
+      "category": "퍼스 & 시드니",
+      "content": "<p>일상 생활 비용</p>",
+      "exchnageRate": "1",
+      "currencyUnit": "KRW",
+      "countryCategory": "KR",
+      "id": 7
+    },
+    {
+      "title": "방콕테스트",
+      "date": "2023-01-02",
+      "accountBooks": [
+        {
+          "cate": "식사",
+          "cost": "20",
+          "memo": "군것질"
+        },
+        {
+          "cate": "식사",
+          "cost": "16",
+          "memo": "망고쥬스"
+        }
+      ],
+      "category": "동남아 배낭여행",
       "content": "",
       "exchnageRate": "1",
       "currencyUnit": "KRW",
       "countryCategory": "KR",
-      "id": 3
+      "id": 8
     },
     {
-      "title": "ㄴㅇㅁㅎㄴㅁㄴㅁㄹㅁㄴㄹㅈ",
-      "date": "2022-12-30",
+      "title": "테스트3",
+      "date": "2023-01-02",
       "accountBooks": [
-        {
-          "cost": "123124",
-          "memo": "231542315"
-        },
-        {
-          "cost": "123124",
-          "memo": "231542315"
-        },
-        {
-          "cost": "123124",
-          "memo": "231542315"
-        }
-      ],
-      "category": "스토리 카드 선택",
-      "content": "<p>ㄴㅇㅁㄹ2ㅂㅅㅈㄷㅁㄷㅅㅁㄱ</p>",
-      "exchnageRate": "1",
-      "currencyUnit": "KRW",
-      "countryCategory": "KR",
-      "id": 4
-    },
-    {
-      "title": "태국 첫 번째 날 오전 기록",
-      "date": "2022-12-30",
-      "accountBooks": [
-        {
-          "cate": "쇼핑",
-          "cost": "20",
-          "memo": "팔찌 한 개"
-        },
-        {
-          "cate": "숙소",
-          "cost": "60",
-          "memo": "망고밥(디저트)"
-        },
-        {
-          "cate": "교통",
-          "cost": "120",
-          "memo": "버스비"
-        },
-        {
-          "cate": "식사",
-          "cost": "260",
-          "memo": "게스트하우스"
-        }
+        [
+          {
+            "cate": "교통",
+            "cost": "11",
+            "memo": "비용테스트"
+          },
+          {
+            "cate": "교통",
+            "cost": "112",
+            "memo": "비용테스트"
+          }
+        ]
       ],
       "category": "동남아 배낭여행",
-      "content": "<p>밥 먹고 식당 가고</p><p>공항에서 바로 나왔을 때</p><p>사우나에 들어 온 줄 알았다.</p>",
+      "content": "",
       "exchnageRate": "1",
       "currencyUnit": "KRW",
       "countryCategory": "KR",
-      "id": 5
-    },
-    {
-      "title": "태국 첫 번째 날 오전 기록",
-      "date": "2022-12-30",
-      "accountBooks": [
-        {
-          "cate": "쇼핑",
-          "cost": "20",
-          "memo": "팔찌 한 개"
-        },
-        {
-          "cate": "숙소",
-          "cost": "60",
-          "memo": "망고밥(디저트)"
-        },
-        {
-          "cate": "교통",
-          "cost": "120",
-          "memo": "버스비"
-        },
-        {
-          "cate": "식사",
-          "cost": "260",
-          "memo": "게스트하우스"
-        }
-      ],
-      "category": "동남아 배낭여행",
-      "content": "<p>밥 먹고 식당 가고</p><p>공항에서 바로 나왔을 때</p><p>사우나에 들어 온 줄 알았다.</p>",
-      "exchnageRate": "1",
-      "currencyUnit": "KRW",
-      "countryCategory": "KR",
-      "id": 5
+      "id": 9
     }
   ],
   "checkList": [
@@ -229,11 +221,11 @@
     },
     {
       "checked": false,
-      "memo": "그린커리 맛없음 다음엔 사 먹지 말자",
+      "memo": "새로운 수정 삭제 테스트",
       "id": 5
     }
   ],
-   "coutryNameCurrency": [
+  "coutryNameCurrency": [
     {
       "id": 1,
       "countryKR": "아프가니스탄",

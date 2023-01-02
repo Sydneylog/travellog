@@ -16,7 +16,7 @@
     text-align:center;
   }
   /* 도넛 차트 */
- 
+  
   /* 도넛 차트 테이블  */
   .account_book_box .donut_text_part {
     border: 1px solid red;
@@ -76,6 +76,26 @@
   </section>
   <script>
     // 도넛차트 베이스
+    
+    const travelDiaryURL = 'http://localhost:4001/travel_diary?category=동남아 배낭여행';
+      const get = (target) => {
+        return document.querySelector(target);
+      };
+
+      const getCheck = () => {
+        fetch(travelDiaryURL, {
+          method:'GET',
+          headers:{'content-type':'application/json'}
+        })
+        .then((res) => res.json())
+        .then((travel_diary) => {
+            
+          }
+        )
+        .catch(error => console.error('에러코드:', error))
+      };
+
+
     const ctx = document.getElementById('myChart').getContext('2d');
     const myChart = new Chart(ctx, {
         type: 'doughnut',

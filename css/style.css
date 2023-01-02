@@ -655,6 +655,9 @@ content{
 	line-height:0.75rem;
 	cursor: pointer;
 }
+.bottom_menu_wrap .bottom_menu_box li a{
+	color:var(--textColor);
+}
 .bottom_menu_wrap .bottom_menu_box .material-icons{
 	font-size:1.5rem;
 }
