@@ -229,7 +229,7 @@
     `
     <input type="checkbox" id="checkbox" name="checkbox" class="checkbox" hidden /> 
     <input type="text" id="list" name="checkList" class="checkList" hidden /> 
-    <label class="checkText memo_check " for="list" id="checklist">${memo}</label>
+    <label class="checkText memo_check " for="list" id="checklist" class="checklist">${memo}</label>
     <div class="hidden_btn_box">
       <div class="check_buttons">
         <button type="button" class="check-edit-button themed_pattern2">수정</button>
@@ -391,8 +391,6 @@
     $checklistContainer.addEventListener("click", deleteCheck);
   };
   init();
-  
-
 })();
 
 /** UI menu **/
