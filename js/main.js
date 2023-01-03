@@ -201,7 +201,7 @@
 (function() {
   /* call checklist */
   'use strict';
-  const checkListURL = 'http://https://delightful-neckerchief-tick.cyclic.app/checkList';
+  const checkListURL = 'https://delightful-neckerchief-tick.cyclic.app/checkList';
   const get = (target) => {
     return document.querySelector(target);
   };
