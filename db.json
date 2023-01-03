@@ -178,21 +178,21 @@
         "shopping": [
           {
             "cate": "쇼핑",
-            "cost": "123",
+            "cost": "5000",
             "memo": "쇼핑"
           }
         ],
         "food": [
           {
             "cate": "식사",
-            "cost": "50",
+            "cost": "11000",
             "memo": "버스"
           }
         ],
         "transportation": [
           {
             "cate": "교통",
-            "cost": "110",
+            "cost": "8000",
             "memo": "똠양스프"
           }
         ]
@@ -200,7 +200,7 @@
       "category": "춘천 여행",
       "content": "<p>3일차3일차3일차</p>",
       "exchnageRate": "1",
-      "currencyUnit": "THB",
+      "currencyUnit": "KRW",
       "countryCategory": "KR",
       "id": 5
     },
@@ -208,24 +208,24 @@
       "title": "3일차",
       "date": "2023-01-03",
       "accountBooks": {
-        "shopping": [
+        "accomondation": [
           {
             "cate": "쇼핑",
-            "cost": "123",
+            "cost": "270",
             "memo": "쇼핑"
           }
         ],
         "food": [
           {
             "cate": "식사",
-            "cost": "50",
+            "cost": "40",
             "memo": "버스"
           }
         ],
-        "transportation": [
+        "attraction": [
           {
             "cate": "교통",
-            "cost": "110",
+            "cost": "80",
             "memo": "똠양스프"
           }
         ]
@@ -244,21 +244,21 @@
         "shopping": [
           {
             "cate": "쇼핑",
-            "cost": "123",
+            "cost": "100",
             "memo": "쇼핑"
           }
         ],
         "food": [
           {
             "cate": "식사",
-            "cost": "50",
+            "cost": "110",
             "memo": "버스"
           }
         ],
         "transportation": [
           {
             "cate": "교통",
-            "cost": "110",
+            "cost": "105",
             "memo": "똠양스프"
           }
         ]
@@ -266,7 +266,7 @@
       "category": "퍼스 & 시드니",
       "content": "<p>3일차3일차3일차</p>",
       "exchnageRate": "1",
-      "currencyUnit": "THB",
+      "currencyUnit": "AUD",
       "countryCategory": "KR",
       "id": 7
     },
@@ -302,6 +302,32 @@
       "currencyUnit": "THB",
       "countryCategory": "KR",
       "id": 8
+    },
+    {
+      "title": "테스트용",
+      "date": "2023-01-03",
+      "accountBooks": {
+        "attraction": [
+          {
+            "cate": "attraction",
+            "cost": "220",
+            "memo": "연극관람"
+          }
+        ],
+        "etc": [
+          {
+            "cate": "etc",
+            "cost": "20",
+            "memo": "빨래 비용"
+          }
+        ]
+      },
+      "category": "동남아 배낭여행",
+      "content": "<p>테스트용테스트용테스트용테스트용</p>",
+      "exchnageRate": "1",
+      "currencyUnit": "KRW",
+      "countryCategory": "KR",
+      "id": 9
     }
   ],
   "checkList": [

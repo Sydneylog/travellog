@@ -35,7 +35,7 @@
     }
     .account_content h2{
       text-align: center;
-      margin-bottom: 60px;
+      margin-bottom: 40px;
     }
     .account_content .inner{
       width:80%;
@@ -59,6 +59,40 @@
     }
     .account_content .list_box .account_list:not(:last-child){
       margin-bottom:5px;
+    }
+    .account_section .account_book_box h2 {
+      text-align: center;
+      margin: 60px 0 40px;
+      font-size: 1.4rem;
+    }
+    .account_section .chart_box {
+      margin-bottom: 20px;
+    }
+    .account_section .account_list_box{
+      margin-top: 600px;
+      margin:auto;
+      text-align:center;
+      font-family:'dongle';
+      font-size:1.4rem;
+      border:1px solid red;
+    }
+    .account_section table td{
+      border:1px solid red;
+    }
+    .account_section .account_list_box .account_th td{
+      font-weight: 700
+    }
+    .account_section .account_list_box td {
+      padding:10px;
+    }
+    .account_section .center_title {
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform: translateX(-50%) translateY(-25%);
+      text-align: center;
+      font-size:2.0rem;
+      line-height: 1.8rem;
     }
   </style>
 </head>
@@ -189,38 +223,39 @@
   <!-- chart -->
   <section class="account_section">
     <div class="account_book_box">
-      <h2>여행 가계부</h2>
+      <h2>- 지출 통계 -</h2>
       <div class="inner">
         <div class="chart_box">
-          <canvas id="myChart" width="400" height="400"></canvas>
+          <canvas id="myChart" width="40vw" max-width:600px max-height:600px height="40vh">
+          </canvas>
+          <div class="center_title"></div>
         </div>
-          <div class="donut_text_part">
-            <div class="donut_text">
-              <table class="account_list_box">
-                <th class="account_th">
-                  <tr class="contetnt_table">
-                    <td class="date_field">날짜</td>
-                    <td class="category_field">항목</td>
-                    <td class="memo_field">메모</td>
-                    <td class="cost_field">비용</td>
-                  </tr>
-                </th>
+        <!-- <div class="donut_text_part">
+          <div class="donut_text">
+            <table class="account_list_box">
+              <th class="account_th">
                 <tr class="contetnt_table">
-                  <td>2022-08-11</td>
-                  <td>식사</td>
-                  <td>tdork width Green curry</td>
-                  <td>70THB</td>
+                  <td class="date_field">날짜</td>
+                  <td class="category_field">항목</td>
+                  <td class="memo_field">메모</td>
+                  <td class="cost_field">비용</td>
                 </tr>
-                <tr class="contetnt_table">
-                  <td>2021-08-11</td>
-                  <td>교통</td>
-                  <td>숙소까지 버스</td>
-                  <td>20THB</td>
-                </tr>
-              </table>
-            </div>
+              </th>
+              <tr class="contetnt_table">
+                <td>2022-08-11</td>
+                <td>식사</td>
+                <td>tdork width Green curry</td>
+                <td>70THB</td>
+              </tr>
+              <tr class="contetnt_table">
+                <td>2021-08-11</td>
+                <td>교통</td>
+                <td>숙소까지 버스</td>
+                <td>20THB</td>
+              </tr>
+            </table>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </section>
@@ -278,7 +313,7 @@
   <script>
     /*  create list */
     (function (){
-      const travelDiaryURL = 'https://delightful-neckerchief-tick.cyclic.app/travel_diary';
+      const travelDiaryURL = 'http://localhost:4001/travel_diary';
       const get = (target) => {
         return document.querySelector(target);
       };
@@ -297,7 +332,7 @@
             };
             /* 중복 제거 */
             let result = categorySort.reduce((sorted, duplicated) => sorted.includes(duplicated) ? sorted : [...sorted, duplicated], [])
-            console.log("카테고리 리스트",result);
+            //console.log("카테고리 리스트",result);
             render(result);
             
           }
@@ -313,7 +348,7 @@
         $accountLIst.classList.add("themed_box", "account_list", );
         $accountLIst.innerHTML = 
         `
-          <p>${category}</p>
+          <p class="maiden_cate">${category}</p>
         `
         return $accountLIst;
       };
@@ -335,13 +370,23 @@
     
     /** chart **/
     (function () {
-      const travelDiaryURL = 'https://delightful-neckerchief-tick.cyclic.app/travel_diary?category=동남아 배낭여행';
         const get = (target) => {
           return document.querySelector(target);
-        };
+          };
+        const listBox = get(".list_box");
+        // function todo (e){
+        
+        // }
 
         const getCheck = () => {
-          fetch(travelDiaryURL, {
+          // const targetList = e.target.closest(".maiden_cate");
+          // const listText = targetList.innerText;
+          // console.log(listText);
+
+          const travelDiaryURL = 'http://localhost:4001/travel_diary';
+          //console.log(`${travelDiaryURL}?category=동남아 배낭여행`);
+          // GET
+          fetch(`${travelDiaryURL}?category=동남아 배낭여행`, {
             method:'GET',
             headers:{'content-type':'application/json'}
           })
@@ -354,15 +399,19 @@
             let accomondation = [];
             let attraction = [];
             let etc= [];
-
+            console.log("길이:",travel_diary.length)
+            console.log("못읽음:",travel_diary[0].accountBooks.transportation[0].cost)
             for(i = 0; i < travel_diary.length; i++){
               let $shopping = Object.keys(travel_diary[i].accountBooks).includes("shopping") ? travel_diary[i].accountBooks.shopping[0].cost : "";
               let $food = Object.keys(travel_diary[i].accountBooks).includes("food") ? travel_diary[i].accountBooks.food[0].cost : "";
-             
               let $transportation = Object.keys(travel_diary[i].accountBooks).includes("transportation") ? travel_diary[i].accountBooks.transportation[0].cost : "";
+
+              
               let $accomondation = Object.keys(travel_diary[i].accountBooks).includes("accomondation") ? travel_diary[i].accountBooks.accomondation[0].cost : "";
-              let $attraction = Object.keys(travel_diary[i]).includes("attraction") ? travel_diary[i].attraction.accomondation[0].cost : "";
-              let $etc = Object.keys(travel_diary[i]).includes("etc") ? travel_diary[i].etc.accomondation[0].cost : "";
+
+              let $attraction = Object.keys(travel_diary[i].accountBooks).includes("attraction") ? travel_diary[i].accountBooks.attraction[0].cost : "";
+
+              let $etc = Object.keys(travel_diary[i].accountBooks).includes("etc") ? travel_diary[i].accountBooks.etc[0].cost : "";
 
               shopping.push(Number($shopping));
               food.push(Number($food));
@@ -377,12 +426,18 @@
             const totalTransportation = transportation.reduce((acc, curr) => (acc + curr));
             const totalAttraction = attraction.reduce((acc, curr) => (acc + curr));
             const totalEtc = etc.reduce((acc, curr) => (acc + curr));
-            console.log(travel_diary[2].accountBooks.transportation[0].cost)
+            //console.log(travel_diary[2].accountBooks.transportation[0].cost)
             const total = totalShopping + totalfood + totalAccomondation + totalTransportation + totalAttraction + totalEtc;
-            console.log(total)
-            
+            document.querySelector(".center_title").innerHTML = `총 지출 <br>${Number(total).toLocaleString()} <br> ${travel_diary[0].currencyUnit}`
+            // console.log("토탈", total)
+            // console.log("어트랙션", totalAttraction)
+            // console.log("숙소", totalAccomondation)
+           
             const ctx = document.getElementById('myChart').getContext('2d');
-            const myChart = new Chart(ctx, {
+            var myChart = new Chart(ctx, {
+                title:{
+                  text:"도넛차트"
+                },
                 type: 'doughnut',
                 plugins:[ChartDataLabels],
                 data: {
@@ -403,22 +458,45 @@
                         ],
                         borderWidth: 2
                     }]
+                },
+                options:{
+                  title: {
+                    display: true,
+                    text: '제목',
+                    fontSize: 10
+                  }
                 }
             });
-
-
+            
+            // console.log("차트배열", myChart.data.datasets[0].data);
+            // myChart.data.datasets[0].data = [2, 5, 3];
+            // console.log("차트배열갱신 ", myChart.data.datasets[0].data);
+            // myChart.update();
 
           })
           .catch(error => console.error('에러코드:', error))
         };
-     
 
+        const addCheck = (e) => {
+        e.preventDefault();
+        const $input = $checkForm.querySelector('input[type="text"]');
+        
+        const checkValue = $input.value;
+        const check = {
+          checked: false,
+          memo: checkValue
+        };
+      }
+        
+
+      
 
 
       (function () {
         window.addEventListener("DOMContentLoaded", getCheck);
+        listBox.addEventListener("click", getCheck);
       })();
-
+   
 
   })();
 
