@@ -428,6 +428,7 @@ content{
 {
 	display:flex;
 	justify-content: space-between;
+	cursor: pointer;
 }
 .dual_menu .checklist_box button:first-child {
 	margin-right:5px;

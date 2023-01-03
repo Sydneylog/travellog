@@ -1,0 +1,50 @@
+{
+  "name": "travelLog",
+  "short_name": "travel with travelLog",
+  "theme_color": "#fff",
+  "description":  "travel with travelLog",
+  "background_color": "#fff",
+  "display": "standalone",
+  "orientation":"portrait",
+  "start_url": "./index.html",
+  "icons":[
+    {
+      "src":"./images/logo192.png",
+      "type":"image/png",
+      "sizes":"192x192"
+    },
+    {
+      "src":"./images/logo512.png",
+      "type":"image/png",
+      "sizes":"512x512"
+    }
+  ],
+  "shortcuts" : [
+    {
+      "name" : "Chrome으로 열기",
+      "short_name" : "Open By Chrome",
+      "description" : "Chrome으로 열기",
+      "url" : "./",
+      "icons" : [
+        {
+            "src" : "images/logo192",
+            "sizes" : "192x192",
+            "type" : "image/png"
+        }
+      ]
+    },
+    {
+      "name" : "VSCode으로 열기",
+      "short_name" : "Open By VSCodee",
+      "description" : "VSCode으로 열기",
+      "url" : "./",
+      "icons" : [
+        {
+          "src" : "images/logo512.png",
+          "sizes" : "512x512",
+          "type" : "image/png"
+        }
+      ]
+    }
+  ]
+}

@@ -105,7 +105,7 @@
         //diplomat flag API 
         const flagUrl = `https://apis.data.go.kr/1262000/CountryFlagService2/getCountryFlagList2?serviceKey=RHh9qBtKX0nX7AHYN9wc37tOXdekXhwz8L07fm3vc3rReNkBkkWM6YUaB0Eo3YDEiN7rRKN4mTfwePoyCFFUZA%3D%3D&returnType=JSON&numOfRows=1&cond[country_iso_alp2::EQ]=${weatherCountry}&pageNo=1`
 
-        const currencyCodeURL = `http://localhost:4001/coutryNameCurrency?countryCode=${weatherCountry}`;
+        const currencyCodeURL = `https://delightful-neckerchief-tick.cyclic.app/coutryNameCurrency?countryCode=${weatherCountry}`;
         
         fetch(currencyCodeURL, {
           method:'GET',
@@ -246,8 +246,9 @@
     //console.log('체크리스트아이템:', $checklistItem);
     //checklist동적생성
     return $checklistItem;
-    
   };
+
+
   /* render */
   const renderCheck = (checklist) => {
     checklist.forEach((item) => {
@@ -265,9 +266,7 @@
     .then((res) => res.json())
     .then((checklist) => {
         renderCheck(checklist);
-        //console.log(checklist);
-      }
-    )
+    })
     .catch(error => console.error('에러코드:', error))
   };
 
@@ -285,8 +284,7 @@
     cancelBtn.addEventListener("click", () => {
       memoBoxWrap.style.display = "none"
     })
-    
-  })()
+  })();
 
   /* POST checklist*/
   const addCheck = (e) => {
@@ -313,6 +311,7 @@
           console.error(res.statusText);
         }
       })
+      .then(() => {getCheck()})
       .catch((error) => console.error('에러코드:',error));
   }
 
@@ -360,12 +359,8 @@
       headers:{'content-type':'application/json'},
       body:JSON.stringify({ memo })
     })
-      .then((res) => {
-        res.json();
-      })
-      .then(() => {
-        getCheck();
-      })
+      .then((res) => {res.json()})
+      .then(() => {getCheck()})
       .catch(error => console.error('에러코드:',error))
     } else return;
   };
@@ -382,14 +377,10 @@
       headers:{'content-type':'application/json'},
       body:JSON.stringify({ id }),
     })
-      .then((res) => {
-        res.json();
-      })
-      .then(() => {
-        getCheck()
-      })
-      .catch(error => console.error('에러코드:',error));
-  }
+      .then((res) => {res.json()})
+      .then(() => {getCheck()})
+      .catch((error) => console.error('에러코드:',error));
+  };
 
   /** run each function **/
   const init = () => {
