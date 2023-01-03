@@ -428,6 +428,10 @@ content{
 {
 	display:flex;
 	justify-content: space-between;
+	
+}
+.dual_menu .checklist_box .check_buttons button,
+.dual_menu .checklist_box .modify_buttons button{
 	cursor: pointer;
 }
 .dual_menu .checklist_box button:first-child {
