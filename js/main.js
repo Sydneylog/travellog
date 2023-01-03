@@ -201,7 +201,7 @@
 (function() {
   /* call checklist */
   'use strict';
-  const checkListURL = 'http://localhost:4001/checkList';
+  const checkListURL = 'http://https://delightful-neckerchief-tick.cyclic.app/checkList';
   const get = (target) => {
     return document.querySelector(target);
   };
@@ -401,10 +401,6 @@
   };
   init();
   
-  /* strikethrough */
-  $(document).on("click", ".checkText", function(){
-    $(this).toggleClass('strikethrough');
-  })
 
 })();
 
@@ -422,6 +418,11 @@
       $(".mobile_menu_list").children('ul').not($(this).children('ul')).slideUp(200);
       
     });
+
+    /* strikethrough */
+    $(document).on("click", ".checkText", function(){
+      $(this).toggleClass('strikethrough');
+    })
     /* displayOff when click back */
     // 상단의 메뉴 토글의 슬라이드업이 하단의 코드로 인해 작동 되지 않는 문제 발생
     // $(document).mouseup(function(e){
@@ -596,7 +597,7 @@
 
 /** Modal POST **/
 (function () {
-  const diaryURL = "http://localhost:4001/travel_diary";
+  const diaryURL = "https://delightful-neckerchief-tick.cyclic.app/travel_diary";
   const $modalForm = document.querySelector(".modal_form");
   
   let myEditor;
