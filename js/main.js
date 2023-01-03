@@ -201,7 +201,7 @@
 (function() {
   /* call checklist */
   'use strict';
-  const checkListURL = 'http://localhost:4001/checkList';
+  const checkListURL = 'https://delightful-neckerchief-tick.cyclic.app/checkList';
   const get = (target) => {
     return document.querySelector(target);
   };
@@ -596,7 +596,7 @@
 
 /** Modal POST **/
 (function () {
-  const diaryURL = "http://localhost:4001/travel_diary";
+  const diaryURL = "https://delightful-neckerchief-tick.cyclic.app/travel_diary";
   const $modalForm = document.querySelector(".modal_form");
   
   let myEditor;

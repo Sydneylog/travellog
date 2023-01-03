@@ -278,7 +278,7 @@
   <script>
     /*  create list */
     (function (){
-      const travelDiaryURL = 'http://localhost:4001/travel_diary';
+      const travelDiaryURL = 'https://delightful-neckerchief-tick.cyclic.app/travel_diary';
       const get = (target) => {
         return document.querySelector(target);
       };
@@ -297,7 +297,7 @@
             };
             /* 중복 제거 */
             let result = categorySort.reduce((sorted, duplicated) => sorted.includes(duplicated) ? sorted : [...sorted, duplicated], [])
-            //console.log(result);
+            console.log("카테고리 리스트",result);
             render(result);
             
           }
@@ -335,7 +335,7 @@
     
     /** chart **/
     (function () {
-      const travelDiaryURL = 'http://localhost:4001/travel_diary?category=동남아 배낭여행';
+      const travelDiaryURL = 'https://delightful-neckerchief-tick.cyclic.app/travel_diary?category=동남아 배낭여행';
         const get = (target) => {
           return document.querySelector(target);
         };
