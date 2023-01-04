@@ -76,7 +76,7 @@
     /* saving OPEN API url */
     //-33.8667  151.2
     //weather API url
-    const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=fca7b6ecde13fa2d4e140006f768fd79&units=metric`;
+    const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=13.736717&lon=100.523186&appid=fca7b6ecde13fa2d4e140006f768fd79&units=metric`;
     
     /* API-weather */
     fetch(weatherUrl)
@@ -586,7 +586,7 @@
 
 /** Modal POST **/
 (function () {
-  const diaryURL = "https://delightful-neckerchief-tick.cyclic.app/travel_diary";
+  const diaryURL = 'http://localhost:4001/travel_diary';
   const $modalForm = document.querySelector(".modal_form");
   
   let myEditor;
