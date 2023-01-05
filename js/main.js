@@ -201,7 +201,7 @@
 (function() {
   /* call checklist */
   'use strict';
-  const checkListURL = 'https://delightful-neckerchief-tick.cyclic.app/checkList';
+  const checkListURL = 'https://glamorous-eel-top-coat.cyclic.app/checkList';
   const get = (target) => {
     return document.querySelector(target);
   };
@@ -586,7 +586,7 @@
 
 /** Modal POST **/
 (function () {
-  const diaryURL = 'https://delightful-neckerchief-tick.cyclic.app/travel_diary';
+  const diaryURL = 'https://glamorous-eel-top-coat.cyclic.app/travel_diary';
   const $modalForm = document.querySelector(".modal_form");
   
   let myEditor;
