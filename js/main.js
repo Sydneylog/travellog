@@ -105,7 +105,7 @@
         //diplomat flag API 
         const flagUrl = `https://apis.data.go.kr/1262000/CountryFlagService2/getCountryFlagList2?serviceKey=RHh9qBtKX0nX7AHYN9wc37tOXdekXhwz8L07fm3vc3rReNkBkkWM6YUaB0Eo3YDEiN7rRKN4mTfwePoyCFFUZA%3D%3D&returnType=JSON&numOfRows=1&cond[country_iso_alp2::EQ]=${weatherCountry}&pageNo=1`
         // 오류발생 
-        const currencyCodeURL = `https://delightful-neckerchief-tick.cyclic.app/coutryNameCurrency?countryCode=${weatherCountry}`;
+        const currencyCodeURL = `https://glamorous-eel-top-coat.cyclic.app/coutryNameCurrency?countryCode=${weatherCountry}`;
         
         fetch(currencyCodeURL, {
           method:'GET',
